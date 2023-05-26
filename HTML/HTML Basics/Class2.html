@@ -1,0 +1,217 @@
+<!-- 
+    Self Learning Class : 25 May 2023
+    ----------------------------
+    Agenda : 
+        1. block and inline tags
+        2. div , span and other semantic tags
+        3. lists 
+        4. adding internal links 
+        5. media tags 
+        6. special characters 
+        7. favicon and meta tags 
+        
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Class2</title>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+ </head>
+ <body>
+    <!-- 
+        NOTE : This behaviour of new line is not cause of different tags but because of  
+        block and inline tags.
+        Quick Difference : (use inspect (Chrome dev tools) to see the difference)
+            -> Inline tags occupy only the space that their content inside them takes
+            -> Block tags occupy entire row (always) and some more space as margin (not always) above and below the content (somewhat like a block in the screen)
+        
+        Examples :
+            1. Inline : <span> , <input> 
+            2. Block : <h1> - <h6>, <div> , <p> 
+    -->
+
+    <div id="section1">
+        <h4><u>Block & Inline tags</u></h4>
+        <h1>This is a heading</h1>
+        "I'm extra text" <!-- this comes in the next line without a line break, which is not a general characteristic of html tags-->
+
+        <!-- Consider the following section :  -->
+        <br>   <br>
+
+        <span>This is a heading within span</span>
+        "I'm the same extra text"       <!-- Now both the text are in the same line unlike the above 2 same lines -->
+    </div>
+    
+    <br><br> <hr><hr>
+
+
+    <div id="section2">
+        <!-- Div , span and other semantic tags -->
+        <h4><u>Div & Span Tags</u></h4>
+
+        <div>This is a div</div>
+        <span>This is a span</span>
+
+        <!-- 
+            Div and span are 2 ways to wrap a group of tags and content together. Visually
+            there is no difference. 
+            Only difference being that one is a block tag (div) and other inline (span)
+
+            Semantics tags : 
+                1. Doesn't change any visual differnce to the page 
+                2. They are used to segregate / classify different parts of the webiste.
+                    eg : into header, Main content , footer, etc 
+                    eg : <head> , <body>, <footer>, etc
+                3. Gives developers idea about how the website is structured
+        -->
+    </div>
+    
+
+    <br><br> <hr><hr>
+
+
+    <div id="section3">
+        <!-- List tags -->
+        <h4><u>Lists Tag</u></h4>
+        <p>Broadly classified into 2 categories : </p>
+        <ol>
+            <li> Numbered list i.e: Ordered Lists (When there is an sequence)</li>
+        </ol>
+        <ul>
+            <li>Bulletons list i.e: Unordered Lists (When there is no perticular order of the items)</li>
+        </ul>
+        <p>Examples : </p>
+        <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+
+        <!-- 
+            Attributes of List tags : 
+                1. start: This attribute specifies the starting value of the ordered list. By default, the numbering starts from 1. For example, start="5" will start the numbering from 5.
+                2. type: This attribute determines the type of numbering used in the list. The possible values are:
+                    "1": Numbers (default)
+                    "A": Uppercase letters (A, B, C...)
+                    "a": Lowercase letters (a, b, c...)
+                    "I": Uppercase Roman numerals (I, II, III...)
+                    "i": Lowercase Roman numerals (i, ii, iii...)
+                3. reversed: This attribute, when present, reverses the order of the list items NUMBERING. The numbering will start from the highest value specified in the start attribute and count down.
+        -->
+        <p>Types of Numbers and Bulletons</p>
+        
+        <table>
+            <!-- Ordered List type attribute :  -->
+            <tr>
+                <td>
+                    <ol type="A">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ol>
+                </td>
+                <td>
+                    <ol type="a" start="4">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ol>
+                </td>
+                <td>
+                    <ol type="I">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ol>
+                </td>
+                <td>
+                    <ol type="i" >
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ol>
+                </td>
+            </tr>
+
+            <!-- Un-ordered List type attribute :  -->
+            <tr>
+                <td>
+                    <ul type="disc" >
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul type="circle" >
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul type="square" >
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul type="none" >
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+    <br><br><hr><hr>
+
+
+    <div id="section4">
+        <!-- Internal Links  -->
+        <h4><u>Internal Links</u></h4>
+        <p>This is done using the anchor tag</p>
+        <ol type="I">
+            <li><a href="https://www.youtube.com/">Click to go to YouTube on <b>THIS</b> tab</a></li>
+            <li><a href="https://www.youtube.com/" target="_blank">Click to go to YouTube on <b>NEW</b> tab</a></li>
+        </ol>
+
+        <p>Take the example of us jumping to other section of this page (using the div tag and their ids) </p>
+        <ul type="none">
+            <li>
+                <ion-icon name="information-circle"></ion-icon>
+                <a href="#section1">Block and Inline</a>
+            </li>
+            <li>
+                <ion-icon name="information-circle"></ion-icon>
+                <a href="#section2">Div & Span Tags</a>
+            </li>
+            <li>
+                <ion-icon name="information-circle"></ion-icon>
+                <a href="#section3">List Tags</a>
+            </li>
+            <li>
+                <ion-icon name="information-circle"></ion-icon>
+                <a href="#section4">Internal Links</a>
+            </li>
+        </ul>
+    </div>
+    
+    
+ </body>
+ </html>
