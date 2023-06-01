@@ -1,0 +1,93 @@
+<!-- 
+    1. Media Tags 
+        - <img>
+        - <video>
+        - <audio>
+
+    2. Special Characters  (aka HTML entities)
+            - &nbsp; (non breaking space)
+            -  &lt; (special character for < )
+            - &gt; (SPecial character for > )
+    3. Favicon & Meta tags
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="Images/chrome logo 3d.ico" type="image/x-icon">
+
+
+
+    <title>Class 3 - Media tags, Special cahracters, Favicon & Meta tags</title>
+ </head>
+ <body>
+    <div id="section1">
+        <h4><u>Image tag</u></h4>
+        <img src="Images/TigerImage.jpg" alt="This is a image of a Tiger..." height="200" width="300">
+    </div>
+    <div id="section2">
+        <h4><u>Video tag</u></h4>
+        <video controls height="200" width="300">
+            <!-- 
+                Inside the video tag there can be multiple source tags so that the video has multiple sources 
+             -->
+            <source src="Images/Forza Horizon 4 2021.07.10 - 13.25.55.01.mp4" >
+        </video>
+    </div>
+    <div id="section3">
+        <h4><u>Audio tag</u></h4>
+        <audio src="Images/C418 - Aria Math Minecraft Volume Beta.mp3" controls>
+            <!-- can give source here also like the video tags -->
+            <source src="">
+        </audio>
+    </div>
+
+    <!-- 
+        NOTE : There are links on the internet which can be embedded into the media tags to give
+        random imags, vids and audios at every refresh 
+     -->
+
+     <div id="section4">
+        <h4><u>Non-Breaking Space </u></h4>
+        This is how to give more &nbsp;&nbsp;&nbsp;&nbsp; space
+        <!-- 1 nbsp; = 1 extra space -->
+     </div>
+     <div id="section5">
+        <h4><u>HTML Entities for < & > </u></h4>
+        This is how to represent a tag in the html doc : &lt;Tag&gt;
+        <!-- 1 nbsp; = 1 extra space -->
+     </div>
+
+     <div id="section5">
+        <h4><u>Favicon </u></h4>
+        <p>
+            <b>Favicon</b> is the icon displayed on the tab before the Title of the document <br> 
+            check out this pages logo in the tab ! 
+        </p>
+        <!-- 
+            Favicons are defined in the head section of the page using : 
+            <link rel="icon" href="relative path to image" type="image/x-icon">
+
+            Browsers used to support only ico but now also support svg,png
+        -->
+     </div>
+
+     <div id="section6">
+        <h4><u>Meta Tags</u></h4>
+        <p>
+            These are information tag about information , giving more data about what is on the page.
+            <br>
+            i.e; It tells the browsers / crawlers what information does the page contain. 
+            <!-- 
+                Eg : <meta name="Bunny's Page" content="Tech Stuff"> 
+             -->
+        </p>
+     </div>
+    
+
+ </body>
+ </html>
