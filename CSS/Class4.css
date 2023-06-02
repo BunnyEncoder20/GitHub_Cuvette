@@ -1,0 +1,21 @@
+/* 
+    Intro Into CSS - Cascading Style Sheets 
+    ---------------------------------
+    html    =   structure 
+    css     =       style
+
+    Multiple ways of linking CSS to html 
+    1. Inline CSS : writing the style tag within the tag itself 
+    2. Internal CSS : writing all the css within <style> tags in the head section
+    3. External CSS : writing the CSS in a seperate .css file and linking using the <style> tag
+
+    Major Ways of selecting the elements (when not using inline)
+    1. using tag 
+    2. using Class selector 
+    3. using ID selector
+
+    Order of execution of styles 
+    -------------------------
+    inline > internal > external 
+    Mostly prefer external
+*/
