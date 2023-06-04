@@ -29,6 +29,13 @@
 
     display: flex;
     flex-direction: row; /*By default it is row*/
+    /*
+        Defines the direction of the main axis.
+        > row (default) 
+        > row-reverse 
+        > column 
+        > column-reverse
+    */
 
     /* 
         justify Conetent : is always reletive to the main axis only 
@@ -44,25 +51,86 @@
 
     /* Align Items : will always arrange the items along the cross axis  */
     align-items: center;
+    /* 
+        Aligns flex items along the cross axis.
+            > flex-start 
+            > flex-end 
+            > center 
+            > baseline 
+            > stretch (default)
+    */
 
 
-    /* Flex wrap helps wrap the items if they cannot fit into one flex */
-    flex-wrap: wrap;
+    /* 
+        Flex wrap helps wrap the items if they cannot fit into one flex 
+            nowrap: Every item is fit to a single line.
+            wrap: Items wrap around to additional lines.
+            wrap-reverse: Items wrap around to additional lines in reverse.
+    */
+    /* flex-wrap: wrap; */
+    /* 
+        The two properties flex-direction and flex-wrap are used so often together 
+        that the shorthand property flex-flow was created to combine them. This 
+        shorthand property accepts the value of the two properties separated by a 
+        space.
+
+        For example, you can use flex-flow: row wrap to set rows and wrap them.
+    */
+    flex-flow: row wrap;
 
     /* 
         1. Flex-grow
         -----------
         Flex grow makes the Flex boxes grow when there is space available 
         flex-grow : 1 (if written in all the boxes then all will get the same space 
-        flex-grow : 2 (this box will grow with twice the rate as compared to the boxes with flex-grow:1
+        flex-grow : 2 (this box will grow with twice the rate as compared to the boxes 
+        with flex-grow:1
 
         2. flex-shrink
         ------------
         Flex-shrink makes the flex boxes shrink at desired rate
         flex-shrink : 1 (if all have this then they are shrink at the same rate 
-        flex-shrink : 2 (the box with this will shrink at twice the rate of boxes with flex-shrink:1)
+        flex-shrink : 2 (the box with this will shrink at twice the rate of boxes with 
+        flex-shrink:1)
     */
     
+    /* 
+        # Order
+        --------
+        Sometimes reversing the row or column order of a container is not enough. 
+        In these cases, we can apply the order property to individual items. 
+        By default, items have a value of 0, but we can use this property to also set 
+        it to a positive or negative integer value (-2, -1, 0, 1, 2).
+
+        > It is placed within the individual boxes.
+        > not really helpful
+    */
+
+    /* 
+        # Align-self
+        -----------
+        Aligns a flex item along the cross axis, overriding the align-items value.
+        flex-start flex-end center baseline stretch
+        > Also placed within the individual boxes
+    */
+
+    /* 
+        # Align-content
+        ---------------
+        You can use align-content to set how multiple lines are spaced apart from 
+        each other. This property takes the following values:
+            > flex-start: Lines are packed at the top of the container.
+            > flex-end: Lines are packed at the bottom of the container.
+            > center: Lines are packed at the vertical center of the container.
+            > space-between: Lines display with equal spacing between them.
+            > space-around: Lines display with equal spacing around them.
+            > stretch: Lines are stretched to fit the container.
+
+        This can be confusing, but align-content determines the spacing between lines, 
+        while align-items determines how the items as a whole are aligned within the 
+        container. When there is only one line, align-content has no effect.
+    */
+
 }
 
 .box{
@@ -72,6 +140,7 @@
 
 .box1{
     background-color: red;
+    /* order: 1; */
 }
 .box2{
     background-color: green;
