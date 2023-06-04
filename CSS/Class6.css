@@ -1,0 +1,90 @@
+/* 
+    Agenda
+    -------
+    1. Flex box
+        > https://flexboxfroggy.com/ : interactive game to explore the flex box properties 
+        > https://css-tricks.com/snippets/css/a-guide-to-flexbox/ : resource with all the flex-box properties 
+    2. Grid - skipped for now
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+    Flex Boxes 
+    ---------
+    Container - The main parent element within which all the Flex boxes will be contained
+    Items - The flex boxes 
+    Flow - (row-wise or column-wise) is the direction in which the flex boxes are arranged 
+    Main axis - when the items(flex boxes) are being arranged in this axis 
+    Cross axis - the other axis which is not the main axis 
+*/
+
+#container{
+    height: 100vh;  /*vh : take it as % of visible height */
+    width: 100vw;  /*vw : viewport width same as above*/
+    background-color: black;
+
+    display: flex;
+    flex-direction: row; /*By default it is row*/
+
+    /* 
+        justify Conetent : is always reletive to the main axis only 
+        aligns the items across the main axis current row or col
+    */
+    /* justify-content: flex-start;  */
+    /* justify-content: flex-end; */
+    /* justify-content: center; */
+
+    /*justify-content: space-between; /* no space at start or end of flex but equal space in between*/
+    justify-content: space-around; /* there will be some gap at the start and end of the flex*/
+    /*justify-content: space-evenly; /* there will be equal distance between the start end and the space in between*/
+
+    /* Align Items : will always arrange the items along the cross axis  */
+    align-items: center;
+
+
+    /* Flex wrap helps wrap the items if they cannot fit into one flex */
+    flex-wrap: wrap;
+
+    /* 
+        1. Flex-grow
+        -----------
+        Flex grow makes the Flex boxes grow when there is space available 
+        flex-grow : 1 (if written in all the boxes then all will get the same space 
+        flex-grow : 2 (this box will grow with twice the rate as compared to the boxes with flex-grow:1
+
+        2. flex-shrink
+        ------------
+        Flex-shrink makes the flex boxes shrink at desired rate
+        flex-shrink : 1 (if all have this then they are shrink at the same rate 
+        flex-shrink : 2 (the box with this will shrink at twice the rate of boxes with flex-shrink:1)
+    */
+    
+}
+
+.box{
+    height: 150px;
+    width: 150px;
+}
+
+.box1{
+    background-color: red;
+}
+.box2{
+    background-color: green;
+}
+.box3{
+    background-color: blue;
+}
+.box4{
+    background-color: yellow;
+}
+.box5{
+    background-color: purple;
+}
+.box6{
+    background-color: aqua;
+}
