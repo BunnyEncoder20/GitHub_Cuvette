@@ -1,0 +1,132 @@
+.box1{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+
+    margin: 20px; /* outside the border*/
+    padding : 5px; /* inside the border*/
+}
+.box2{
+    border: 3px dashed violet;
+
+    margin: 20px;
+    padding : 20px
+}
+.box3{
+    border-top-style: dotted;
+    border-right-style: groove;
+    border-bottom-style: solid;
+    border-left-style: double;
+
+    /* 
+        *Note :
+        ------
+        These multiple values in same line are always mentioned in clockwise direction
+        > top - right - bottom - left
+    */
+    border-width: 2px 4px 6px 8px;
+    border-color: red green blue black;
+    /* border-radius: 5px 10px 5px 10px; */
+
+    margin: 5px 10px 15px 20px;
+    padding: 20px 2px 20px 2px;
+    /* 
+        NOTE : 
+        ------
+        When 2 parameters are given
+        padding : (Top-Bottom) (Left-Right)
+
+    */
+}
+
+
+.box4{
+    /* height: 200px;
+    width: 200px;  
+    padding: 10px;
+    border: 10px solid black; */
+
+    /* 
+        NOTE : 
+        -----
+        When we use height and width, it sets the height & width of the content space.
+        This may disturb the website layout as the element size will be more than that.
+        (element space = content space + padding space + border width)
+        So if want to fix the element size then we should use box-sizing
+    */
+    
+    box-sizing: border-box;
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+    border: 5px solid limegreen;
+}
+
+
+.displayProperties{
+    border: 5px solid black;
+}
+.box{
+    border: 2px solid black;
+}
+
+/* 
+    NOTE  :
+    ------
+    With just the inline display, the box only takes the size needed by the content and 
+    doesn't retain it's intended height and width. Though, we want the boxes in the same 
+    row.
+    In order to keep the intended height and width and also bring them on the same row
+    is there is space we need to use the inline-block display.
+*/
+.b1{
+    height: 100px;
+    width: 100px;
+    /* display: inline; */
+    display: inline-block;
+}
+.b2{
+    height: 200px;
+    width: 100px;
+    /* display: inline; */
+    display: inline-block;
+}
+.b3{
+    height: 300px;    
+    width: 100px;
+    /* display: inline; */
+    display: inline-block;
+}
+
+
+.Grandparent{
+    position: absolute;
+    left: 20px;
+    border: 2px solid black;
+    color: black;
+    height: 300px;
+    width: 300px;
+}
+
+.parent{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    border: 2px solid blue;
+    color: blue;
+    height: 100px;
+    width: 100px;
+}
+
+.child{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+
+    border: 2px solid red;
+    color: red;
+    height: 50px;
+    width: 50px;
+}
