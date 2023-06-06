@@ -22,7 +22,7 @@ h1 {
     */
     font-size: 100px;
 }
-p {
+#sec1 {
     color: aliceblue;
     font-size: 40px;
 }
@@ -73,4 +73,25 @@ body{
         scroll : the bg image will also scroll with the content 
         PS : Fixed is just way cooler
     */
+}
+
+#toc h1{
+    font-family: monospace;
+    font-size: 50px;
+    color: black;
+}
+#toc{
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-style: none;
+    font-size: 40px;
+}
+#toc a{
+    text-decoration: none;
+    color: black;
+}
+
+.ss{
+    font-family: monospace;
+    font-size: 30px;
+    padding-left: 10px;
 }
