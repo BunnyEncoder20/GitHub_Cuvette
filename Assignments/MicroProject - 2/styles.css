@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li, a, input{
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+header{
+    position: sticky;
+    top: 0; /* This is the offset for sticky position */
+    background: #6F6AF7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 27px 45px;
+    height: 87px;
+}
+
+.logo{
+    cursor: pointer;
+    height: 37px;
+}
+
+.nav_links{
+    list-style: none;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0px 30px;
+}
+
+.nav_links li a{
+    /* transition : elements duration style delay ;  */
+    transition: all 1s ease 0s;
+}
+.nav_links li a:hover{
+    text-decoration: underline;
+    /* color: yellow; */
+}
+
+.search_container{
+    position: relative;
+}
+.search_input{
+    padding-left: 20px;
+    padding-right: 25px;
+    width: 250px;
+    height: 44px;
+    border-radius: 64px;
+    border: none;
+}
+.search_icon{
+    position: absolute;
+    top: 9px;
+    right: 47px;
+}
+
+.menu{
+    cursor: pointer;
+    height: 37px;
+}
+
+.container1{
+    position: absolute;
+    top: 160px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    height: 507px;
+}
+.container1 img{
+    width: 360px;
+    margin: 25px;
+}
+.container1 div{
+    background-color: #E5D8FF;
+    border-radius: 20px;
+
+    width: 900px;
+    /* height: 506px; */
+    padding: 20px;
+    margin: 25px;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 29px;
+    font-weight: 400;
+    line-height: 52px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.container2{
+    position: absolute;
+    top: 703px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    margin: 20px;
+}
+.container2 div{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 52px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: white;
+
+    padding: 10px;
+    display: inline-block;
+    width: 260px;
+
+    border-radius: 10px;
+}
+.questions{
+    background: #929DFF;
+}
+.answers{
+    background: #734CF2;
+}
+.participated{
+    background: #D288FF;
+}
+.passed{
+    background: #000000;
+}
+
+
+.container3{
+    position: fixed;
+    top: 255px;
+    right: 4px;
+}
+.container3 div img{
+    height: 67px;
+    width: 73px;
+}
+
+.chatbot{
+    position: fixed;
+    bottom: 0px;
+    right: 4px;
+
+    height: 120px;
+    width: 120px;
+}
