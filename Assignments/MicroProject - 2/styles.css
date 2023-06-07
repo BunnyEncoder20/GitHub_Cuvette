@@ -59,11 +59,13 @@ header{
     height: 44px;
     border-radius: 64px;
     border: none;
+    color: rgb(112, 112, 112);
 }
 .search_icon{
     position: absolute;
     top: 9px;
     right: 47px;
+    cursor: pointer;
 }
 
 .menu{
@@ -148,6 +150,7 @@ header{
 .container3 div img{
     height: 67px;
     width: 73px;
+    cursor: pointer;
 }
 
 .chatbot{
@@ -157,4 +160,6 @@ header{
 
     height: 120px;
     width: 120px;
+
+    cursor: pointer;
 }
