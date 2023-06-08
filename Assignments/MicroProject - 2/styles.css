@@ -16,14 +16,16 @@ li, a, input{
 }
 
 header{
-    position: sticky;
+    position: fixed;
     top: 0; /* This is the offset for sticky position */
+    z-index: 999;
     background: #6F6AF7;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 27px 45px;
     height: 87px;
+    width: 100%;
 }
 
 .logo{
@@ -146,6 +148,7 @@ header{
     position: fixed;
     top: 255px;
     right: 4px;
+    z-index: 999;
 }
 .container3 div img{
     height: 67px;
@@ -162,4 +165,119 @@ header{
     width: 120px;
 
     cursor: pointer;
+    z-index: 999;
+}
+
+.container4{
+    position: absolute;
+    left: 78px;
+    top: 916px;
+    
+    width: 1408px;
+    height: 605px;
+    padding: 25px;
+
+    background: #483EFF;
+    border-radius: 21px;
+
+    display: flex;
+}
+.leftcol{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin: 30px;
+
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 124px;
+    color: white;
+}
+.yourinfo{
+    background: #BCE0F6;
+
+    width: 379px;
+    height: 133px;
+
+    box-shadow: 0px 6px 35px rgba(0, 0, 0, 0.39);
+    border-radius: 22px;
+
+    color: black;
+}
+.bookmarks{
+    background: transparent;
+    /* box-sizing: border-box; */
+
+    width: 379px;
+    height: 133px;
+
+    box-shadow: 0px 6px 35px rgba(0, 0, 0, 0.39);
+    border: 5px solid white;
+    border-radius: 22px;
+}
+.settings{
+    background: transparent;
+    /* box-sizing: border-box; */
+
+    width: 379px;
+    height: 133px;
+
+    box-shadow: 0px 6px 35px rgba(0, 0, 0, 0.39);
+    border: 5px solid white;
+    border-radius: 22px;
+}
+
+.rightcol{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 75%;
+    justify-content: center;
+
+    margin: 10px;
+
+    background: white;
+    border-radius: 19px;
+}
+.bigbox{
+    padding: 80px 40px;
+
+    flex-basis: 100%;
+    font-family: 'Inter';
+}
+.rightcol h4{
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 46px;
+    letter-spacing: 0.105em;
+
+    color: #04285A;
+}
+.rightcol button{
+    position: absolute;
+    right: 82px;
+    bottom: 79px;
+
+    padding: 20px;
+    width: 207px;
+    height: 78px;
+
+    background: #000000;
+    border-radius: 9px;
+
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+    color: white;
+}
+.content{
+    padding-left: 50px;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 50px;
+    text-align: left;
 }
