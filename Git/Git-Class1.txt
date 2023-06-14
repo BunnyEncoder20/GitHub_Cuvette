@@ -1,0 +1,81 @@
+Latest Version (2.41.0.windows.1) of Git installed (on 13/06/23)
+*---------------------------------------------------*
+
+In Git Bash (CLI)
+-------------
+
+Step #1) Configuring the git 
+------------------------
+To assign our name : 
+> git config --global user.name "Username" 
+
+To assign our email : 
+> $ git config --global user.email "your@email.com"
+
+To display the Username
+> git config --global user.name 
+
+*Note : Repo equvalent to kinda folder 
+
+Step #2) Initializing a Git Repository (folder)
+---------------------------------------
+Basics of CLI 
+    1. cd - change directory - used for changing the path / where you at  (cd .. - to go back a folder)
+    2. ls - lists the items in that folder 
+    3. pwd - gives the current path 
+
+For Initializing an empty Git Repo : 
+> git init
+
+Now all of the changes made in this folder will be tracked 
+
+
+Git Zones 
+1. Untracked zone - all the files which have been tracked 
+2. Staging zone - some of the files (maybe excluding the build files / readme files) are selected for commiting and put here
+3. Commit zone - these are check points sort of for the files / changes made in the Repo
+
+
+Step #3) Some Basic commands 
+--------------------------
+> git status
+tells us which branch we're on, the commtits made, changes to be commited and untracked changes and files 
+
+> git add index.html
+shifts the document from untracked to the staging area (for one file.)
+> git add . (adds all the files into the staging zone)
+
+> git rm --cached index.html 
+undos the above command (moves file from staging to untracked zone)
+
+> got commit -m "msg here. yes it is compulsory"  
+commits all of the files in the staging area 
+Note : 
+    -m is a message flag
+    Working tree clean = means all staging zone files and changes ahve been commited 
+
+> git log 
+shows details about the commits made, their authors , date and time , msg given during the commit 
+
+
+*NOTE : 
+    In order to make some files not be staged or commited everytime, we can make a txt file named
+    ".gitignore" and write all the files names which we wish to be excluded in it 
+
+> git checkout commitID
+ is a command in Git used to switch branches or restore files versions.
+ commitID refers to the unique identifier of a commit in Git, typically a hash value associated with a specific commit.
+ > git checkout master 
+ This takes us back to the latest commited version 
+
+
+> git branch
+shows all the branches available in the repo
+> git branch branchName
+makes a new branch by the name of branchName
+> git checkout branchName
+takes us (head) to that branch. (current branch is highligted in green, preceded by a star)
+
+
+> git push 
+pushes all the commits to the main/master branch from local machine to the Online repo (GitHub)
