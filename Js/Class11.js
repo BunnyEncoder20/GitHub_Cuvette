@@ -19,3 +19,15 @@
     4. Scripting Language 
 */
 
+
+
+function addition() {
+    const num1 = parseInt(document.getElementById("num1").value); console.log("num1 = "+num1);
+    const num2 = parseInt(document.getElementById("num2").value); console.log("num2 = "+num2);
+    resultElement = document.getElementById("ans");
+    
+    console.log("Adding"+num1+" & "+num1);
+    
+    var result = num1+num2;
+    resultElement.innerHTML = result;
+}
