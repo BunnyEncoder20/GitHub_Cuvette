@@ -48,7 +48,7 @@ shifts the document from untracked to the staging area (for one file.)
 > git rm --cached index.html 
 undos the above command (moves file from staging to untracked zone)
 
-> got commit -m "msg here. yes it is compulsory"  
+> git commit -m "msg here. yes it is compulsory"  
 commits all of the files in the staging area 
 Note : 
     -m is a message flag
