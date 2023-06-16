@@ -26,7 +26,7 @@ function addition() {
     const num2 = parseInt(document.getElementById("num2").value); console.log("num2 = "+num2);
     resultElement = document.getElementById("ans");
     
-    console.log("Adding"+num1+" & "+num1);
+    console.log("Adding"+num1+" & "+num2);
     
     var result = num1+num2;
     resultElement.innerHTML = result;
@@ -37,12 +37,39 @@ function substraction(){
     const num2 = parseInt(document.getElementById("num2").value); console.log("num2 = "+num2);
     resultElement = document.getElementById("ans");
     
-    console.log("Substracting"+num1+" & "+num1);
+    console.log("Substracting"+num1+" & "+num2);
     
     if (num1>num2) {
         var result = num1-num2;    
     } else {
         var result = num2-num1;    
+    }
+    
+    resultElement.innerHTML = result;
+}
+
+function Multiplication() {
+    const num1 = parseInt(document.getElementById("num1").value); console.log("num1 = "+num1);
+    const num2 = parseInt(document.getElementById("num2").value); console.log("num2 = "+num2);
+    resultElement = document.getElementById("ans");
+    
+    console.log("<Multiplying>"+num1+" & "+num2);
+    
+    var result = num1*num2;
+    resultElement.innerHTML = result;
+}
+
+function Division() {
+    const num1 = parseFloat(document.getElementById("num1").value); console.log("num1 = "+num1);
+    const num2 = parseFloat(document.getElementById("num2").value); console.log("num2 = "+num2);
+    resultElement = document.getElementById("ans");
+    
+    console.log("Dividing"+num1+" by "+num2);
+    
+    if (num2!=0) {
+        var result = num1/num2;    
+    } else {
+        var result = "Error : Divide by 0 error";    
     }
     
     resultElement.innerHTML = result;
