@@ -4,7 +4,9 @@
     > Conditionals in JS 
         - if else 
         - switch 
-
+    
+    > Ternary Operator
+        - (condition) ? If true : if false
     > Loops in JS
         - for 
         - while 
@@ -28,3 +30,7 @@ else if(age==18){
 else {
     console.log("You are not aligible to vote yet") ;
 }
+
+
+console.log("\n\nTernary Operator :-") ;
+age>18 ? console.log("Go ahead and perform your right to vote") : console.log("You are not aligible to vote yet") ;
