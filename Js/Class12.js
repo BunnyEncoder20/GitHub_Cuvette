@@ -34,3 +34,18 @@ else {
 
 console.log("\n\nTernary Operator :-") ;
 age>18 ? console.log("Go ahead and perform your right to vote") : console.log("You are not aligible to vote yet") ;
+
+
+console.log("\n\n While loop in JS \n");
+let i = 1 ;
+while(i<=10) {
+
+    if (14*i >= 100)
+        break;
+    
+    if (i == 5)
+    {i++ ; continue ;}
+
+    console.log("14 x ", i, " = " , i*14);
+    i++;
+}
