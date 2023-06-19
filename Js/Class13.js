@@ -24,13 +24,13 @@ let u3 = sayHello("Puneet");
 // console.log(add(4,5)) ; //throws an error
 // notice that when calling a function express, it is not hoisted and needs to be called only after the declaration is made
 
-console.log(u1)
-console.log(u2)
-console.log(u3)
+// console.log(u1)
+// console.log(u2)
+// console.log(u3)
 
 // Function declaration
 function sayHello(user) {
-    // console.log("Hello ",user) ;
+    console.log("Hello ",user) ;
     return "Legend_"+user
 }
 // Note that functions declaration can be anywhere in the code. You can define it after the code calls it unlike some other coding languages
@@ -57,3 +57,18 @@ console.log("Adding After the declaration of function expression : ",add(4,5)) ;
     This causes the changes made to the parameters variables not noticble outside that function (cause the function makes a copy of it's own - Pass by value !)
     This will be important when we are dealing with JS objects 
 */
+
+
+// Exploring passing Functions as arguements 
+function greet(hellofunc) {     // Notice that the hellofunc name behaves like parameters name and doesn't matter as long as the calling statement has the correct function passed  
+    hellofunc("Soma Senpai") ;   // parameters for the passed function need to be sent from here only 
+    // whatever you wanna do
+
+    function doSomething() {
+        console.log("\n\n Doing something...\n\n") ;
+    }
+
+    return doSomething ; // Note the lack of () even when returing a function
+} 
+
+greet(sayHello); // Note the lack of brackets (). if brackets are added, it becomes a invocation
