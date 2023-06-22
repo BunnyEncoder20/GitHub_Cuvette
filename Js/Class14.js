@@ -43,6 +43,12 @@ console.log("Length : ",arr.length) ;
     > In foreach(callBack(){}) , callback will run on each and every element of that array 
 */
 
+// Syntax of .forEach()
+// array.forEach( (item , index , array) => {
+//  body of callback function here
+// } ) ;
+
+
 arr.forEach(
     function (element) {            // notice no name given for the callback func => anonimous function
         console.log(element);      // the parameter name will be the current element of the array 
@@ -68,6 +74,8 @@ console.log(arr2) ;     // note the changes are not visible cause of property of
 
 // Map function is used to make Transformation/changes to an array
 // It returns the updated value from the callback fucntion. Hence in the end returning an array with the changes made
+// Syntax 
+// array.map((item, index, array) => {body of callback func here} )
 
 updated_arr2 = arr2.map(item => {
     item+=100;
