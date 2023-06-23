@@ -105,3 +105,46 @@ console.log(nums);
 // alternative 
 nums = str.map(item => Number(item)) ;
 console.log(nums);
+console.log("\n\n") ;
+// Note that Number is a constructor which converts the string into numbers
+
+
+
+
+// Filter array method
+numbers.push(6,7,8,9,10);
+console.log(numbers) ;
+var isEven = numbers.filter(callback2)
+function callback2(value, index) {
+    // checks if the number is even. if value%2 == 0 then only this callback function will return that value
+    return value%2===0;
+}
+console.log(isEven)
+
+
+var people = [
+    {
+        name : 'Bunny',
+        age : 22 
+    } ,
+    {
+        name : 'Soma',
+        age : 22
+    } ,
+    {
+        name:'Puneet',
+        age:17
+    }
+] ;
+
+var adults = people.filter(person => person.age>=18);
+console.log(adults);
+
+// removing Duplicates from array 
+var duplicateNumArray = [1,2,1,2,1,1,1,4,5,6,5,4,3,3,4,8,7,7,8,9,10,10] ;
+var noDupsNumArray = duplicateNumArray.filter((number,index,array) =>{
+    return array.indexOf(number) === index ;
+    // array.indexOf(value) will always return the index of the first occurance of the number 
+    // hence after the first occurance, none of the same numbers will be returned from the function
+});
+console.log(noDupsNumArray) ;
