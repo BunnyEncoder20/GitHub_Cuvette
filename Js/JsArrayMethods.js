@@ -148,3 +148,59 @@ var noDupsNumArray = duplicateNumArray.filter((number,index,array) =>{
     // hence after the first occurance, none of the same numbers will be returned from the function
 });
 console.log(noDupsNumArray) ;
+console.log("\n\n") ;
+
+
+
+// Reduce array mehtod : used to return a singular value from a array
+console.log(numbers);
+initialValue = 0 ;
+
+// Example 1
+var summation = numbers.reduce(callback3, initialValue) ;
+function callback3(accumulator, value, index, array) {
+    // accumulator is the value which will be returned in the end 
+    // it is initialized with the values passed as initialValue
+    // if initialValue is not passed then it is taken as the first element of the array
+
+    return accumulator+value;  // whatever is returned from reduce callback is stored in the accumulator for the next iteration
+}
+console.log("Summation : "+summation);
+console.log("\n\n") ;
+
+// Example 2
+initialValue = -Infinity;
+var maximum = numbers.reduce((accumulator,value)=>{
+    if(accumulator > value)
+        return accumulator ;
+    else if (accumulator < value)
+        return value ;
+    else 
+        return accumulator;
+}) ;
+console.log("Maximum = "+maximum) ;
+
+// Example 3
+var store = [
+    {
+        product:'laptop',
+        value:1000,
+        count:3
+    } ,
+    {
+        product:'desktop',
+        value:1500,
+        count:4
+    } ,
+    {
+        product:'mobile',
+        value:500,
+        count:10
+    } ,
+];
+
+var totalValueOfStore = store.reduce((accu, item) => {
+    return accu + (item.value*item.count) ;
+},0);
+// Note the ",0" in the end. This is the initial value being passed after the callback fucntion 
+console.log("Total Assets in store : "+totalValueOfStore);
