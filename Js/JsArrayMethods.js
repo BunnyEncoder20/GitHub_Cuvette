@@ -44,7 +44,7 @@ console.log("\n\n")
     map() method 
      ----------- 
 */
-const numbers = [1,2,3,4,5] ;
+var numbers = [1,2,3,4,5] ;
 
 // remember map doesn't change the original array
 // just returns a new array as a result. This first block does nothing 
@@ -166,7 +166,6 @@ function callback3(accumulator, value, index, array) {
     return accumulator+value;  // whatever is returned from reduce callback is stored in the accumulator for the next iteration
 }
 console.log("Summation : "+summation);
-console.log("\n\n") ;
 
 // Example 2
 initialValue = -Infinity;
@@ -204,3 +203,53 @@ var totalValueOfStore = store.reduce((accu, item) => {
 },0);
 // Note the ",0" in the end. This is the initial value being passed after the callback fucntion 
 console.log("Total Assets in store : "+totalValueOfStore);
+console.log("\n\n");
+
+
+
+// Sort arrya method
+names = ['Varun','Tarun','Soma','Senpai','Hoods','Bunnu','Bunny','Somya'];
+numbers = [1,3,6,2,9,7,12,89,79,23,56,28];
+names.sort() ; // default is in acending order 
+numbers.sort() ;
+console.log(names);
+console.log(numbers);
+// note the numebrs one doesn't work
+// is this cause the sort method converts the integers into strings 
+// Here is how we can make a custom callabck func for comparing numbers
+numbers.sort(compareFunc) ;
+function compareFunc(a,b) {
+    // 1. if return < 0 : a comes first 
+    // 2. if return == 0 : nothing changes 
+    // 3. if return > 0 : b comes first 
+    return a-b ;
+}
+console.log(numbers); 
+
+
+// Comparing object using sort 
+var products = [
+    {
+        name : 'laptop',
+        price : 1000
+    } ,
+    {
+        name:'desktop',
+        price:1500
+    } ,
+    {
+        name:'phone',
+        price:500
+    }
+];
+// acsending order 
+products.sort((a,b)=>{
+    return a.price-b.price ;
+});
+console.log(products);
+
+// descending order 
+products.sort((a,b)=> b.price-a.price);
+console.log(products);
+
+// notice the different ways to call write the function
