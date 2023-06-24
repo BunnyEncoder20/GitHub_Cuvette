@@ -322,3 +322,7 @@ var foods = [
   
 // list all the food items
 foods.forEach(item => console.log(item));
+
+// list all the food items with category vegetables
+var veggies = foods.filter(item => item.category === 'Vegetable');
+console.log("\n\nVeggies : \n",veggies); 
