@@ -325,4 +325,44 @@ foods.forEach(item => console.log(item));
 
 // list all the food items with category vegetables
 var veggies = foods.filter(item => item.category === 'Vegetable');
-console.log("\n\nVeggies : \n",veggies); 
+console.log("\n\nVegtables : \n",veggies); 
+
+// list all the food items with category fruit
+var fruities = foods.filter(item => item.category === 'Fruit');
+console.log("\n\nFruits : \n",fruities); 
+
+// list all the food items with category protien
+var proteinBros = foods.filter(item => item.category === 'Protein');
+console.log("\n\nProteins : \n",proteinBros); 
+
+// list all the food items with category nuts
+var dezzNuts = foods.filter(item => item.category === 'Nuts');
+console.log("\n\nNuts : \n",dezzNuts); 
+
+// list all the food items with category grains
+var grannies = foods.filter(item => item.category === 'Grain');
+console.log("\n\nGrains : \n",grannies); 
+
+// list all the food items with category dairy
+var daries = foods.filter(item => item.category === 'Dairy');
+console.log("\n\nDairy : \n",daries); 
+
+// list all the food items with calorie above 100
+var cal100plus = foods.filter(item => item.calorie>100);
+console.log("\n\nFoods Above 100 calories : \n",cal100plus);
+
+// list all the food items with calorie below 100
+var sub100cal = foods.filter(item => item.calorie<100);
+console.log("\n\nFoods Above 100 calories : \n",sub100cal);
+
+// list all the food items with highest protien content to lowest
+var sortedProtein = foods.sort((item1,item2) => {
+    return item2.protiens-item1.protiens ;
+});
+console.log("\n\nFoods Sorted Protein Wise : ",sortedProtein)
+
+// list all the food items with lowest cab content to highest
+var sortedCarbs = foods.sort((item1,item2) => {
+    return item1.cab-item2.cab ;
+});
+console.log("\n\nFoods Sorted Cab Wise : ",sortedCarbs)
