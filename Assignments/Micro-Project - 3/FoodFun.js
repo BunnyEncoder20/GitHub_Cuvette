@@ -319,50 +319,149 @@ var foods = [
       "cab": 30
     }
   ]
+// Note : this code uses prompt-sync to take input from users.
+const prompt = require('prompt-sync')();
+
+console.log("Welcome to Micro-Project - 3\n1. list all the food items\n2. list all the food items with category vegetables\n3. list all the food items with category fruit\n4. list all the food items with category protien\n5. list all the food items with category nuts\n6. list all the food items with category grains\n7. list all the food items with category dairy\n8. list all the food items with calorie above 100\n9. list all the food items with calorie below 100\n10. list all the food items with highest protien content to lowest\n11. list all the food items with lowest cab content to highest") ;
+var funcSelected = prompt("Enter your numeric function choice (1 to 11) : ");
+
+switch (funcSelected) {
+    case '1':
+        var result = task1(foods);
+        console.log("\nResults : \n",result);
+        break;
+    
+    case '2':
+        var result = task2(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '3':
+        var result = task3(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '4':
+        var result = task4(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '5':
+        var result = task5(foods);
+        console.log("\nResults : \n",result);
+        break;
+    
+    case '6':
+        var result = task6(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '7':
+        var result = task7(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '8':
+        var result = task8(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '9':
+        var result = task9(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '10':
+        var result = task10(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    case '11':
+        var result = task11(foods);
+        console.log("\nResults : \n",result);
+        break;
+
+    default:
+        console.log("Please enter a valid input !");
+        break;
+}
   
-// list all the food items
-foods.forEach(item => console.log(item));
+function task1(foods) {
+    // list all the food items
+    console.log("returning list all the food items")
+    return foods
+}
 
-// list all the food items with category vegetables
-var veggies = foods.filter(item => item.category === 'Vegetable');
-console.log("\n\nVegtables : \n",veggies); 
+function task2(foods) {
+    // list all the food items with category vegetables
+    console.log("returning list all the food items with category vegetables")
+    var veggies = foods.filter(item => item.category === 'Vegetable');
+    return veggies; 
+}
 
-// list all the food items with category fruit
-var fruities = foods.filter(item => item.category === 'Fruit');
-console.log("\n\nFruits : \n",fruities); 
+function task3(foods) {
+    // list all the food items with category fruit
+    console.log("returning list all the food items with category fruit") ;
+    var fruities = foods.filter(item => item.category === 'Fruit');
+    return fruities;
+}
 
-// list all the food items with category protien
-var proteinBros = foods.filter(item => item.category === 'Protein');
-console.log("\n\nProteins : \n",proteinBros); 
+function task4(foods) {
+    // list all the food items with category protien
+    console.log("returning list all the food items with category protien");
+    var proteinBros = foods.filter(item => item.category === 'Protein');
+    return proteinBros;
+}
 
-// list all the food items with category nuts
-var dezzNuts = foods.filter(item => item.category === 'Nuts');
-console.log("\n\nNuts : \n",dezzNuts); 
+function task5(foods) {
+    // list all the food items with category nuts
+    console.log("returning list all the food items with category nuts");
+    var dezzNuts = foods.filter(item => item.category === 'Nuts');
+    return dezzNuts;
+}
 
-// list all the food items with category grains
-var grannies = foods.filter(item => item.category === 'Grain');
-console.log("\n\nGrains : \n",grannies); 
+function task6(foods) {
+    // list all the food items with category grains
+    console.log("returning list all the food items with category grains")
+    var grannies = foods.filter(item => item.category === 'Grain');
+    return grannies;
+}
 
-// list all the food items with category dairy
-var daries = foods.filter(item => item.category === 'Dairy');
-console.log("\n\nDairy : \n",daries); 
+function task7(foods) {
+    // list all the food items with category dairy
+    console.log("returning list all the food items with category dairy");
+    var daries = foods.filter(item => item.category === 'Dairy');
+    return daries;
+}
 
-// list all the food items with calorie above 100
-var cal100plus = foods.filter(item => item.calorie>100);
-console.log("\n\nFoods Above 100 calories : \n",cal100plus);
+function task8(foods) {
+    // list all the food items with calorie above 100
+    console.log("returning list all the food items with calorie above 100");
+    var cal100plus = foods.filter(item => item.calorie>100);
+    return cal100plus ;
+}
 
-// list all the food items with calorie below 100
-var sub100cal = foods.filter(item => item.calorie<100);
-console.log("\n\nFoods Above 100 calories : \n",sub100cal);
+function task9(foods) {
+    // list all the food items with calorie below 100
+    console.log("returning list all the food items with calorie below 100")
+    var sub100cal = foods.filter(item => item.calorie<100);
+    return sub100cal ;
+}
 
-// list all the food items with highest protien content to lowest
-var sortedProtein = foods.sort((item1,item2) => {
-    return item2.protiens-item1.protiens ;
-});
-console.log("\n\nFoods Sorted Protein Wise : ",sortedProtein)
+function task10(foods) {
+    // list all the food items with highest protien content to lowest
+    console.log("returning list all the food items with highest protien content to lowest")
+    var sortedProtein = foods.sort((item1,item2) => {
+        return item2.protiens-item1.protiens ;
+    });
+    return sortedProtein;
+}
 
-// list all the food items with lowest cab content to highest
-var sortedCarbs = foods.sort((item1,item2) => {
-    return item1.cab-item2.cab ;
-});
-console.log("\n\nFoods Sorted Cab Wise : ",sortedCarbs)
+function task11(foods) {
+    // list all the food items with lowest cab content to highest
+    console.log("returning list all the food items with lowest cab content to highest");
+    var sortedCarbs = foods.sort((item1,item2) => {
+        return item1.cab-item2.cab ;
+    });
+    return sortedCarbs ;
+}
