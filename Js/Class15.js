@@ -104,16 +104,31 @@ Q) How to find the students which are failing even after giving grace marks of 5
 find the overall average of those failing students.s
 */
 
-failedStudents = arrObjects.map(students=>{
-    return students.marks += 5 ;
+let failedStudentsMarkSum = arrObjects.map(students=>{
+    return {...students, marks: students.marks+5} ;
+    // remember the ... is the spread operator of JS which is used to copy the original 
+    // values of the students , while the marks property is updated using the current
+    // objects (students) .marks 
 }).filter(students => {
-    return students.marks<50;
-})
-console.log(failedStudents) ;
-
-failedStudents.reduce((accumulator, students) => {
-
+    return students.marks<40;
+}).reduce((sum, students) => {
+    return sum+students.marks ;
 }, 0)
+console.log("failedStudentsMarkSum length : ",failedStudentsMarkSum.length) ;
+console.log("Average marks of failed students (After 5 Marks Grace) : ", failedStudentsMarkSum/2) ;
+// Note that chaining the functions like this will not make it possible to get the length of the array
+// Cause the reduce function will return a single value (the sum).
+// if we want the length , then we should store it seperately before performing the 
+// reduce function.
+
+failedStudents = arrObjects.map(students=>{
+    return {...students, marks: students.marks+5} ;
+}).filter(students => {
+    return students.marks<40;
+})
+console.log("Average marks of failed students (After 5 Marks Grace :: Proper Method) : ", failedStudents.reduce((sum,student)=>{return sum+student.marks},0)/failedStudents.length) ;
+// NOTE : the return statement in the arr.reduce method is necessary and will not function 
+// if that is not mentioned in the block.
 
 /*
 Iterating over a Array of Objects 
