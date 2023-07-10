@@ -207,7 +207,7 @@ console.log("\n\n");
 
 
 
-// Sort arrya method
+// Sort array method
 names = ['Varun','Tarun','Soma','Senpai','Hoods','Bunnu','Bunny','Somya'];
 numbers = [1,3,6,2,9,7,12,89,79,23,56,28];
 names.sort() ; // default is in acending order 
