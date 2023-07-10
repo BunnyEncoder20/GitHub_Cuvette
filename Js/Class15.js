@@ -6,7 +6,7 @@
     -> accessing properties of object
     -> deletiong properties of object
     -> iteration over object
-    -> Arrays vs Objects 
+    -> Arrays + Objects 
 
     Events 
     -> timing events 
@@ -61,3 +61,64 @@ const dontChangeThisObject = {
 
 dontChangeThisObject.AddedKey4 = "Value5" ;
 console.log(dontChangeThisObject) ;
+
+
+/*
+Iterating Over Object properties
+> we use a "for in" loop for that 
+*/
+
+for (const key in bestfriend) {
+    console.log(key) ;
+}
+
+
+/*
+Array og objects 
+*/
+let arrObjects = [
+    {
+        name:"a",
+        marks:60
+    },
+    {
+        name:"b",
+        marks:92
+    },
+    {
+        name:"c",
+        marks:24
+    },
+    {
+        name:"d",
+        marks:33
+    },
+    {
+        name:"e",
+        marks:60
+    }
+]
+
+/*
+Q) How to find the students which are failing even after giving grace marks of 5 ? Also
+find the overall average of those failing students.s
+*/
+
+failedStudents = arrObjects.map(students=>{
+    return students.marks += 5 ;
+}).filter(students => {
+    return students.marks<50;
+})
+console.log(failedStudents) ;
+
+failedStudents.reduce((accumulator, students) => {
+
+}, 0)
+
+/*
+Iterating over a Array of Objects 
+*/
+increasedMarksBy10 = arrObjects.map(students => {
+    return students.marks += 10 ;
+})
+console.log(increasedMarksBy10) ;
