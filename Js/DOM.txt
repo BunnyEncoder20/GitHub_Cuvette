@@ -48,3 +48,17 @@ Syntax : document.getElementByID('ID').style.anyCSSproperty = "value" ;
 Eg : 
 let htmlCollection2 = document.getElementsByTagName('h1');
 htmlCollection2[0].style.color = 'violet' ;
+
+
+
+#4) Creating Dynamic DOM elements
+-------------------------------
+Syntax : let element = document.createElement('elementName')
+
+Eg:
+    let buttonElement = document.createElement('button') ;
+    button.innerText = "Click to Submit" ; 
+
+#5) Placing the Created DOM elements onto the Page 
+---------------------------------------------
+Using : append, appendChild, insertBefore, insertAfter, etc
