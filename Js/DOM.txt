@@ -1,0 +1,28 @@
+DOM : Document Oject Model 
+-------------------------
+-> Not a part of / concept of core JS. It is something that is created by the browser. 
+-> DOM is like a interface between the HTML / CSS elements and the JS
+
+-> window : (type and enter in console of browser) is like a universal (more like a 
+    galaxy) parent object of everyhting we see on the browser window
+-> One of it's properties is the document (kinda like a solar system)
+-> Document will contain all the things required to manipulate our entire html 
+    document.
+
+-> HTML (the tag) has also become an object now
+
+
+#1) Accessing your DOM elements 
+-----------------------------
+Using methods : 
+document.getElementByID('ID') ;
+document.getElementsByClassName('Class_Name') ;
+document.getElementsByTagName('HTML_Tag') ;
+
+***Remember that : 
+    -> document.getElementByID() returns one unique html element
+    -> document.getElementsByClassName() returns an htmlCollection
+        (an array of elements), in which  the actual html elements are 
+        accessible using index
+    -> document.getElementByTagName() also behaves same as ClassName()
+
