@@ -10,3 +10,12 @@
     -> document.getElementByTagName() also behaves same as ClassName()
     
 */
+
+document.getElementById('h2').innerText = "Changed using JS" ;
+let htmlCollection1 = document.getElementsByClassName('head3')
+htmlCollection1[0].innerHTML = "<u>Changed using JS</u>"
+
+
+// Changing the stlye of DOM elements 
+let htmlCollection2 = document.getElementsByTagName('h1');
+htmlCollection2[0].style.color = 'violet' ;

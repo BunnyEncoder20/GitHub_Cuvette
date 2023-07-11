@@ -26,3 +26,25 @@ document.getElementsByTagName('HTML_Tag') ;
         accessible using index
     -> document.getElementByTagName() also behaves same as ClassName()
 
+
+#2) Manipulating DOM elements 
+----------------------------
+*** NOTE 
+    > Each html element returned by DOM is an object (will have 
+        predefined properties and methods eg : obj.innerHtml, 
+        obj.innerText)
+
+Eg:
+let DOMelement1 = document.getElementById('h2').innerText = "Changed using JS" ;
+
+let htmlCollection1 = document.getElementsByClassName('head3')
+htmlCollection1[0].innerHTML = "<u>Changed using JS</u>"
+
+
+#3) Creating Alternative Styles using DOM
+-------------------------------------
+Syntax : document.getElementByID('ID').style.anyCSSproperty = "value" ;
+
+Eg : 
+let htmlCollection2 = document.getElementsByTagName('h1');
+htmlCollection2[0].style.color = 'violet' ;
