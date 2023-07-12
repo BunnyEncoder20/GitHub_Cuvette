@@ -11,6 +11,7 @@
     
 */
 
+// Accessing an DOM element 
 document.getElementById('h2').innerText = "Changed using JS" ;
 let htmlCollection1 = document.getElementsByClassName('head3')
 htmlCollection1[0].innerHTML = "<u>Changed using JS</u>"
@@ -33,3 +34,14 @@ imageElement.setAttribute('alt','Image Added using created DOM element')
 // adding the created DOM element to the document 
 document.body.appendChild(buttonElement) ;
 document.body.appendChild(imageElement) ;
+
+// Events in JS
+eventBtn = document.getElementById('eventbtn') ;
+eventBtn.onclick = function clickedEvent() {
+    console.log('Event broughyt to you by DOM.js') ;
+} ;
+
+function changeHeading() {
+    document.getElementById('eventsHeading').innerHTML = '<h3 id="eventsHeading"><u><b>Events in JS in Bold & Underline</b></u></h3>'
+}
+
