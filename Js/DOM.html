@@ -19,12 +19,24 @@
     <h2 id="h2">Heading 2</h2>
     <h3 class="head3">Heading 3</h3>
 
+    <hr><br><br>
     <h3 id="eventsHeading">Events in JS </h3>
     <button onclick="console.log('Event broughyt to you by HTML')">Click here for an Event </button>
     <button id="eventbtn">Click here for an event</button>
     <button onclick="changeHeading()">Click here to change the Events in JS Heading</button>
+    <br><br>
+    <button id="PointerEventbtn">Click here for PointerEvent object</button>
+    <br><br>
+    <div id="parentElement" style="border: 2px solid black; background-color: aqua; padding: 5px;">
+        <h2>Event Bubbling (Events propagation to parent elements)</h2>
+        <h3 id="divHeading">This div is listening for a click event</h3>
+        <button id="childElement1">This btn is also listening for a click</button>
+        <button id="childElement2">This btn does the same job as above, but the event doesn't propagate to the parent element</button>
+    </div>
 
     <!-- Linking the resources HERE -->
+    <hr><br><br><br>
+    <h3>Elements Added using DOM</h3>
     <script src="DOM.js"></script> 
 </body>
 </html>

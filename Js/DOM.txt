@@ -62,3 +62,25 @@ Eg:
 #5) Placing the Created DOM elements onto the Page 
 ---------------------------------------------
 Using : append, appendChild, insertBefore, insertAfter, etc
+
+
+#6) Event in JS 
+-------------
+Event	            Description
+----------     ----------
+onchange	    An HTML element has been changed
+onclick	           The user clicks an HTML element
+onmouseover	 The user moves the mouse over an HTML element
+onmouseout	  The user moves the mouse away from an HTML element
+onkeydown	   The user pushes a keyboard key
+onload	           The browser has finished loading the page
+
+
+***NOTE : Event Bubbling
+    > occurs when one event listener is embedded inside another event listern HTML element
+    > Eg : an button inside a div element and both are listerning for a onclick event
+    > Can 
+
+
+#7) Event listeners 
+-----------------
