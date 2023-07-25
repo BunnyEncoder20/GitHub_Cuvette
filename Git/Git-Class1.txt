@@ -79,3 +79,13 @@ takes us (head) to that branch. (current branch is highligted in green, preceded
 
 > git push 
 pushes all the commits to the main/master branch from local machine to the Online repo (GitHub)
+
+
+> GitHub recommeneded code to intialize a repository : 
+echo "# GitHub_Password-Generator" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/BunnyEncoder20/GitHub_Password-Generator.git
+git push -u origin main
