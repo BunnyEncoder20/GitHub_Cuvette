@@ -5,7 +5,7 @@
     2. debugging 
     3. scopes 
     4. Closures 
-    5. iife
+    5. iife (immediately invoked function expression)
 */
 
 /*
@@ -98,3 +98,32 @@ dummy2() ;
 */
 debugger
 console.log("This line comes only after you click on resume in the debugger !")
+
+
+/**
+ * VERY IMPORTANT TOPIC : Closures 
+ * -----------------------------
+ * > Closure in short can be defined as the function, it's block and the scopes in it's environment 
+ * > Closure is the combination of a function bundled together (enclosed) with references
+ *      to it's surrounding state (it's lexical environment / scopes)
+ * > In the below code, even though we are calling the inner() function, we are still 
+ *      able to access all the variables, which belong to the environment of that function
+ *      (here, all the variables present in it's lexical scope)
+ * > It is a featuer of JS which allows inner functions to access the outer scope of a function
+ * 
+ */
+
+let globalVariable = 10 ;
+function outer() {
+    let outerVariable = 20;
+    function inner() {
+        let innerVariable = 30 ;
+        console.log(globalVariable, outerVariable, innerVariable) ;
+    }
+    return inner();
+}
+outer() ;
+
+// This is Lexical Scoping. When the Inner function doesn't find the variable in it's 
+// current scope, it'll try to find it in it's parent scope. If not even there , then it's 
+// grandparent scope and so on
