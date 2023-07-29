@@ -127,3 +127,21 @@ outer() ;
 // This is Lexical Scoping. When the Inner function doesn't find the variable in it's 
 // current scope, it'll try to find it in it's parent scope. If not even there , then it's 
 // grandparent scope and so on
+
+
+/**
+ *  IIFE (Immediately Invoked Function Expression)
+ * ------------------------------------------
+ * > we write a function which will run and get over then and there 
+ */
+
+function immediate() {
+    console.log("I'm an normal function!") ;
+}
+immediate() ; // normal function call 
+
+// By adding a () around the function and then invoking it using another (), 
+// it becomes an IIFE
+(function immediate() {
+    console.log("I'm an IIFE!") ;
+}) () ;
