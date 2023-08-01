@@ -11,6 +11,7 @@ function App() {
       <h1><u>Class 3 Content</u></h1>
       <Card title={"Tailored Jeans"} price={1999} />
       <Card title={"Shoes"} price={700} />
+      <Card price={500} />
     </>
   );
 }

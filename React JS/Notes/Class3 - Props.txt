@@ -36,7 +36,7 @@
 
             </div>
           )
-        }
+        }xxx
     
     > Props can be destructured also (broken down into smaller variables in componentName.js)
     > Eg : 
@@ -50,4 +50,32 @@
             </div>
           )
         }
+
+    > We can check the prop-types (numeric,string,boolean,etc) by using an additional
+        package called 'prop-types'
+        Syntax to install : npm i prop-types (in terminal)
+    > We can use it in our componentName function file to set the prop-types for that 
+        function .
+        Syntax to import : 
+            import PropTypes from 'prop-types' ;
+            Card.PropTypes = {
+                title: PropTypes.string,
+                price: PropTypes.number
+            }
+    
+    > Use the shortcut rfcp (react functional component with Propstypes) to get  the 
+        Functional Component with Prop-types templates 
+
+    > We can also set defaut values for the props : 
+        Eg : 
+            componentName.defaultProps = {
+                title : 'defaultTitle'
+            } 
+
+    > We can also make it so that a prop to be passed is necessary by marking it as required
+    Eg : 
+        Card.PropTypes = {
+                title: PropTypes.string,
+                price: PropTypes.number.isRequired
+            }
 */
