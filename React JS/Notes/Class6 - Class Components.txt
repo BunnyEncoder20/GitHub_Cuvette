@@ -1,0 +1,48 @@
+/*
+*       Agenda :  Class Components  
+*-----------------------------
+*   1. accessing props in Class Components  
+*   2. methods in class components 
+*   3. methods in class components  
+*/
+
+/*
+    Using props in Class components : 
+    -----------------------------
+    > Syntax : 
+    export default class Card2 extends Component {
+        render() {
+            return (
+                <div>
+                    <h1> {this.props.title} </h1>
+                    <p className='price'>Price : ₹ {this.props.price} </p>
+                    <p className='stock'>Stock : {this.props.stock} </p>
+                </div>
+            )
+        }
+    }
+*/
+
+/*
+    States in Class Components :
+    -------------------------
+    > A bit easier compared to states in fucntional based components 
+    > We first have to call for a constructor for the current class : 
+    Eg : Syntax
+    constructor(prop) {
+        super(prop);
+        this.state = {
+            stockCount : this.props.stock
+        }
+    }
+
+    > Note it is necessary to pass prop as a arguement to the constructor , otherwise 
+        this.prop will not work inside the constructor
+
+    > we can also define the Method/function to set the state inside the constructor only : 
+    Eg : Syntax 
+    this.decrementStock = ()=>{
+        this.setState({
+        stockCount: this.state.stockCount-1 
+    })
+*/

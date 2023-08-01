@@ -1,0 +1,39 @@
+/*
+*       Agenda :  States 
+*---------------------
+*   1. What are states ? 
+*   2. How to use states 
+*   3. Resetting the status using a js method 
+*/
+
+/*
+    States 
+    --------
+    > are special variables which are auto re-rendered everytime when their values are 
+        updated , across all the instances / components 
+    > But we cannot use them directly , we need to know aboout hooks
+
+    > Hooks can be thought of as special Functionality givers which allow React Functional
+        components to have access to functions which where before exclusive to React 
+        Class based components 
+    
+    > Syntax for using States : 
+        import {useState} from 'react 
+        // can combine this in the import React from 'react' line like : 
+        import React,{useState} from 'react'
+
+    > to write syntax for useState use shortcut : ' useState '
+    > useState() return 2 things : 
+        1. variable
+        2. a function (a set fucntion, convectionally : setFuncName)
+    Eg : 
+        const [state, setstate] = useState(initialState);
+
+    > To update a state variable : 
+        setstate(updatedValue++) ;
+
+
+    > Resetting a state variable : we make a fucntion which will reset the state to its 
+        previous / original value  
+
+*/

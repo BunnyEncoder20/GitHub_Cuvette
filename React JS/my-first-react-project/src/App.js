@@ -1,6 +1,7 @@
 import Header from './Header'
 import Footer from './Footer'
 import Card from './Card'
+import Card2 from './Card2'
 
 function App() {
 
@@ -17,9 +18,9 @@ function App() {
   })
 
   let productArray = [
-    {id:1001,title:"pencil",price:10},
-    {id:1002,title:"notebook",price:50},
-    {id:1003,title:"Apple",price:100},
+    {id:1001,title:"pencil",price:10,stock:56},
+    {id:1002,title:"notebook",price:50,stock:23},
+    {id:1003,title:"Apple",price:100,stock:30},
   ] ;
   productArray.map((obj)=>{
     return console.log(obj.id) ;
@@ -36,14 +37,23 @@ function App() {
       <Card price={500} />
 
       <br/><br/>
-      <h1><u>Class 4 Content</u></h1>
+      <h1><u>Class 4 & 5 Content</u></h1>
       
       {
         productArray.map((product)=>(
-          <Card key={product.id} title={product.title} price={product.price} />
+          <Card key={product.id} title={product.title} price={product.price} stock={product.stock} />
         ))
       }
 
+
+      <br/><br/>
+      <h1><u>Class 6 Content</u></h1>
+      {
+        productArray.map((product)=>(
+          <Card2 key={product.id} title={product.title} price={product.price} stock={product.stock} />
+        ))
+      }
+      
     </>
   );
 }
