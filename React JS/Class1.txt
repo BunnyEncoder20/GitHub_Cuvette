@@ -1,0 +1,51 @@
+/**
+ *      Agenda : Intro To React 
+ * --------------------------
+ *  1. Introduction to React 
+ *  2. Setup a react project 
+ */
+
+/*
+    Why React ? 
+    -----------
+    > Using Vanilla HTML, CSS, JS we have no premade frameworks, libraries 
+    > There is a lot of manual work 
+    > There is not efficency (when we click on anything everthing on the page is reloaded) 
+    > lot of re-work  
+
+    > Module < Library < framework
+
+    > Module : is a folder which provides some fucntionality 
+    > Library : is a collection of modules. Which provides some pre-defined (eg: React)
+    > Framework : is a colection of many pre-defined Libraries and fucntions (eg : Angular)
+
+
+    Pre-requesites for React 
+    ----------------------
+    1. node.js
+    2. npm
+
+
+    How to install packages using npm Syntax:
+    npm install creat-react-app
+    
+    > Note this will install the necessary files onto your system. If you want to just 
+        execute the package without installing it on your system, then use npx (node package executable)
+    
+    Syntax : npx creat-react-app
+    > Note that we do not write the install here  
+    > This is not recommended all the time 
+    > We can use it with the creat-react-app as we just need it's boilerplate template
+*/
+
+/*
+    > Once the packages are installed you'll get the proper folder structure and files 
+        required for a react project.
+
+
+    > Common Commands which are used in the React Project folder 
+        1. npm start : starts the development server 
+        2. npm run build :  bundles the app into static files for production 
+        3. starts the test runner     
+*/
+
