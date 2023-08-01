@@ -1,0 +1,53 @@
+/*
+*       Agenda : Props 
+*-------------------
+*   1. What are props 
+*   2. Types of Props   
+*       > string 
+*       > number
+*       > boolean
+*       > array
+*       > function
+*       > object
+*   3. destructuring of props 
+*   4. propTypes 
+*   5. default props 
+*   6. required props
+*
+*/
+
+/*
+    Props Intro
+    ----------
+    > They are used to create multiple copies of a template and pass dynamic info to them
+        so that they show unique information on the app 
+    > They are basically like arguements you are passing to the component   
+        function.
+    > Eg : 
+        <ComponentName property1={"Name"} property2={40} />
+
+        // And in the componenetName.js : 
+        function Card( props ) {
+          return (
+            <div>
+
+                <h1> {props.title} </h1>
+                <p>₹ {props.price} </p>
+
+            </div>
+          )
+        }
+    
+    > Props can be destructured also (broken down into smaller variables in componentName.js)
+    > Eg : 
+        function Card( {title,price} ) {
+          return (
+            <div>
+
+                <h1> {title} </h1>
+                <p>₹ {price} </p>
+
+            </div>
+          )
+        }
+*/
