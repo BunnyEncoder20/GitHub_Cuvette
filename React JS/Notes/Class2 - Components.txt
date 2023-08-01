@@ -1,0 +1,112 @@
+/*
+*       Agenda : Components in React 
+*--------------------------------
+*   1.  Big picture about components    
+*   2. Components : 
+*       i) functional components 
+*       ii) class components 
+*   
+*   3. Rendering Components 
+*   4. JSX
+*       >  jsx syntax
+*       > conditional rendering 
+*       > giving inline styles 
+*
+*/
+
+/*
+    Components : The Big picture 
+    --------------------------
+    > Component is a UI/UX element on the page which is created using a JS function / 
+        class which can return a JSX (some form html) or a null at some point.
+
+    > 2 major ways to creating components : 
+        i) using function based components  (preffered using now)
+        ii) using Class based components        (outdated. Used to have some exclusive functionality, but now all of it we can get in the functional based ones)
+    > Checkout Header.js and Footer.js in the src folder of "my-first-react-project"
+
+    Eg :  Syntax 
+        function ComponentName(){
+            return(
+                JSX here...
+            )
+        }
+        export default ComponentName
+
+    // We can also combine the export statement into the function defination like :
+
+        export default function componentName(){
+            return(
+                JSX here...
+            )
+        }
+
+
+    > All the things in between the return(...) is JSX (something like html but not that) 
+    > Note it is important to export the component 
+    > There are multiple ways to import/export am function : 
+        i) default import/export : whereever you will import, it will be imported like a normal import statement 
+        ii)  Named import/export : will have to add {} around the Component we're importing
+    > Eg: Syntax 
+        default : export default componentName | import componentName from './componentName'
+        named : export componentName | import {componentName} from './componentName' 
+    
+    > Rendering The component on the App.js : 
+    import Header from './Header'
+    function App() {
+      return (
+        <Header/>
+      );
+    }
+    export default App;
+
+
+    > Using ES7+React extension we can make use of shortcuts like : 
+        i) rfc : react Fucntional component 
+        ii) rfce : react fucntional component (default) export  
+        iii) rcc : react class component 
+*/
+
+/*
+    JSX : JavaScript Xml
+    -------------------
+    > it is kinda like combo of HTML+JS
+    > Notice that when we tried to return both head and footer component, it gave an 
+        error saying that there should be atleast one parent element 
+    > That parent can be a html tag (Eg : <div>) or we can use a blank tag (called React fragments). 
+        Eg : 
+        function App() {
+          return (
+            <>
+              <Header/>
+              <Footer/>
+            </>
+          );
+        }
+    
+    > Note : When we write anything inside a JSX between {}, it is executed as a JS 
+
+    > Some keywords of html are not same for JSX. Eg : 
+            Html       -> JSX
+        i)  Class      -> ClassName
+        ii)  for        -> HTMlfor
+        iii) onclick -> onClick
+
+
+    > Major Change in Inline Styling in JSX 
+        > We'll have to pass a JS object with the desized CSS properties inside a JS expression {}
+        > any css property will hypen (-) in between will be converted into Camel casing with no hypens
+            Eg : font-size -> fontSize
+        > hence inline styling would be done as :  
+        style = {{color:"red", fontSize:"12px"}}
+        > Notice first {} is for JS expresion and second {} is for JS objects 
+*/
+
+/*
+    Conditional Rendering 
+    -------------------
+    > Means that if condition is fullfilled , rendering something else rendering something else
+    > It is done using ternary operator 
+    > Syntax : (condition) ? (do this if true) : (do this if false)  ;
+    > Don't forget to wrap it inside a JSX expression.
+*/
