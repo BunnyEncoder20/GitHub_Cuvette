@@ -90,5 +90,42 @@
 */
 
 /*
+    Form Validations
+    ---------------
+    > When submitting a form there are usually validation which need to be done
+    > We can define a function for that 
+    > By default html has the functioning of reloading the page when a form is submitted 
+    > To diable this feature in React, we can do : 
+    Eg : 
+        let validation = (e)=>{
+          e.preventDefault();   // This line revents the page from reloading and we are able to see the output on the console
+          console.log('Validating the Form...');
+        } 
     
+    > Simple form validation can be done like : 
+    Eg : 
+        if(name.length<3 || name.length>15)
+            alert("Name should be between 3-15 characters")
+    
+    > For more complex and extensive validation we can use packages like 'yup'
+    Link : https://www.npmjs.com/package/yup
+    command to install : npm i yup
+
+    > Can also use regex and tenary operator to valid the inputs like eamils 
+*/
+
+/*
+    Use one State for all the form inputs 
+    --------------------------------
+    > Me make a single state variable which will be a object with all the variables
+    Eg : 
+        let [ formData, setFormData] = useState({
+            name:"",
+            age:0,
+            email:""
+        }) ;
+    
+    > Then we are going to make a common fucntion to handle the changes : 
+    
+
 */

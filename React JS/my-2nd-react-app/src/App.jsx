@@ -8,15 +8,42 @@ function App() {
   const [age, setAge] = useState(18);
   const [email, setEmail] = useState('');
 
+  let validation = (e)=>{
+    // validate the form here
+    e.preventDefault();
+    console.log('Validating the Form...');
+
+    if(name.length<3 || name.length>15)
+      alert("Name should be between 3-15 characters") ;
+  }
+
+  let [ formData, setFormData] = useState({
+    name:"",
+    age:0,
+    email:""
+  }) ;
+
+  let handleChange = (e)=>{
+    console.log(e.target.name);
+  }
+
   return (
     <>  
       <h1><u>Forms in React</u></h1>
-      <form>
+      <form onSubmit={validation}>
         Name: <input type="text"name='name' onChange={(e)=>{setName(e.target.value)}}/> <br />
         Age : <input type="text" name='age' onChange={(e)=>{setAge(e.target.value)}}/> <br />
         email : <input type="text" name='email' onChange={(e)=>{setEmail(e.target.value)}}/> <br />
+        <button type='submit'>Submit</button>
       </form>
       <button onClick={ ()=>{console.log("button clicked")} } >Click for Event</button>
+      <br/> <br/>
+      <form>
+        Name2: <input type="text"name='name2' onChange={handleChange} /> <br />
+        Age2 : <input type="text" name='age2' onChange={handleChange}/> <br />
+        email2 : <input type="text" name='email2' onChange={handleChange}/> <br />
+        <button type='submit'>Submit</button>
+      </form>
     </>
   );
 }
