@@ -32,7 +32,7 @@
     > Note this will install the necessary files onto your system. If you want to just 
         execute the package without installing it on your system, then use npx (node package executable)
     
-    Syntax : npx creat-react-app
+    Syntax : npx creat-react-app "appName"
     > Note that we do not write the install here  
     > This is not recommended all the time 
     > We can use it with the creat-react-app as we just need it's boilerplate template

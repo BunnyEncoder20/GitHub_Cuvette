@@ -1,0 +1,94 @@
+/*
+*          Agenda : Folder Structure, Events and Forms 
+*   -----------------------------------------------
+*   0. Recommended Folder Structure 
+*   1. Forms in React 
+*   2. Events 
+*   3. Controlled vs Uncontrolled 
+*   4. How to handle Form data in React 
+*   5. Validations 
+*/
+
+/*
+    Folder Structure 
+    ---------------
+    > node_modules : for all the dependencies 
+    > public : contains the files which will be pulling the info from the js,css,jsx files from
+        the src folder (we target the root element in the index.html)
+    
+    Recommended Practices : 
+    > Create a separate folder for all components 
+        Create Folder for each components (Eg: Header, Footer, Card, etc)
+    > prefer using .jsx instead of .js for to make it easier to write jsx
+    > When creating multiple Pages, we can create a separate folder called pages / screens / routes
+    > A seperate folder for APIs
+    > A seperate folder for assets (like images, logos, svgs, etc)
+    > A seperate folder for Hooks
+    > A seperate folder for utility functions 
+
+*/
+
+/*
+    Events in jsx
+    -----------
+    > They are similar to all the event in js 
+    > Eg : onClick(), onChange(), onDoubleClick(), etc
+*/
+
+/*
+    Controlled vs Uncontrolled components 
+    -----------------------------------
+    Controlled Conponent : when we are able to directly read the inputs put in a form 
+        using React, then it is called Controlled COmponent 
+    
+    Uncontrolled Component :  when we need to make the use of some DOM functionalities 
+        to read the form data cause we are unable to handle them using React itself, They
+        are called Uncontrolled components  
+*/
+
+/*
+    Forms in React 
+    -------------
+    > Forms can be made in the App.jsx using basic jsx. The challenge is to access the data 
+        entered in the inputs 
+    > For that we'll use states.
+    > First simple approach is to make separate states for each 
+    Eg: 
+        function App() {
+
+            const [name, setName] = useState('');
+            const [age, setAge] = useState(18);
+            const [email, setEmail] = useState('');
+
+            return (
+                <>  
+                    <form>
+                        Name: <input type="text"name='name'/> <br />
+                        Age : <input type="text" name='age'/> <br />
+                        email : <input type="text" name='email'/> <br />
+                    </form>
+                </>
+            );
+        } 
+    
+    > To access the changes made to the input, we can use the onChange event : 
+    Eg : 
+        <form>
+            Name: <input type="text"name='name' onChange={(event)=>{console.log(event.target.value)}}/> <br />
+        </form>
+    > Note how we are accessing only the data of the event object by using e.target.value
+    > In the same way we can assign these values to the State variabels : 
+    Eg : 
+        <form>
+            Name: <input type="text"name='name' onChange={(e)=>{setName(e.target.value)}}/> <br />
+        </form>
+
+    > But this is not a efficient way to use states and forms as in there can be many 
+        more inputs in the form. 
+    > Better way would be to get create one single state variable which will handle all
+        the state changes 
+*/
+
+/*
+    
+*/
