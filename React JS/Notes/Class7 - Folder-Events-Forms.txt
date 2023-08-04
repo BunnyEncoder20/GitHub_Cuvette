@@ -120,12 +120,33 @@
     > Me make a single state variable which will be a object with all the variables
     Eg : 
         let [ formData, setFormData] = useState({
-            name:"",
-            age:0,
-            email:""
+            name2:"",
+            age2:0,
+            email2:""
         }) ;
     
     > Then we are going to make a common fucntion to handle the changes : 
-    
+    let handleChange = (e)=>{
+        console.log(e.target.name);
+        console.log(e.target.value);
+
+        setFormData({
+          ...formData,    // = tells to import already set values for formData and update the below mentioned variable with new value
+          [name]:e.target.value
+        })
+    }
+    *NOTE : The e.target.name here is the 'name' attribute of the input fields
+    **NOTE : When we set formData, again [name] is the attribute which was changed  
+    ***NOTE : When we set formData, we use the spread operator (...) to get the already set 
+        values for the formData, otherwise they'll be overridden and deleted everytime
+        a change happens in any of the useState variables.  
+
+    > This funciton can be called using : 
+    <form>
+        Name2: <input type="text" name='name2' onChange={handleChange} /> <br />
+        Age2 : <input type="text" name='age2' onChange={handleChange}/> <br />
+        email2 : <input type="text" name='email2' onChange={handleChange}/> <br />
+        <button type='submit'>Submit</button>
+    </form>
 
 */

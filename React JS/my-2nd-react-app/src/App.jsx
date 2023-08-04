@@ -25,6 +25,12 @@ function App() {
 
   let handleChange = (e)=>{
     console.log(e.target.name);
+    console.log(e.target.value);
+
+    setFormData({
+      ...formData,    // = tells to import already set values for formData and update the below mentioned variable with new value
+      [name]:e.target.value
+    })
   }
 
   return (
@@ -36,7 +42,9 @@ function App() {
         email : <input type="text" name='email' onChange={(e)=>{setEmail(e.target.value)}}/> <br />
         <button type='submit'>Submit</button>
       </form>
+
       <button onClick={ ()=>{console.log("button clicked")} } >Click for Event</button>
+
       <br/> <br/>
       <form>
         Name2: <input type="text"name='name2' onChange={handleChange} /> <br />
