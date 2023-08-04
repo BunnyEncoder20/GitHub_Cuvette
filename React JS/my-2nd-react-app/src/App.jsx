@@ -1,6 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
 import {useState} from 'react'
+import Controlled from './Controlled' 
+import Controlled2 from './Controlled2';
+import Uncontrolled from './Uncontrolled';
+
 
 function App() {
 
@@ -52,6 +54,13 @@ function App() {
         email2 : <input type="text" name='email2' onChange={handleChange}/> <br />
         <button type='submit'>Submit</button>
       </form>
+
+      <br /><br />
+
+      <h3><u>Class 8 Content</u></h3>
+      <Controlled/>
+      <Controlled2/>
+      <Uncontrolled/>
     </>
   );
 }

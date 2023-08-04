@@ -1,0 +1,19 @@
+/*
+*          Agenda : Uncontrolled Components
+*   ---------------------------------------
+*   1. Getting multiple input data from forms (a controlled component)  
+*   2. Getting data from Uncontrolled component
+*/
+
+/*
+    Controlled Component : which uses useState to update the variables 
+    Uncontrolled Component : which doesn't use useStates to update the variable
+*/
+
+/*  
+    In Controlled1.jsx we can see that it is difficult to handle useStates if 
+    there are mutitple form input fields
+
+    In Controlled2.jsx, we use a single useState as an object which will 
+    take care of all the changing variables
+*/
