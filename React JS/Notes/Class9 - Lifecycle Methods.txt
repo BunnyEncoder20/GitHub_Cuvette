@@ -1,0 +1,24 @@
+/*
+*       Agenda : Lifecycle Methods 
+*------------------------------
+*   1. component life cycle 
+*   2. phases : 
+*           > mounting   
+*           > updating 
+*           > unmounting 
+*   3. contructor 
+*   4. Render  
+*   5. conponentDidMount()
+*   6. shouldComponentUpdate()
+*   7. componentDidUpdate()
+*   8. componentWillUnmount()
+*/
+
+/*
+    > mounting phases : when a component enters into the webpage 
+    > updating phases : when the component is updated (maybe cause of state change)
+    > unmounting phase : when the component is removed from the webpage 
+
+    > Eash of these phases have some methods which come under them 
+    Eg : 
+*/

@@ -2,6 +2,8 @@ import {useState} from 'react'
 import Controlled from './Controlled' 
 import Controlled2 from './Controlled2';
 import Uncontrolled from './Uncontrolled';
+import MyComponents from './MyComponents';
+import ParentComponent from './ParentComponent';
 
 
 function App() {
@@ -61,6 +63,12 @@ function App() {
       <Controlled/>
       <Controlled2/>
       <Uncontrolled/>
+
+      <br /><br />
+
+      <h3><u>Class 9 Content</u></h3>
+      <MyComponents/>
+      <ParentComponent/>
     </>
   );
 }

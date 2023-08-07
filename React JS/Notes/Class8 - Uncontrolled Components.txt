@@ -16,4 +16,57 @@
 
     In Controlled2.jsx, we use a single useState as an object which will 
     take care of all the changing variables
+    Eg : 
+    const [values, setValues] = useState({
+        fname:'',
+        lname:''
+    });
+
+    const changeHandler = (e) => {
+        let {name, value} = e.target ;  //new way to getting name & value
+
+        setValues({
+            ...values,
+            [name]:value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('form submitted sucessfully !');
+    }
+*/
+
+/*
+    Uncontrolled Component 
+    -----------------------
+    > We do not use useState in uncontrolled components.
+    > We use useRef
+        Eg : import { useRef } from 'react';
+    > It refers to the dom element of the page and gets the data 
+    Eg : 
+    function Uncontrolled() {
+
+        let fnameRef = useRef(null);
+        let lnameRef = useRef(null);
+
+        const submitHandler = (e) => {
+            e.preventDefault();     //to prevent the refreshing of the page when submitting form
+            console.log('Submit Handler Envoked')
+            console.log("fname : ",fnameRef.current.value)
+            console.log("lanme : ",lnameRef.current.value)
+        }
+
+        return (
+            <div>
+                <h4>Uncontrolled Component</h4>   
+                <form onSubmit={submitHandler}>
+                    <input type="text" name='fname' placeholder='First name' ref={fnameRef}/>
+                    <input type="text" name='lname' placeholder='Last name' ref={lnameRef}/>
+                        // Don't forget to mention teh ref variable here in the input
+                    <button type='Submit'>Submit</button>
+                </form>
+            </div>
+        );
+    }
 */
