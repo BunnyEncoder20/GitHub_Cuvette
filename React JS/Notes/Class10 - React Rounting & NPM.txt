@@ -1,0 +1,59 @@
+/*
+*           Agenda : Routing , Third Party Libraries & CSS modules
+* ---------------------------------------------------------
+*   1. React routing 
+*   2. Third Party Libraries / Packages
+*   3. NPM / YARN
+*   4. react-icons
+*   5. moment
+*   6. axios
+*
+*/
+
+/*
+    React Routing 
+    ------------
+    > React doesn't have anything in-built to handle rounting on it's own
+    > Rounting is important , as me manytimes need to make multiple pages of the website 
+        which is not possible without routing (route = link of the page you currently at)
+        https://myDomain/index.html = home page
+        https://myDomain/about.html = about page
+
+    > Package widely used : react-router-dom (V6)
+    ***NOTE : V5 of react-router-dom is very different from the latest version V6
+    > To check the version of current packages installed in the project visit : 
+        package.json file 
+*/
+
+/*
+    Using the Browser Router in React
+    ------------------------------
+    > Note that the browserRouter should be loaded from the same place where all the 
+        other components of the app are being loaded from (else routing may not function as intended)
+    > <BrowserRouter> is used for defining that all the components within (Maybe say App.jsx
+        are up for routing)
+    > Apart from that, when we define other components which will make routing (or page
+        change to happen) we need to use the <routes></routes> tags (to define a bunch of routes)
+    
+    > Though routing may seem very nice , but we should try for internal links installed
+    > This helps in eliminating the reloading / loading of new pages and makes the websites
+        faster
+    > Generally the external routing is handled by the deployment service you use 
+    > Hence we just need to focus on the internal routing  
+*/
+
+/*
+    Using Link to in React Rounting 
+    ---------------------------
+    > <Link to=''> is the tag which is used for internal routing
+    > It helps revent unecessary loading / reloading of pages whenever we try to route
+        to new page / internal link
+    > Eg : 
+        import { Link } from 'react-router-dom'
+        
+        <div>I'm a AboutPage</div>
+        <Link to="/">Click to go to HomePage</Link>
+
+        <div>I'm a HomePage</div>
+        <Link to="/about">Click to go to AboutPage</Link>
+*/

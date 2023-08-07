@@ -5,6 +5,9 @@ import Uncontrolled from './Uncontrolled';
 import MyComponents from './MyComponents';
 import ParentComponent from './ParentComponent';
 
+import {Routes,Route} from 'react-router-dom'
+import HomePage from './Pages/HomePage';
+import AboutPage from './Pages/AboutPage';
 
 function App() {
 
@@ -69,6 +72,15 @@ function App() {
       <h3><u>Class 9 Content</u></h3>
       <MyComponents/>
       <ParentComponent/>
+
+
+      <br /><br />
+
+      <h3><u>Class 10 Content</u></h3>
+        <Routes>
+          <Route path="/" element={<HomePage/>} />\
+          <Route path='/about' element={<AboutPage/>} />
+        </Routes>
     </>
   );
 }
