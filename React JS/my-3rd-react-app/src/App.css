@@ -1,0 +1,45 @@
+#root, html, body {
+  margin: 0 ;
+  padding: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.app {
+  height: 100%;
+  background-color: tomato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card {
+  background-color: whitesmoke;
+  width: 60vw;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  padding: 2%;
+  box-shadow: 10px 10px;
+}
+
+.button {
+  width: 20vw;
+  height: 10vh;
+  border-radius: 50px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+  background-color: tomato;
+}
+
+.heading {
+  font-family: monospace;
+  font-size: 30px;
+  font-weight: bold;
+}

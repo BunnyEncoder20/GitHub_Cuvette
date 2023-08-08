@@ -1,0 +1,77 @@
+/*
+*           Agenda : APIs in React  
+* ------------------------------
+*   1. Fetch 
+*   2. Axios
+*   3. a sample project demo
+*
+*   content in 'my-3rd-react-app'
+*/
+
+
+/*
+    API Calling 
+    ----------
+    > Whenever we will make a api call we will be using either : 
+        1. fetch () or
+        2. axios
+*/
+
+/*
+    Using fetch to call API 
+    --------------------
+    1. using a button we can call a function to fetch the API info : 
+        > <span onClick={fetchFacts}>Show More</span>
+
+    2. Define useState for asynchronous operation of the API 
+        > let[fact,setFact] = useState("Fetched Data will be displayed here");
+
+    3. Make the fucntion to call fetch to endpoint url : 
+        const fetchFacts = () => {
+          fetch('https://catfact.ninja/fact').then((resp)=>{
+            // console.log(resp) ;  //remember this way we will not get the desized object we need . We need to convert it to the respective json also
+            return resp.json()
+          }).then((data)=>{
+            console.log(data.fact)
+            setFact(data.fact)          //useState used here to set the dynamic info
+          }).catch((err)=>{
+            alert('Something went wrong')
+            console.log(err)
+          })
+        }
+    
+    4. Display the state : 
+        > <h1 className="heading">{fact}</h1>
+
+
+    Q) How to call the API when the page loads on it's own ? 
+    Ans) we use another hook called useEffect
+            > import React,{useState, useEffect} from 'react'
+            > useEffect(()=>{       
+                fetchFacts();   // calling the API function from here 
+              },[]) 
+*/
+
+/*
+    Axios
+    ------
+    > Same as fetch funciton 
+    > Make a button to call the function to call API : 
+        <span onClick={axiosFacts}>Show More</span>
+
+    > Create axios function similar to the fetch function 
+        const axiosFacts = () => {
+          axios.get('https://catfact.ninja/fact').then((resp)=>{
+            console.log(resp.data);   // here we can directly print the data, axios takes care of processing the json
+            setFact(resp.data.fact);
+          }).catch((err)=>{
+            alert('Something went wrong')
+            console.log(err)
+          })
+        }
+    
+    > NOTE that here we can directly access the resp.data object. It is an important adv
+        over the normal fetch 
+    > Make the element to display the data fetched from API 
+        <h1 className="heading">{fact}</h1>
+*/

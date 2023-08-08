@@ -36,7 +36,16 @@
     > Note that we do not write the install here  
     > This is not recommended all the time 
     > We can use it with the creat-react-app as we just need it's boilerplate template
+
+    Alternative Syntax (Cleaner and lighter)
+    > npm create vite@latest app-Name -- -- template react
+    // cd to project directory 
+    > npm install 
+    //start the dev server 
+    > npm run dev
+
 */
+
 
 /*
     > Once the packages are installed you'll get the proper folder structure and files 
