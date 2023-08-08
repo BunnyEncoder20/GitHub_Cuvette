@@ -50,10 +50,71 @@
         to new page / internal link
     > Eg : 
         import { Link } from 'react-router-dom'
-        
+
         <div>I'm a AboutPage</div>
         <Link to="/">Click to go to HomePage</Link>
 
         <div>I'm a HomePage</div>
         <Link to="/about">Click to go to AboutPage</Link>
+*/
+
+/*
+    NPM & YARN
+    -----------
+    > Both of them are packages managers for React 
+    > Both are used to install packages into the Project 
+    > Should look for packages which have high weekly downloads, they'll have bug fixes
+        and guides online more 
+*/
+
+/*
+    1. moment package : used for date and time purposes 
+
+    2. axios package : a promise (any asynchronos operation results in promise) based 
+        HTTP client for browser and node.js.
+        > Installing axios : npm i axios
+        > GET call : is when you just ring the server bell and get some info from the server
+        > POST call : when you ring the server and give some data of your own which the 
+                            server will process and give something in return 
+*/
+
+/*
+    CSS modules 
+    -----------
+    > In React , we need to use unique class names otherwise the CSS will be mixed up for
+        2 or more components 
+    > This is because at the end of the webpack compiling , React combines all the pages
+        and css into 1 single file , which it shows on the browser. Hence there will be multiple
+        classes with the same name in the same location, it causes the overlap
+    
+    > This is a problem in large scale production applications 
+    > Can be avoided by using ComponentName in front of the class names
+    Eg  : homepage_Container 
+            aboutpage_container
+    > But that not the best approach. We can instead use the CSS modules 
+    
+    > CSS Module basically makes it so that the CSS remains local to only that one components
+        it is meant for.
+    > For this  : 
+    1. homepage.css -> homepage.module.css  // Rename the css file 
+    2. import variableName from './homepage.module.css'       // import the css into a variableName
+    3. < div className= { varibaleName.CSSclass } >     // using variableName get the required style 
+*/
+
+/*
+    React icons
+    ----------
+    > Installation : npm i react-icons --save
+    > Webpage : https://react-icons.github.io/react-icons/
+    > We can use the search bar to search for any icons we need 
+    > Usage : (NOTE : iconName is copied from the website itself)
+    import {iconName} from 'react-icons/fa' ;
+    class question extends REact.Component {
+        render() {
+            return <div> iconName </div>
+        }
+    }
+
+    > Always Remember that GOogle is your best friend. Always visit the webpages and 
+        documentations to learn about the packages which you need to use in your projects 
 */
