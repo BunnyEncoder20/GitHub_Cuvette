@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import Controlled from './Controlled' 
 import Controlled2 from './Controlled2';
 import Uncontrolled from './Uncontrolled';
@@ -8,6 +8,8 @@ import ParentComponent from './ParentComponent';
 import {Routes,Route} from 'react-router-dom'
 import HomePage from './Pages/HomePage';
 import AboutPage from './Pages/AboutPage';
+import { useRef } from 'react';
+import useMyHook from './useMyHook';
 
 function App() {
 
@@ -39,6 +41,34 @@ function App() {
       [name]:e.target.value
     })
   }
+
+  let [count, setCount] = useState(0);
+  let [click, setClick] = useState(0);
+  // Used when you want to fetch something whenever there is change on the page  
+  useEffect(()=>{
+    console.log("useEffect was called");
+  })
+  // used when you want to fetch something when the page loads at the start
+  useEffect(()=>{
+    console.log("UseEffect Only called at the Mounting phase");
+  })
+  // used when something fetched by clicking on a button 
+  useEffect(()=>{
+    console.log("useEffect called for updation of count state");
+  },[count])
+  // used when you want to fetch / do something when the component unmounts 
+  useEffect(()=>{
+    return()=>{
+      console.log("useEffect called when component was unmounted")
+    }
+  })
+
+  let inputRef = useRef(null)   //creating a inputref null is default value for it 
+  const submit = () => {
+    console.log("The value of input was : ", inputRef.current.value);   //convention to get current data in the ref 
+  }
+
+  useMyHook("Changed using my custom hook !")
 
   return (
     <>  
@@ -81,6 +111,15 @@ function App() {
           <Route path="/" element={<HomePage/>} />\
           <Route path='/about' element={<AboutPage/>} />
         </Routes>
+
+        <br /><br />
+
+        <h3><u>Class 12 Content</u></h3>
+        <button onClick={()=>(setCount(count+1))}>Count +1</button>
+        <button onClick={()=>(setClick(click+1))}>Click +1</button>
+        <br />
+        <input type="text" placeholder='Enter the text here' ref={inputRef}/>
+        <button onClick={submit}>Submit</button>
 
         <br /><br />
     </>

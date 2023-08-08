@@ -1,0 +1,115 @@
+/*
+*           Agenda : React Hooks 
+* ------------------------------
+*   1. Introduction
+*   2. State Hook
+*   3. Effect hook
+*   4. Context hook 
+*   5. ref
+*   6. Custom hooks 
+*
+*   content in 'my-2nd-react-app'
+*/
+
+/*
+    React Hooks 
+    -----------
+    > They allow functional based components to have access to states and other React 
+        fetures (like lifecycle methods) which were primarily available only in class 
+        based components.
+    > Most  hooks start with the word 'use'
+    Eg : 
+        import {useState} from 'react'
+        let [ stateName, setStateName ] = useState("defaultValue_of_State");
+    
+    > As we know the 3 main phases of a component 
+        1. Mounting 
+        2. Updation 
+        3. Unmounting
+    > Each of these phases have their own coressponding functions
+    Eg : 
+        1. Mounting (constructor(), componentDidMount())
+        2. Updation (render(), componentDidUpdate())
+        3. Unmounting (componentDidUnmount())  
+    > As mentioned earlier these are only available in class based components earlier 
+    > But now we can use them in functional based components also 
+*/
+
+/*
+    useEffrct Hook 
+    -------------
+    > Can be seen as a side effect hook. When something happens, we use this to do something 
+        in reaction to that event 
+    1. Eg Syntaxes : 
+        import React,{useEffect} from 'react'
+        useEffect(()=>{
+          console.log("useEffect called whenever something happens ")
+        })
+    > By default when we do anything on the page (eg : click a button) then useEffect is 
+        called. 
+    
+    2. Note the second parameter in the useEffect function defination is called dependency
+        Array. When we pass empty [] array, then this function will only run once at the 
+        time of component mounting 
+    > Eg 
+        useEffect(()=>{
+          console.log("useEffect called only at Mounting Phase ")
+        },[])
+
+    3. If we want the useEffect to go off when certain states are updated , then we can 
+        add those states to the dependency array : 
+    >Eg : 
+        useEffect(()=>{
+          console.log("useEffect called for updation of count state");
+        },[count])
+    > Now this useEffect will only be called when count state will be upadted
+
+    4. If we want to call useEffect when a component is unmounting then we can use the 
+        return()=>{} inside the useEffect function expression 
+    Eg : 
+        useEffect(()=>{
+          return()=>{
+            console.log("useEffect called when component was unmounted")
+          }
+        })
+*/
+
+/*
+    Refs
+    ----
+    > Refs are a function provided by React to access the DOM element and the React 
+        element that you might have created on your own.
+    
+    1. Make  a ref : 
+        let refName = useRef(defaultValue)
+
+    2. Place the ref in the component you want to track the state/progress of : 
+        <input type="text" ref={refname}/> 
+
+    3. Accessing the ref : 
+        const submit = () => {
+          console.log("progress : ", refName.current.value);   //convention to get current data in the ref 
+        }
+*/
+
+
+/*
+    Custom Hooks 
+    ------------
+    1. Create a new file where we will define our customHooks 
+        Eg : useMyHooks.js
+    
+    2. Create a simple function to do the change you want o bring about using your hooks 
+    Eg : 
+    function myHook (name) {
+        document.title = name ;
+    }
+    
+    export default useMyHook;
+
+    3. Import it into the component you want using import staement 
+    Eg : 
+        import useMyHook from './useMyHook'
+
+
+*/
