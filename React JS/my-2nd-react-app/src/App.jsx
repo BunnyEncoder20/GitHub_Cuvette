@@ -10,6 +10,8 @@ import HomePage from './Pages/HomePage';
 import AboutPage from './Pages/AboutPage';
 import { useRef } from 'react';
 import useMyHook from './useMyHook';
+import myContext from './myContext';
+import Counter from './Counter';
 
 function App() {
 
@@ -70,6 +72,8 @@ function App() {
 
   useMyHook("Changed using my custom hook !")
 
+  let [counter, setCounter] = useState(0);
+
   return (
     <>  
       <h1><u>Forms in React</u></h1>
@@ -122,6 +126,11 @@ function App() {
         <button onClick={submit}>Submit</button>
 
         <br /><br />
+
+        <h3><u>Class 13 Content</u></h3>
+        <myContext.Provider value={{counter, setCounter}}>
+          <Counter/>
+        </myContext.Provider>
     </>
   );
 }

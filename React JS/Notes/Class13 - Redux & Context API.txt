@@ -1,0 +1,104 @@
+/*
+*           Agenda : Redux and Context API 
+* --------------------------------------
+*   1. Prop Drilling 
+*   2. Context API
+*
+*   content in 'my-2nd-react-app'
+*/
+
+/*
+    Prop Drilling 
+    ------------
+    > In situation where we want to pass a prop from C1 to C4 (C2 child of c1, c3 cild of c2 and so on)
+        C1->C2->C3->C4 , then we pass them from C2 and C3 even though they do not require 
+        it.
+    > This situation is called Prop Drilling 
+
+    > A fix is to store the necessary data in some place where any of the components of
+        our app can access it, like a common data store. 
+        AKA Context API
+    > This will work for small scale projects 
+
+    > For Large scale projects where there is a lot of conplexity with storing the data,
+    we use Redux toolkit
+*/
+
+/*
+    Context API 
+    -----------
+    1. Create a new file for the context 
+        myContext.jsx
+    
+    2. Import createContext from react and make a context with default values
+        import { createContext } from "react";
+        const myContext = createContext("");
+        export default myContext
+
+    3. Create Component which would need to store some data in the context 
+
+    4. Create state variables in the Parent component (App.jsx)
+        let [counter, setCounter] = useState(0);
+
+    5. Wrap the components which need the access to teh context with the <myContext></myContext>
+        <myContext.Provider>
+          <Counter/>
+        </myContext.Provider>
+    myContext.Provider as this is where the context wil be provided 
+
+    6. Pass the values which we need to store also from here 
+        <myContext.Provider value={{counter, setCounter}}> // passing an object here
+          <Counter/>
+        </myContext.Provider>
+
+        // NOTE that the myContext.Provider attribute is 'value' and not 'values'
+
+    7. Now we can directly access those data from the Context store now using 
+        useContext. Also will have to import he context we created 
+        import React,{useContext} from 'react'
+        import myContext from './myContext'
+
+    8. Accessing the data using context 
+        let dataFromContext = useContext(myContext) ;
+
+    9. Using the data in the component as need : 
+        function Counter() {
+            let dataFromContext = useContext(myContext) ;
+          return (
+            <div>
+                <h1>{dataFromContext.counter}</h1>
+                <button onClick={()=>{dataFromContext.setCounter(dataFromContext.counter++)}}>Count +1</button>
+            </div>
+          )
+        }
+         
+    10. Thought this solves the problem we were having but as me have to juggle the 
+        context between 3 or more files and we have to properly wrap the <myContext> 
+        tag around the compoenents, it is a hetic process when we are working with 
+        large scale production aapplications
+
+    11. Hence we can use 3rd party tools like Redux-toolkit 
+*/
+
+/*
+    Redux
+    ------
+    > It is a predictable state container for JS apps 
+    > It works kinda like a container which will hold all the states, so any component 
+        needing that data can access it 
+    > It is centralized debuggable (can track which line state data went where and when) 
+        and flexiable (runs on any UI layer and large ecosystem of addons)
+
+    > It is not specific to React , we can use it with multiple tech (Like angularJS)
+
+    > Redux, by default is very tidious to configure and set , so we use Redux ToolKit to
+        as it is a standarized approach for writing Redux logic 
+
+    > Redux has the following components : 
+    1. view : any component which is displayed on the site 
+    2. action  : any action which is performed on the component (eg: clicking on button)
+    3. reducer : is a special kinda function which has direct access to the store which 
+        listens to the action and does something based on that 
+    4. store : only the reducer can change the data in the store. Components (view) can 
+        fetch data from these stores and display them in the view part   
+*/
