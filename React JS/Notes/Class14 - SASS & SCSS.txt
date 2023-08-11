@@ -1,0 +1,95 @@
+/*
+*           Agenda : SASS and SCSS 
+*   -----------------------------
+*   1. intro to SASS and SCSS 
+*   2. setting and configuring SCSS 
+*   3. Using SCSS
+*       > variables 
+*       > nesting 
+*       > modules 
+*       > mixins
+*/
+
+/*
+    Introduction to SASS and SCSS 
+    --------------------------
+    > SASS : Semantically Awesome Style Sheets (is old and cumbersome to write as it was
+                made on CSS v1)
+    > SCSS : Sassy Cascading Style Sheets (is the new form and better than SASS as it was build on CSS v3 which is the 
+                current version)
+
+    > Make a seperated folder for all the scss files 
+        - scss
+                - style.scss
+
+    > SCSS is ultimately converted into CSS in the end so it better to make a seperated 
+        folder for it , as all the coverted css files will be in that folder only 
+    > This folder is configured to be made in the root directory (We put it in the setting json file for scss)
+    > so when ever the scss file is changed, the css files will be generated in a folder called
+        css 
+*/
+
+/*
+    1. Variables in SCSS : 
+        $color-tomato:tomato;
+
+    2. Nesting in SCSS : (note the .elements are inheriting the properties of navbar (parent))
+        .navbar {
+            width: 100%;
+            height: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .links {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .toggle_btn {
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: none;
+            }
+
+           .logo a{
+            font-size: 1.5rem;
+            }
+        }
+
+    
+    3. Nesting effects like Hover and action : 
+        .action_btn{
+            background-color: $color-tomato;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: scale 0.2 ease;
+
+            // SCSS approach : 
+            &:hover{
+                scale: 1.05;
+                color: white;
+            }
+
+            &:active{
+                scale: 1.95;
+            }
+        }
+
+
+    4. Modules 
+    ----------
+    > the name of a module scss file starts with an underscore (_moduleName.scss)
+    > can be used to store some of the common styles which will be needed throughtout
+        the website 
+    > These will then hae to be imported into the pages's main css file 
+*/

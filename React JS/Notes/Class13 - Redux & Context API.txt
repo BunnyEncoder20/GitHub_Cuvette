@@ -4,7 +4,7 @@
 *   1. Prop Drilling 
 *   2. Context API
 *
-*   content in 'my-2nd-react-app'
+*   content in 'REdux Toolkit' project
 */
 
 /*
@@ -98,7 +98,105 @@
     1. view : any component which is displayed on the site 
     2. action  : any action which is performed on the component (eg: clicking on button)
     3. reducer : is a special kinda function which has direct access to the store which 
-        listens to the action and does something based on that 
+        listens to the action and does something based on that. Note that there will be only 
+        one of these fucntions in your app
     4. store : only the reducer can change the data in the store. Components (view) can 
-        fetch data from these stores and display them in the view part   
+        fetch data from these stores and display them in the view part 
+
+    Hence resulting in the following unidirectional flow : 
+    view -> action -> reducer -> store -> view (the cycle is closed loop back to start)  
+
+    5. slice : there are a lot of category of data which can be stored in the store so to 
+        organise them into different files , we call these slices 
+*/
+
+/*
+    Implementing Redux in a simple Counter App
+    --------------------------------------
+    1. Create a new folder for all the redux files 
+        > Redux
+    
+    2. Create a file called store.js 
+        store.js
+    
+    3. Write the necesary code for making a redux store : (avaliable in quickstart guide on their website)
+        import { configureStore } from '@reduxjs/toolkit'
+        export const store = configureStore({
+          reducer: {},
+        })
+
+    4. Wrapping the App component with the <Provider> tag so that all the components 
+        in app have access to the store (either in index.js or main.jsx) : 
+        import { store } from './Redux/store'
+        import { Provider } from 'react-redux'
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Provider store={store}>
+            <App />
+            </Provider>
+        )
+
+    5. Creating a Slice (combination of inital states reducer and actions)
+        > Create a new file in the Redux folder : 
+            nameSlice.js 
+        > Put in the general code of a slice there , export the actions and the redcucer itself also 
+        > Eg : simple counterSlice.js
+        import { createSlice } from '@reduxjs/toolkit'
+
+        const initialState = {
+          value: 0,
+        }
+
+        export const counterSlice = createSlice({
+          name: 'counter',
+
+          initialState,
+
+          reducers: {
+            increment: (state) => {
+              state.value += 1
+            },
+            decrement: (state) => {
+              state.value -= 1
+            },
+            incrementByAmount: (state, action) => {
+              state.value += action.payload     
+            },
+          },
+        })
+
+        // Action creators are generated for each case reducer function
+        export const { increment, decrement, incrementByAmount } = counterSlice.actions
+
+        export default counterSlice.reducer
+
+        6. Gathering all the reducers of various slices and importing them into the store.js 
+            (as mentioned earlier we can only have one reducer function)
+            import { configureStore } from '@reduxjs/toolkit'
+            import counterSlice from './counterSlice'
+
+            export const store = configureStore({
+              reducer: {
+                    counter : counterSlice
+              },
+            })
+
+        7. Making the component to do acition and display the data from the store  :
+            a. new file : componentName.jsx
+
+            b. imports : 
+                import { useSelector, useDispatch } from 'react-redux'
+                import { decrement, increment } from './Redux/counterSlice'
+                NOTE : 
+                    * useDispatch is used to call reducer whenever some action is done 
+                    * useSelector is used to select the data from the store and display it in the view 
+                    * increment and decrement are the destructured functions which we export in slice file 
+                    Eg :
+                        < button onClick={() => dispatch(increment())} > Increment </button>
+                        < button onClick={() => dispatch(decrement())} > Decrement </button>
+            
+            c. 
+            
+
+
 */

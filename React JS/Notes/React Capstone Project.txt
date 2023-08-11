@@ -1,0 +1,14 @@
+1. Create React App 
+    Link : https://create-react-app.dev/docs/getting-started
+
+2. Add title to the page 
+
+3. Mile Stone 1 : Login Page 
+    > Divide into 2 divs (left and right)
+    > Image and text on the right 
+    > Lift side is a form with 4 inputs 
+    > which means 4 states (Name, username, email, mobile)
+    > These should be controlled components 
+    > All of those states should be checked / validated
+    > Responsiveness not necessary but in extra work 
+    > These need to stored in local storage (window.localstorage) so that data is accessible even if the page refreshes
