@@ -37,7 +37,10 @@
     > This is not recommended all the time 
     > We can use it with the creat-react-app as we just need it's boilerplate template
 
+
+
     Alternative Syntax (Cleaner and lighter)
+    -----------------------------------
     > npm create vite@latest app-Name -- -- template react
     // cd to project directory 
     > npm install 
