@@ -10,5 +10,201 @@
     > which means 4 states (Name, username, email, mobile)
     > These should be controlled components 
     > All of those states should be checked / validated
-    > Responsiveness not necessary but in extra work 
+    > Responsiveness not necessary but can be extra work 
     > These need to stored in local storage (window.localstorage) so that data is accessible even if the page refreshes
+
+
+Things I Learned during the Capstone Project : 
+-----------------------------------------
+1. React Hook Forms 
+-----------------
+> It is a small library which helps us deal with forms in react 
+> it helps in : 
+    1. managing form data 
+    2. submitting form data 
+    3. enforcing validations 
+    4. provides visual feedback 
+    5. Provides simple, scalable and performant way to manage even complex forms 
+
+> Installation : nom i react-hook-form
+> Importing : 
+        import {useForm} from 'react-hook-form'
+
+> Managing Form States 
+--------------------
+> Every form has some moving parts which keep changing till the time the form is submited
+> Include : current values , is field interacted with, field's value changed , field, invalid, field error, etc
+> How to with react-hook-form : 
+    const form = useForm() ;
+    const { register } = form ;
+    const { name,ref,onChange,onBlur } = register("field_ID")
+
+    // within the render function form 
+    <input 
+        type="text" 
+        placeholder='Name' 
+        id='name' 
+        name={name} 
+        ref={ref} 
+        onChange={onChange} 
+        onBlur={onBlur} 
+    />
+
+> Can simplify this using the spread operator : 
+    const form = useForm() ;
+    const { register } = form ;
+
+    // within the render function form 
+
+> How to handle form submission in react-hook-form : 
+    // react-hook-form
+    const form = useForm() ;
+    const { register , control, handleSubmit } = form ;
+    
+    // function to handle the for submit 
+    const onSubmit = (data) => {
+        console.log("Form submitted");
+    }
+
+    // form element 
+    <form className='formElement' onSubmit={handleSubmit(onSubmit)}>
+    </form>
+
+> react-hook-form supports many Form validations like : 
+    1. required
+    2. min max length 
+    3. min max 
+    4. pattern (regex)
+
+> how to validate form using react-hook-form : 
+    <form className='formElement' onSubmit={handleSubmit(onSubmit)} noValidate>
+        <input type='text' id="input_id" {...registration("input_id", {required : 'error msg : input is required !'} )} />
+    </form>
+> Note that the error msg and type will be displayed in the react-hook-form DevTools
+> We can also use Regex : 
+    <input type="text"  placeholder='Email' id='email' 
+                    {...register("email" , { 
+                        required:{
+                            value:true,
+                            message:'Field is required'
+                        }, 
+                        pattern:{
+                            value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                            message:"invalid email format"
+                            }
+                        }
+                    )}
+    />
+    // Notice how even the required field can be written as an object for consistancy
+
+> To dispay the errors to the users : 
+    const form = useForm() ;
+    const { register , control, handleSubmit, formState } = form ;
+> Note that forState object contains a lot of info, out which we only need the error object if any. SO we destructure it further
+    const form = useForm() ;
+    const { register , control, handleSubmit, formState } = form ;
+    const {errors} = formState ;
+> Then we can access the errors using the inputid from this object : 
+    <form>
+    <input id='input_id'/>
+    <p> {error.input_id?.message} </p>
+        //NOTE : ?. = optional chaining
+    </form>
+
+2. React-hook-form DevTools Visualization
+--------------------------------------
+> Installation : npm i -D @hookform/devtools
+> importing : import {DevTool} from "@hookform/devtools" ;
+> How to link with the form we make : 
+     // react-hook-form
+    const form = useForm() ;
+    const { register , control } = form ;  
+    //after the form element : 
+    <form>
+    </form>
+    <DevTools control={control} />
+
+> On the browser, now there should be a pink icon on the top right 
+> Clicking on it will show us info about our form including : 
+    1. Each Field
+    2. its value 
+    3. if touched (if the field has been interacted with)
+    4. if dirty (if the value of the field has been changed)
+
+> React-hook-form also updates and tracks all the form data without rerendering the 
+    components or the children (which great for performace).
+> Traditional form tracking in React each keystroke will cause an rerendering of the 
+    components or the children
+
+
+3. localstore using React Hooks 
+---------------------------
+> localStorage is a web storage object that allows JavaScript sites and apps to keep 
+    key-value pairs in a web browser with no expiration date.
+> This means the data survives page refreshes (sessionStorage) and even browser 
+    restarts. This indicates that the data stored in the browser will remain even when 
+    the browser window is closed.
+
+> In basic terms, local storage enables developers to store and retrieve data in the 
+    browser.
+> We use the useState Hook to make a few states which we need to store 
+> Then we use the useEffect Hook to call upon the localStore 
+Eg: 
+    // get the localStroage items in the start 
+    const storedItems = JSON.parse(localStorage.getItem('Items'))
+
+    // define the states which need to be stored and initial with the localStroge values  
+    const [Items, setItems] = useState([storedItems]);
+    useEffect(() => {
+        console.log(Items);
+        localStorage.setItem('key', JSON.stringify(value))
+    }, [Items]);
+
+> Note that localStorage.setItem expects the value to be of a json string, hence we call
+    the json.stringify method to convert the data 
+
+> To retrive and use the localStorage data : 
+    useEffect(()=>{
+        const data = JSON.parse(localStroage.getItem('key')); // parseing to de-stringify the data
+        if (data!==null) 
+            valueNeeded = data ;
+    },[]) // Empty dependancy array = useEffect will run whenever the component is render for first time
+
+> To Summarize the code : 
+const [formData, setformData] = useState({});
+
+    useEffect(()=>{
+        const storedformData = JSON.parse(localStorage.getItem('formData')) ;
+        if (storedformData!==null) 
+            setformData(storedformData);
+
+        console.log('retrived value : ',storedformData);
+    },[])
+
+    useEffect(() => {
+        console.log('formData Update detected : ',formData);
+        console.log("Saving to localStorage");
+
+        if (formData!==null) 
+            localStorage.setItem('formData', JSON.stringify(formData))
+
+    }, [formData]);
+
+
+    // form Submission function
+    const onSubmit = (data) => {
+        console.log("Form submitted");
+        console.log(data);
+
+        // Create an new object to store the current form data
+        const newFormData = {
+            name: data.name,
+            username: data.username,
+            email: data.email,
+            mobile: data.mobile,
+            sharedata: data.sharedata,
+        };
+
+        // Add the newFormData object to the formData state
+        setformData(newFormData);
+    }

@@ -36,7 +36,7 @@
 */
 
 /*
-    useEffrct Hook 
+    useEffect Hook 
     -------------
     > Can be seen as a side effect hook. When something happens, we use this to do something 
         in reaction to that event 

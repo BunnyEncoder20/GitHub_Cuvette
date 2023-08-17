@@ -91,5 +91,36 @@
     > the name of a module scss file starts with an underscore (_moduleName.scss)
     > can be used to store some of the common styles which will be needed throughtout
         the website 
-    > These will then hae to be imported into the pages's main css file 
+    > These will then have to be imported into the pages's main css file 
+        @use '_common' ;
+    > NOTE that imported variables will have to be written as follows : 
+        background-color: common.$color-tomato;
+*/
+
+/*
+    Mixins 
+    ------
+    > Can be seen as a block of css rules which is reuseable & also customizable like a 
+        function .
+    > Basic syntax : 
+        @mixin scaled-font {
+            scale:2 ;
+        }
+         
+        // In the css block : 
+        .className {
+            @include scaled-font
+            ...
+        }
+
+    > Custom parameters : 
+        @mixin commonSpacing ($width) {
+            width : $width ;
+        }
+
+        // in css block 
+        .className {
+            @include commonSpacing(30px) ;
+            ...
+        } 
 */
