@@ -11,7 +11,7 @@
     --------
     > are special variables which are auto re-rendered everytime when their values are 
         updated , across all the instances / components 
-    > But we cannot use them directly , we need to know aboout hooks
+    > But we cannot use them directly , we need to know about hooks
 
     > Hooks can be thought of as special Functionality givers which allow React Functional
         components to have access to functions which where before exclusive to React 

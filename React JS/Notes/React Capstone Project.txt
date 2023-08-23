@@ -1,3 +1,5 @@
+*** MileStone 1 ***
+------------------ 
 1. Create React App 
     Link : https://create-react-app.dev/docs/getting-started
 
@@ -12,6 +14,18 @@
     > All of those states should be checked / validated
     > Responsiveness not necessary but can be extra work 
     > These need to stored in local storage (window.localstorage) so that data is accessible even if the page refreshes
+
+
+*** MileStone 2 ***
+------------------ 
+1. Use react-router-dom to link up the pages 
+2. Click on card -> if not selected{select} else {deselect}
+3. Chip showing genres selected must be there with X to deselect that category
+4. Can be done with 2 states : 
+    1. [genres , setGenres] <array> Global
+    2. [select, setSelect] <boolean> Card scope
+
+
 
 
 Things I Learned during the Capstone Project : 
@@ -208,3 +222,38 @@ const [formData, setformData] = useState({});
         // Add the newFormData object to the formData state
         setformData(newFormData);
     }
+
+
+5. Lorem picsum service 
+---------------------
+> Lets you get random image links easily for websites
+> Link to add in src : https://picsum.photos/200/300
+
+
+6. How to send custom CSS properties for components : 
+-----------------------------------------------
+function Cards({cardTitle, cardImg, cardBg}) {
+    const cardContainerBgStyle = {
+      backgroundColor: cardBg || 'white' // Default color is set as white 
+    }
+
+    return (
+        <div className='cardContainer' style={cardContainerBgStyle}>
+            <h1 className='cardTitle'>{cardTitle}</h1>
+            <img src={cardImg} alt="Card Image" className='cardImg'/>
+        </div>
+    )
+}
+
+
+{/* DOUBTS */}
+-------------
+1. How is my localStorage working 
+2. How to toogle css class with react-hook-form error 
+
+Things not Working in the Project : 
+1. Not able to make condition attributes / css classes 
+2. Not able to make the routing stop for validation 
+3. Warning of category page not working as intended 
+4. Not able to read and filter the number of toggles in Category page for truToggles array 
+5. Not able to pass selected categories cause truToggles array in not coming 

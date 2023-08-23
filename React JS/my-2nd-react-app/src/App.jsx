@@ -112,7 +112,7 @@ function App() {
 
       <h3><u>Class 10 Content</u></h3>
         <Routes>
-          <Route path="/" element={<HomePage/>} />\
+          <Route path="/" element={<HomePage/>} />
           <Route path='/about' element={<AboutPage/>} />
         </Routes>
 
