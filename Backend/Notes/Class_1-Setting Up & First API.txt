@@ -1,0 +1,97 @@
+Installing express library 
+----------------------
+> npm i express 
+
+Installing nodemon (it is a dev dependancy)
+--------------------------------------
+This helps use by automatically restarting the server everytime we make a new 
+change 
+
+1. Install the dependancy :
+> npm i --save-dev nodemon
+
+2. Inside the package.json file add the following code inside the "scripts" block :
+> "devStart" : "nodemon serverFileName.js"
+
+3. Finally to get teh server up and running, in terminal enter the command : 
+> npm run devStart 
+
+
+Boilplate code for express server 
+-----------------------------
+const express = require('express') ;
+const app = express()                           //create an application by calling express 
+
+app.listen(3000){
+    // whatever code you want 
+    console.log('running the server on port 3000') ;
+}
+
+Setting up routes in the express server 
+----------------------------------
+> Main requests we'l be dealing with : 
+1. get 
+2. post 
+3. put / patch
+4. delete
+
+> syntax : 
+    app.get('/path' , (request, response)=>{
+        console.log(''got a request) ;
+        response.send("Send something back to the user from here) ;  //used to send responses to user 
+    })
+
+eg :
+    app.get('/' , (req,res) => {
+        res.send("Hellow World UwU")
+    })
+
+
+
+> We could also send server codes to the user : 
+app.get('/' , (req,res)=>{
+    console.log('sending an error code...') ;
+    res.status(500).send("Check the console to see the status error code !")
+})
+
+> Mostly we will be sending json back with the errors : 
+app.get('/' , (req,res)=>{
+    console.log('sending an error code...') ;
+    res.status(500).json({message : "Error!"})
+})
+
+
+> Primarily , we will be rendering an html or some other file : 
+> For that we use the render method : 
+Eg : 
+app.get('/' , (req,res)=>{
+    console.log('Thois block renders an file...') ;
+    res.render(__dirname+'/path to file/fileName')
+})
+
+Eg : 
+app.get('/about' , (req,res) => {
+    res.sendFile(__dirname+'/about.html')       // note the absence of . in ./fileName when we use the __dirname 
+})
+
+Note : Most of the pages are stored inside a "views" folder
+
+
+
+> Sending a file to the user to download : 
+app.get('/' , (req,res)=>{
+    console.log('Response for dowonloading a file...') ;
+    res.download('/path_2_file')
+})
+
+> We can embed this link into an html page (for example) using an anchor tag : 
+<a href="/downloadlogo">Click to Download </a>
+
+*** Note that the href has to the route which we setup for the download in server.js: 
+app.get('/downloadlogo' , (req,res)=>{
+    res.download(__dirname+'/chickn nuggit.jpeg')
+}) 
+
+
+
+> Handling Forms in Express (using the name attribute in input fields)

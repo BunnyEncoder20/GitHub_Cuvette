@@ -33,13 +33,19 @@ app.get('/' , (req,res) => {
     res.send("Hellow World UwU")
 })
 
+// To see this, comment the about route block 
+app.get('/' , (req,res)=>{
+  console.log('sending an error code...') ;
+  res.status(500).send("Check the console to see the status error code !")
+})
+
+
+// Returning a html file 
 app.get('/about' , (req,res) => {
-    // res.send("This is about page UwU")
-    res.sendFile(__dirname+'/about.html') //returning an page 
+    res.sendFile(__dirname+'/about.html') 
 })
 
 app.get('/contact' , (req,res) => {
-    // res.send("This is contact UwU")
     res.sendFile(__dirname+'/contact.html')
 })
 
@@ -88,19 +94,24 @@ const dummyUsersDB = [
       }
 ]
 
-app.get('./users', (req,res)=>{
+app.get('/users', (req,res)=>{
     res.send(dummyUsersDB);
 })
 
-app.get('./users/odd', (req,res)=>{
+app.get('/users/odd', (req,res)=>{
     res.send(dummyUsersDB.filter(user => user.id%2 != 0)); //only showing the odd users
 })
+app.get('/users/even', (req,res)=>{
+  res.send(dummyUsersDB.filter(user => user.id%2 == 0)); //only showing the even users
+})
 
-app.get('./downloadlogo' , (req,res)=>{
+app.get('/downloadlogo' , (req,res)=>{
     res.download(__dirname+'/chickn nuggit.jpeg')
 })
 
 
+
+// Making the app/server listen to incoming requests
 app.listen(3000, ()=>{
     console.log('Sever running on port http://localhost:3000') ;
 })
@@ -109,13 +120,14 @@ app.listen(3000, ()=>{
 /*
     NOTE : 
         1. Me need to restart the server after each change 
+        > can be automated using nodemon
 
         2. Cannot send file from res directly : we use __dirname
             - Eg :  res.sendFile(__dirname+'./about') 
 
         2. HTMl methods : 
-            get (for reading)
-            post (for creating )
+            Get (for reading)
+            Post (for creating )
             Push/Patch (for updating)
             delete (for deleting)
 */
