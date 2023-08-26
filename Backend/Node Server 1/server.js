@@ -26,8 +26,10 @@ server.listen(port, hostname, () => {
 
 // Just some sample starter code for express js 
 const express = require('express') ;
+const bodyParser = require('body-parser') ;
 
 const app = express() ;
+app.use(bodyParser.urlencoded( { extended: false } )) ;
 
 app.get('/' , (req,res) => {
     res.send("Hellow World UwU")
@@ -109,7 +111,20 @@ app.get('/downloadlogo' , (req,res)=>{
     res.download(__dirname+'/chickn nuggit.jpeg')
 })
 
+app.get('/register' , (req,res) => {
+  res.sendFile(__dirname+'/register.html')
+})
 
+app.post('/api/register',(req,res) => {
+  // TO read the data sent by the frontend we need te body-parser package
+  console.log(req.body)
+  res.redirect('/register/sucess');
+})
+
+// how to send the user to the successfull landing page : 
+app.get('/register/sucess',(req,res)=>{
+  res.send('Your Data has been stored successfully')
+})
 
 // Making the app/server listen to incoming requests
 app.listen(3000, ()=>{

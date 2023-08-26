@@ -1,8 +1,13 @@
+Initalizing node / express folder 
+----------------------------
+> npm init -y 
+-y = all the basic files to be included 
+
 Installing express library 
 ----------------------
 > npm i express 
 
-Installing nodemon (it is a dev dependancy)
+Installing nodemon (it is a dev dependancy for auto restarting server)
 --------------------------------------
 This helps use by automatically restarting the server everytime we make a new 
 change 
@@ -15,6 +20,13 @@ change
 
 3. Finally to get teh server up and running, in terminal enter the command : 
 > npm run devStart 
+
+---------------------
+Better way to nodemon : 
+1. Installing it globally : npm i nodemon -g
+2. nodemon fileName.js 
+
+
 
 
 Boilplate code for express server 
@@ -30,10 +42,10 @@ app.listen(3000){
 Setting up routes in the express server 
 ----------------------------------
 > Main requests we'l be dealing with : 
-1. get 
-2. post 
-3. put / patch
-4. delete
+1. get (read)
+2. post (creating)
+3. put / patch (updating)
+4. delete (deleting)
 
 > syntax : 
     app.get('/path' , (request, response)=>{
@@ -95,3 +107,51 @@ app.get('/downloadlogo' , (req,res)=>{
 
 
 > Handling Forms in Express (using the name attribute in input fields)
+------------------------------------------------------------
+'name' attribute in the input field becomes the variable name for the backend which 
+will contain that input data.
+
+NOTE :  app.get() is not a safe way to send data to the backend. Make a seperate POST 
+api call to handle the form data by using the route : './api/formPageRoute
+Eg : 
+// To display the registeration form itself 
+app.get('/register' , (req,res) => {
+  res.sendFile(__dirname+'/register.html')
+})
+
+// To handle the data sent to the backend
+app.post('/api/register',(req,res) => {
+  res.send('Your data has been successfully stored') ;
+})
+
+// to send the user to the successfull landing page : 
+app.get('/register/sucess',(req,res)=>{
+  console.log('Processing the data')
+})
+
+<h1>Registeration Form</h1>
+    <form method="POST" action="/api/register">     // NOTE these method and action attributes
+        <input type="text" name="mail" id="mail" placeholder="Email Address">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <button type="submit">Submit</button>
+</form>
+
+NOTE : 
+> In order to acess the data from the front end (in a meaningfull manner) we need a additional package : 
+npm i body-parser  //Installing
+const bodyParser = require('body-parser')   //importing it 
+app.use(bodyParser.urlencoded({extended:false}))
+
+Thus the Routes will look something like : 
+app.get('/register' , (req,res) => {
+  res.sendFile(__dirname+'/register.html')
+})
+
+app.post('/api/register',(req,res) => {
+  console.log(req.body)
+  res.redirect('/register/sucess');     // for sending the user to success page
+})
+
+app.get('/register/sucess',(req,res)=>{
+  res.send('Your Data has been stored successfully')
+})
