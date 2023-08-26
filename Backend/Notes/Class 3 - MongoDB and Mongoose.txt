@@ -1,0 +1,23 @@
+M : Mongo
+E : Express 
+R : React 
+N : Node JS 
+
+Database (DB) - Parament Storage 
+> Eg of temp storage : localStorage
+> localStorage is not peramanent and hence cannot be used to store data securely
+
+> There are 2 types of DB : (These are based on patterns in which the data is stored)
+
+    1. Relational (SQL)
+        - Tables & Rows 
+        - Used when the structure/schema is defined 
+        - Eg : MySQL, PostgreSQL, etc
+    
+    2. Non-Relational (No-SQL)
+        - Collection & documents 
+        - Used when the structure/schema is not known
+        - Eg : MongoDB, AWS DynamoDB
+
+> Driver 
+    - Mongoose : ODM (Object Data Modelling) for MOngoDB
