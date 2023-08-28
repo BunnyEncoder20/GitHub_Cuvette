@@ -1,0 +1,99 @@
+Agenda 
+********
+1. Basics of Middlewares
+2. Query and String Parameters 
+3. Serving Static files 
+
+
+1. Middlewares 
+******************
+> it is a function in the middle of the client and server 
+> It has 3 parameters : ( req, res, next)
+
+> A basic middleware function can be like : (specific to one app call)
+Eg: 
+const middleware = (req,res,next) => {
+    console.log('You just entered the middleware')
+    next()  //lets you move over to the next page (main landing page)
+}
+
+> It can be added into the middle of any app call as follows : 
+app.get('/htmlpage' , middleware, (req,res) =>{
+    res.sendFile(__dirname+'/index.html') 
+})
+
+NOTE : That this middleware is specific to only this route, and will only be caled for it 
+
+> In this way, the request will pass through the middleware and will not land on index.html
+    until it encounters next() in the middleware function  
+
+> Using this logic we can create restrictions on incoming traffic to our website
+> We can also restrict pages which are not allowed to be viewed unless you are logged 
+    in or do not have proper authorization 
+
+
+> To make a general Middleware function (which will be called for all the app calls)
+> We use the app.use() function 
+Eg : 
+const middlewareFunctionName = (req,res,next) => {
+    console.log('You just entered the middleware')
+    next()  //lets you move over to the next page (main landing page)
+}
+
+app.use(middlewareFunctionName) ;       // app.use helps create a general middleware for all the routes
+
+app.get('/htmlpage' , (req,res) =>{
+    res.sendFile(__dirname+'/index.html') 
+})
+
+
+> For chaining mutliple middleware functions : 
+app.get('/htmlpage' , middlewareFunc1, middlewareFunc2, (req,res) =>{
+    res.sendFile(__dirname+'/index.html') 
+})
+
+
+2. Query and String Parameters (Params)
+******************************************
+> We can get string queries from the url for the backend to process 
+> Eg : 
+    http://localhost:3000/shop?product=shirts  (NOTE we added the "?product=shirts" part)
+    http://localhost:3000/shop?product=shirts&price=1000&brand=UCD  (chaining the queries using '&')
+
+app.get('/shop' , (req,res)=>{
+    console.log(req.query)
+    res.send("Welcome to the shop !")
+})
+
+
+> Imagine a Social median app : The urls are something like : 
+    socialMedia.com/users/name1
+    socialMedia.com/users/name2
+    socialMedia.com/users/name3
+> These sites do not have individual routes for each user, they use req.params to get 
+    the required info : 
+Eg : 
+    If url is something like : http://localhost:3000/users/Soma
+    This can be handle by the res.get() as : 
+
+    app.get('/users/:username' , (req,res)=>{       // NOTE : the "/:username" . : is put in front of the variable name for that parameter (here : Soma)
+        console.log(req.params)                            // req.params is the object which stores the parameters passed
+        res.send(`Welcome to the users page , ${req.params.username}`)  //accessing req.params object data
+    })
+
+
+3. Static Files 
+***************
+> Express has difficulty in fetching static files. 
+> Static files include (not limited to) : css files, JS files for simple functionality , etc
+> In order to serve static pages, we could need to use an inbuilt middleware called 
+    express.static('folderName_holding_static-Files'). This helps to server the static 
+    pages in our express server
+Eg :
+    app.use(express.static('public')) ; //we use app.use() so that all the routes have access to the static files
+
+NOTE : That the public folder is default relative folder, so no need to change the path
+            in the html file 
+            Eg : if path to css file from html is : /public/style.css
+                    then the path inside the index.html will be : 
+                    <link rel="stylesheet" href="style.css">
