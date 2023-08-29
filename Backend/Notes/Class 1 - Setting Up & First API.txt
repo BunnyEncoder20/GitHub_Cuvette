@@ -164,3 +164,33 @@ app.post('/api/register',(req,res) => {
 app.get('/register/sucess',(req,res)=>{
   res.send('Your Data has been stored successfully')
 })
+
+
+
+*********************************
+Express JS extra class 
+*********************************
+
+Agenda : 
+*********
+1. web frameworks 
+2. understanding mvc 
+3. setting up basic express server 
+4. returning responses from server 
+5. http request 
+6. template engine 
+
+
+1. Web Frameworks - Express 
+******************************
+> Express is one of the most popular framework for js which is minimalistic and straight
+    forward
+
+2. MVC (Models , Views , Controller)
+*************************************
+> View : displays all the results to the users (on the client site) 
+> Contorller : fetches the data from the model and processes the data before sending 
+                        it to the View (When a request is sent, the controller gets it)
+> Model : On the server side , stores the data 
+
+> Routes are the url for the page of the website 

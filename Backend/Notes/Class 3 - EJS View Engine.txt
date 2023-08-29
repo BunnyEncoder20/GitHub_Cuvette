@@ -3,4 +3,55 @@ View Engine : EJS
 Request Parameters 
 
 Building Dynamic Pages 
---------------------
+*************************
+> In Social media websites, we can see that the links (routes) end with the user's name
+    Eg : In linkedIn the profiles pages routes look like 
+         https://www.linkedin.com/in/saptajit-banerjee
+         https://www.linkedin.com/in/gnana-bharathi
+
+> The pages routes are custom made for each users. The template of each page is the 
+    same, just the data passed into these pages from the backend is different. 
+
+
+
+View Engine  - EJS 
+********************
+> Just one template page is made and it is used to render all the profile pages of that 
+    website 
+> EJS (Embedded Javascript Templating) View engine helps us create these dynamic pages
+
+@ Steps : 
+1. Installation : 
+> npm install ejs
+
+2. Importing it into the server : 
+> const ejs = require('ejs')
+
+3. Setting the template to ejs : 
+Syntax : app.set('what_to_be_set' , 'set_to_this') ;
+> app.set('view engine' , 'ejs' )
+
+4. Create a seperate folder for views 
+
+5. Create files within the folder using the extension .ejs 
+> Eg : profileTemplate.ejs 
+
+6. Write whatever html you want to inside that file 
+> Remember how to use the variables inside the .ejs file : 
+Eg : 
+    <h1> <%= Variable %> </h1>
+
+7. Create the route for the file : 
+> Basic route : 
+    app.get('/temp' , (req,res) => {
+      res.render('temp')    
+    })
+
+> Route with sending object of variables : 
+    app.get('/Topic2' , (req,res) => {
+      res.render('temp' , { 
+        variable1 : 'Value1' 
+        variable2 : 'Value2'
+        variable3 : 'Value3'
+        })
+    })
