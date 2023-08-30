@@ -55,3 +55,59 @@ Eg :
         variable3 : 'Value3'
         })
     })
+
+> If the details are in an js array then we can also used the .find() method for fetching 
+    details : 
+    app.get('/George' , (req,res)=>{
+      let details = dummyUsersDB.find(user=>user.first_name === "George");  //dont use ()=>{} here, it doesn't work 
+      console.log(details);
+      res.render('profileTemplate', details)
+    })
+
+> Using id else statements in dynamic renders : 
+Eg : 
+    <% if (likescake) { %>          // note that likecake is a boolean ejs variable 
+        <h5>Yeh ! You like cake !</h5>
+        <% } %>
+
+> We can also use loops to render something for number of times 
+
+
+
+
+2. Request Parameters
+*********************** 
+> a good way to get information from the url. They are nothing but variables in the URl
+> how to access the variables from the URL : 
+    app.get('/example/:parameter' , (req,res) => {      // do not forget the first / in route
+      console.log(req.params.parameter)
+      res.json({value:req.params.parameter})
+    })
+
+> This way we can reduce all the user functions to a single function like : 
+Eg : 
+// Making all the user fucntions into a single function : 
+    app.get('/profiles/:username',(req,res)=>{
+      let username = req.params.username ;
+      // console.log(username)
+      let userdetails = dummyUsersDB.find(user=>user.first_name === username);
+      console.log(userdetails);
+      res.render('profileTemplate', userdetails)
+    })
+
+> Error handling can also be done using the Request Parameters for the above function
+Eg : 
+    app.get('/profiles/:username',(req,res)=>{
+        let username = req.params.username ;
+        // console.log(username)
+        let userdetails = dummyUsersDB.find(user=>user.first_name === username);
+
+        if (userdetails) {
+          console.log(userdetails);
+          res.render('profileTemplate', userdetails)
+        }
+        else {
+          console.log('User was not found')
+          res.render('notFound')        //rendering a different Error page if user not found
+        }
+    })
