@@ -4,8 +4,10 @@ R : React
 N : Node JS 
 
 Database (DB) - Parament Storage 
+************************************
 > Eg of temp storage : localStorage
-> localStorage is not peramanent and hence cannot be used to store data securely
+> localStorage is not peramanent and hence cannot be used to store data securely for 
+    longer periods of time 
 
 > There are 2 types of DB : (These are based on patterns in which the data is stored)
 
@@ -21,3 +23,143 @@ Database (DB) - Parament Storage
 
 > Driver 
     - Mongoose : ODM (Object Data Modelling) for MOngoDB
+
+
+
+Setting up in Database online at MongoDB
+*********************************************
+Link to website : https://cloud.mongodb.com
+
+1. Create a Cluster from the Database Tab (if making a new one)
+
+2. Select The Free tier - Shared : M0 - for learning and exploring MongoDB in a cloud environment
+
+3. Provider : AWS 
+
+4. Select the most nearest region : Mumbai 
+
+5. Name the Cluster 
+
+6. Click on create 
+
+7. Set the password and username in the 'Security > Quickstart' Tab // remember these 
+
+Summary : 
+Cluster Name : CuvetteCluster
+user:  admin 
+password : admin123
+
+
+Browsing the Cluster  
+**********************
+> Access the db collection from the 'database' tab then click on Browse Collections
+> Think of Collections as equivalent to MySQL Tables - Collection can be of anything 
+    - books , Cars, Bikes, Games , Tech, etc 
+> The Collection of Books (for Example) will have many individual records of book - 
+    These individual records are called DOCUMENTS
+
+> Collection = Tables 
+> Documents = rows (sort of not exactly)
+
+Note : That a db can have many collections (Tables)
+
+
+Making a Database 
+********************
+> Click on 'add own data'
+> Name the database 
+> Name the Collection 
+> Click on 'Create' 
+> Selecting the collection , we can add documents using the 'INSERT DOCUMENT' button
+> Enter the info in key:Value pairs (I preffer the JSON object view)
+> Can add more collection by clicking on '+' on Database Name in the left Database 
+    Panel 
+
+> Note that when creating a new document, there will always be an unique '_id'. This is 
+    used in non-relational DB to distinguish between the documents records
+
+
+
+Creating the Node application to connect with the online mongodb database
+********************************************************************************
+const epxress = require('express')
+const ejs = require('ejs')
+const bodyParser = require('body-parser')
+
+const app = epxress()
+
+app.use(bodyParser.urlencoded({extended:false}))
+
+NOTE : 
+    > remember that app.use() is used to attach middlewares (entity, which lies between 
+        client and server) 
+    > The above line is used to call a urlencoded middleware to decode the encoded url 
+        which is sent when using POST or PATCH methods to send request
+    > The extended:false is used for simple straightforward data. It is set to true when 
+        we are recieving complex data like nested objects, nested arrays , etc 
+
+app.use(express.static('./public'))
+
+NOTE : 
+    > express.static is another middleware which is used (here) to make the contents of
+        the public folder accessible throughtout the node application  
+
+
+
+
+Mongoose 
+***********
+> To integrate the mongodb with our node.js application, we'll need a man in the middle
+    (Driver/ODM - object data modelling) so that both able to understand each other. 
+> This MongoDB driver is called Mongoose
+> It is used for object modelling for Node.js . It converts all the objects of js into the 
+    relevant types of MongoDB
+
+> Installation : 
+    npm i mongoose 
+
+> Importing it in the server file : 
+    mongoose.connect('url_to_connect_with_db_don't_forget_to_change_the_<password>')
+        .then(()=> console.log("Connected to DB successfully"))
+        .catch((error)=>console.log(error))
+    
+> Note that This is an asynchronous operation, hence we are using .then() .catch() methods 
+    to handle it.
+> We should only give the success message of connection only after the connection to 
+    db has been successfuly made. So we place the connection code in the app.listen()
+    Eg : 
+    app.listen(3000 , ()=>{
+        mongoose
+            .connect('mongodb+srv://admin:admin123@cuvettecluster.dwfi9ds.mongodb.net/?retryWrites=true&w=majority')
+            .then(()=> console.log("[Sevrer] Server Started \n Connected to DB"))
+            .catch((error)=>console.log(error))
+    })
+
+
+> Note : See how we can exposing out password to our dbs when we are writing these 
+    codes. To help us protect our passwords, ports we use package dotenv
+> This packages allows use to load private data from teh .env file (this file is not 
+    pushed to github, we usually include .env in the .gitignore file)
+
+> Installation : npm i dotenv
+> Importing : 
+    const dotenv = require('dotenv');
+    dotenv.config()
+> Accessing the data in the .env file (process.env.variableName)
+    app.listen(process.env.port , ()=>{
+        mongoose
+            .connect(process.env.mongodb_url)
+            .then(()=> console.log("[Server] Sevre is now Running \n[Server] Connection to DB established"))
+            .catch((error)=>console.log(error))
+    })
+
+> Most of the deployment domains will ask for an .env file when we deploy out projects 
+    there. Thus we don't need to worry about out codes not working there
+    
+
+
+> Don't forget to fill your .gitignore file : 
+    **/node_modules/
+    **/.env
+> as this git repo structure is made so that it contains many sub directories and folders,
+    hence the '**/' is used to specify the reoccuring folders and files  

@@ -7,6 +7,11 @@ Installing express library
 ----------------------
 > npm i express 
 
+> We multiple packages in the same command by seperating the package names 
+    using a space :-
+    > npm i express ejs body-parser
+Note body-parser is very usefull when dealing with put and post requests
+
 Installing nodemon (it is a dev dependancy for auto restarting server)
 --------------------------------------
 This helps use by automatically restarting the server everytime we make a new 
