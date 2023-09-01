@@ -1,3 +1,60 @@
 Agenda 
 ********
 Mongoose - Schemas , methods and REST API
+
+
+Postman - API Tool 
+********************
+> It is an application which helps in checking the requests of our backend without the 
+    need to make a frontend 
+> Installing it locally on desktop will allow to send request to http://localhost
+> This allows us to test our apis without any frontend 
+
+CRUD Operations in HTTP Methods : 
+*************************************
+- GET : 'READ' data (R)
+- POST : 'create' data (C)
+- PUT/PATCH : 'update' data (U)
+- Delete : 'delete' data (D)
+
+REST - Representational State Transfer 
+*****************************************
+- Standardized representation of APIs
+- CRUD Operations 
+
+Examples of CRUD Operations in a E-commerce website : 
+- API for customers : 
+    - R : GET /customer
+    - C : POST /customer
+    - U : PUT /customer/:id
+    - D : Delete /customer/:id
+
+- API for sellers : 
+    - R : GET /seller
+    - C : POST /seller
+    - U : PUT /seller/:id
+    - D : Delete /seller/:id
+
+- API for products : 
+    - R : GET /product
+    - C : POST /product
+    - U : PUT /product/:id
+    - D : Delete /product/:id
+
+
+Creating a Collection (Mongoose model)
+******************************************
+> By using mongoose.model() we can create a new database with a specific Schemas
+> Convention to write the model name with first letter caps 
+> First arguement is name of the collection and second is the general schema of the data 
+    we are going to store in that collection 
+> Eg : 
+    const Customer = mongoose.model('Customer' , {
+        name : String ,
+        email: String ,
+        phoneNumber:Number,
+        avatarURL:String
+    })
+
+> NOTE : Once the code is saved, it'll create the collection under the database : 'test'
+    you can view it under the browse collection section

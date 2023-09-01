@@ -122,7 +122,9 @@ Mongoose
     mongoose.connect('url_to_connect_with_db_don't_forget_to_change_the_<password>')
         .then(()=> console.log("Connected to DB successfully"))
         .catch((error)=>console.log(error))
-    
+
+> To get connection url : 
+    MongoDB website -> DataBase -> Connect -> Drivers -> Add your connection string into your application code 
 > Note that This is an asynchronous operation, hence we are using .then() .catch() methods 
     to handle it.
 > We should only give the success message of connection only after the connection to 
