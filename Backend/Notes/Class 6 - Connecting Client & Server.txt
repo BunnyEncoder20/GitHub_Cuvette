@@ -1,0 +1,5 @@
+Agenda
+********
+> Connecting Client and server ie: connecting React App with a Node App
+> Bootstrap
+> related file in Folder : ./SocialMediaApp

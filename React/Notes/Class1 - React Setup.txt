@@ -41,7 +41,7 @@
 
     Alternative Syntax (Cleaner and lighter)
     -----------------------------------
-    > npm create vite@latest app-Name -- -- template react
+    > npm create vite@latest app_Name -- -- template react
     // cd to project directory 
     > npm install 
     //start the dev server 

@@ -46,7 +46,8 @@ Creating a Collection (Mongoose model)
 ******************************************
 > By using mongoose.model() we can create a new database with a specific Schemas
 > Convention to write the model name with first letter caps 
-> First arguement is name of the collection and second is the general schema of the data 
+> First arguement is name of the collection and 
+    second is the general schema of the data 
     we are going to store in that collection 
 > Eg : 
     const Customer = mongoose.model('Customer' , {
@@ -58,3 +59,149 @@ Creating a Collection (Mongoose model)
 
 > NOTE : Once the code is saved, it'll create the collection under the database : 'test'
     you can view it under the browse collection section
+
+
+
+Getting the records from collections 
+***************************************
+> To fetch records from the mongodb we use an myModel.find({})
+> It is used to return all of the documents in that collection
+Eg : 
+    await myModel.find({})
+
+> NOTE : 'await' is used as the operation is a asychronous operation, thus we would 
+    need to add the keyword 'async' in the app.get() call as well. Eg : 
+
+> Proper way to fetch the data :-
+app.get('/customers' , async (req,res) => {
+    try{
+        const cust = await  Customer.find()
+        res.json({
+            status : 'SUCCESS' ,
+            data: cust
+        })
+    }
+    catch(error) {
+        res.json({
+            status : 'FAILURE' ,
+            msg: `Something went wrong\n${error}`
+        })
+    }
+})
+
+> Remember that we always handle an asynchronos operation in 2 ways : 
+    - if it was successful or 
+    - if it failed
+
+> We can also simulate an error by making one using throw : 
+app.get('/customers' , async (req,res) => {
+    throw new Error('Dummy Error')   // this will cause the catch block to activate
+    try{
+        const cust = await  Customer.find()
+        res.json({
+            status : 'SUCCESS' ,
+            data: cust
+        })
+    }
+    catch(error) {
+        res.json({
+            status : 'SUCCESS' ,
+            msg: `Something went wrong\n${error}`
+        })
+    }
+})
+
+
+Few Status codes which we should know : 
+200 - all ok
+400 - Bad request (mistake of client)
+500 - internal server error (mistake of server)
+
+> We can return status using res.status(value) methods. Eg : 
+    catch(error) {
+        res.status(500).json({
+            status : 'FAILURE' ,
+            msg: `Something went wrong\n${error}`
+        })
+    }
+
+
+Creating a POST request to Create records 
+*********************************************
+app.post('/customers' , async (req,res) => {
+    try{
+        // throw new Error('Duimmy Error')   // this will cause the catch block to activate
+        
+        const {name, email, phoneNumber, avatarURL} = req.body // destructuring the data from req.body
+        
+        await Customers.create({name, email, phoneNumber, avatarURL})   //sending data to create a record/document
+        
+        res.json({
+            status: 'Success',
+            msg : "Customer created"
+        })
+    }
+    catch(error) {
+        res.status(500).json({
+            status : 'Failure' ,
+            msg: `Something went wrong\n${error}`
+        })
+    }
+})
+
+
+Simulating a html form in Postman : 
+**************************************
+Set : 
+    method = POST 
+    URL = whatever url 
+
+Go to : 
+    body -> x-www-form-urlencoded
+
+DO : 
+    key = Add the fields names of the form 
+    Values = add some dummy data to send to backend 
+
+
+
+Updating a document using PATCH : 
+*************************************
+> PUT is used to completed override the previous record (deletes the previous record 
+    and fills in all the values again)
+> PATCH just updates the selected records details only 
+> We use the mymodel.findByIdAndUpdate(id_of_record)
+> Eg : 
+    app.patch('/customer/:id' , async (req,res)=>{
+        try{
+            // throw new Error('Dummy Error')   
+            let {id} = req.params.id ;
+            await CustomerModel.findByIdAndUpdate(id, {name, email, phoneNumber, avatarURL})
+
+            res.json({
+                status: 'Success',
+                msg : "Customer updated"
+            })
+        }
+        catch(error) {
+            res.status(500).json({
+                status : 'Failure' ,
+                msg: `${error}`
+            })
+        }
+    })
+
+
+
+Simulating a PATCH request in POSTman : 
+*******************************************
+Set : 
+    method = PATCH
+    URL = whatever_url 
+
+Go to : 
+    body -> x-www-form-urlencoded
+
+DO : 
+    key = Add the fields names which needs to be updated
+    Values = add the new value here 
