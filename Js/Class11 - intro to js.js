@@ -74,3 +74,41 @@ function Division() {
     
     resultElement.innerHTML = result;
 }
+
+/*
+    Data Types in JS 
+    --------------
+    Two major types of data in JS : 
+    1. Primitive - string, number, boolean, Null, undefined, BigInt, Symbol
+    2. Non-primitive - object
+
+    NOTE : arrays, functions in JS are a derived type of objects only
+
+    var a ;     # undefined (decalred but not initialized)
+    var b = <null>      # Null value (declared and initialized) 
+
+    To check the datatype of a variable : 
+    > typeof variable_name    
+    < string
+*/
+
+/**
+ *  Type Cohersion in JS
+ *  ------------------
+ *  When 2 different data types are given and a common operation is done on them , JS auto converts some 
+ *  of the data into the other 
+ *  Eg : 
+ */
+let var1 = "123" ;
+let var2 = 10 ;
+let result = var1+var2;
+console.log("Type Cohersion : "+result)
+/**
+ *  We see that instead of adding like numbers, JS has concatenated the variables
+ *  But sometimes it'll convert the String into numbers when substraction is done : 
+ */
+result = var1-var2 ;
+console.log(result) ;
+/**
+ *  Because there is no operation with subsraction in string , hence js converts the variables to numbers
+ */
