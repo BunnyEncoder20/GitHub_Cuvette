@@ -11,6 +11,8 @@
     Function defination :-
     function functionName (paremeters) {
         // body : what the function will do here
+
+        // return statement - when the function has to return some value back
     } 
 
     Function call :-
@@ -72,3 +74,77 @@ function greet(hellofunc) {     // Notice that the hellofunc name behaves like p
 } 
 
 greet(sayHello); // Note the lack of brackets (). if brackets are added, it becomes a invocation
+
+
+// Revision code 
+
+// Form 1 : function declaration 
+let loaves = makeBread(7);
+console.log('loaves : '+loaves);
+function makeBread(quantity){
+    const bread = '🍞'.repeat(quantity);
+    return bread;
+}
+
+// Form 2 : function expression (uses an anonymous function = function without a name)
+const makeBeer = function (qty) {
+    return  '🍺'.repeat(qty);
+}
+console.log('Beers : '+makeBeer(7));
+
+// NOTE : function declarations are hoisted but function expressions are not. so they must be declared 
+// first before calling 
+// NOTE : most use function expressiong and arrow functions because they do not get hoisted and are less 
+// likey to pollute the global namespace 
+
+// Form 3 : IIFE - Immediately invoked fucntion expression
+( function () {
+    console.log('Dougnut : '+'🍩'.repeat(3));
+}) ();
+
+
+// Form 4 : Arrow Functions (remove function keyword and have a => pointing to function body)
+// when we write the arrow functions wihtout parathesis , it returns the value automatically. If we use 
+// paranthesis, then we will have to explicitally return the function value
+const makeWine = (qty) => '🍷'.repeat(qty);
+console.log('Wine : '+makeWine(5))
+
+const makeCoffee = (qty) => {
+    return '☕'.repeat(qty);
+}
+console.log('Coffee : ' + makeCoffee(5));
+
+
+/**
+ *  Pure functions : which only depend on their inputs parameters and always will give the same output as 
+ *                              long as the inputs remain the same 
+ *  Impure Functions : have some sort of global variable modification within them (either use a global variable
+ *                                 in their function or modfiy and return it). They are dependent on that global variable too 
+ *                                 and hence may give different outputs for same input.
+ */
+
+
+
+// Arguements
+function make_breakfast(main, side, drink) {
+    console.log(arguments); // arguments is a keyword which is an array with all the arguements
+    return `includes ${main}, ${side} and ${drink}` ;
+}
+ console.log('Breakfast '+make_breakfast('🥞','🥓','🥛'))
+
+//  When faced with a lot of arguments use NAMED ARGs and then destructure it 
+// NOTE : the paranthesis should be {} because it is passed as an object
+function makeLunch(lunchbox) {
+    let {main,side,drink} = lunchbox;
+    return `includes ${main}, ${side} and ${drink}` ;
+}
+console.log("Lunch "+makeLunch({main:'🌯', side:'🍟', drink:'🥤'}))
+
+// REST PARAMs : send multiple items as args without naming them and access them like a array in the function
+// NOTE : the ...args tells that these are rest arguments 
+// NOTE : careful about the parathesis should be [] because it's an array
+function makeDinner(...dinnerbox) {
+    let [i1,i2,i3,i4,i5] = dinnerbox;
+    return `includes ${i1}, ${i2}, ${i3}, ${i4} and ${i5}` ;
+}
+console.log("Dinner "+makeDinner('🍜','🍲','🥣','🍑','🍤'));
