@@ -110,8 +110,39 @@ console.log("This line comes only after you click on resume in the debugger !")
  *      able to access all the variables, which belong to the environment of that function
  *      (here, all the variables present in it's lexical scope)
  * > It is a featuer of JS which allows inner functions to access the outer scope of a function
- * 
+ * > Using closure, you can encapsulate the vairables and make them private.
+ * > Used for getting some security and encapsulating private vairables so that they cannot be changed
  */
+
+function createGame(){
+    let score = 0;      // this now becomes a private variable which will not be accessible outside the createGame function
+
+    function increaseScore(points) {
+        score += points ;
+        console.log(`+${points}pts`)
+    }
+
+    function decreaseScore(points) {
+        score -= points ;
+        console.log(`-${points}pts`)
+    }
+
+    function getScore() {
+        return score ;
+    }
+
+    return {increaseScore, decreaseScore, getScore};    // returning an object which has references to the functions
+}
+
+//console.log(score);  // will give an error because the score is a private variable now 
+
+let game = createGame();
+game.increaseScore(5);
+game.increaseScore(6);
+game.decreaseScore(2);
+console.log("Current Score : ",game.getScore());
+
+
 
 let globalVariable = 10 ;
 function outer() {
