@@ -139,3 +139,86 @@ increasedMarksBy10 = arrObjects.map(students => {
     return students.marks += 10 ;
 })
 console.log(increasedMarksBy10) ;
+
+
+
+// Revision 
+// 1. Spread operator : ... - allows an iterable (eg: array, string) to be expanded into seperate elements  
+// (unpacks the elements) 
+let numbers = [1,2,3,4,5];
+let maxi = Math.max(numbers)        // this returns NaN because we directly passed an array 
+maxi = Math.max(...numbers)          // here we passed the unpacked elements of the array 
+console.log("Maximum = "+maxi);
+let mini = Math.min(...numbers);
+console.log("Minimum = "+mini);
+
+let username = "Bunny Encoder";
+console.log(...username);
+let letters = [...username];
+console.log(letters);
+letters = [...username].join("-");
+console.log(letters);
+
+let fruits1 = ["🍎", "🍊","🍌"] ;
+let vegetables = ["🥕","🥔","🍆"] ;
+
+let foods = [...fruits1, ...vegetables, "🥛", "🥚"] ;
+console.log(foods);
+
+
+// Array of Objects : 
+const fruits = [ {name: "apple", color: "red", calories: 95}, 
+                          {name: "orange", color: "orange", calories: 45}, 
+                          {name: "banana", color: "yellow", calories: 105}, 
+                          {name: "coconut", color: "white", calories: 159}, 
+                          {name: "pineapple", color: "yellow", calories: 37}];
+
+// Access properties of a fruit object
+console.log(fruits[0].name);
+console.log(fruits[0].color);
+console.log(fruits[0].calories);
+
+// Add a new fruit object
+fruits.push({ name: "grapes", color: "purple", calories: 62});
+
+// Remove the last fruit object
+fruits.pop();
+
+// Remove fruit objects by indices
+fruits.splice(1, 2);
+
+// ---------- forEach() ----------
+fruits.forEach(fruit => console.log(fruit));
+fruits.forEach(fruit => console.log(fruit.name));
+fruits.forEach(fruit => console.log(fruit.color));
+fruits.forEach(fruit => console.log(fruit.calories));
+
+// ---------- map() ----------
+const fruitNames = fruits.map(fruit => fruit.name);
+const fruitColors = fruits.map(fruit => fruit.color);
+const fruitCalories = fruits.map(fruit => fruit.calories);
+
+console.log(fruitNames);
+console.log(fruitColors);
+console.log(fruitCalories);
+
+// ---------- filter() ----------
+const yellowFruits = fruits.filter(fruit => fruit.color === "yellow");
+const lowCalFruits = fruits.filter(fruit => fruit.calories < 100);
+const highCalFruits = fruits.filter(fruit => fruit.calories >= 100);
+
+console.log(yellowFruits);
+console.log(lowCalFruits);
+console.log(highCalFruits);
+
+// ---------- reduce() ----------
+const maxFruit = fruits.reduce( (max, fruit) =>
+                                                        fruit.calories > max.calories ?
+                                                        fruit : max);
+
+const minFruit = fruits.reduce( (min, fruit) =>
+                                                       fruit.calories < min.calories ?
+                                                       fruit : min);
+
+console.log(maxFruit);
+console.log(minFruit); 
