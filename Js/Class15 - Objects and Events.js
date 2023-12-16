@@ -4,7 +4,7 @@
     Objects: 
     -> Object
     -> accessing properties of object
-    -> deletiong properties of object
+    -> deleting properties of object
     -> iteration over object
     -> Arrays + Objects 
 
@@ -17,7 +17,7 @@
 Objects 
 -------
 > not like the objects in other programming languages 
-> objects are contains which have properties in form of key-value pairs and can also
+> objects are containers which have properties in form of key-value pairs and can also
     have behaviours in the form of methods (functions)
 > In JS, objects are most important. If you understand objects, you understand JS
 > In JS almost everything is an object 
@@ -38,6 +38,8 @@ console.log(bestfriend) ;
 console.log(bestfriend.nickname) ;
 console.log(bestfriend['name']) ;
 // console.log(bestfriend[age]) ;  * Calling this will create an error 
+console.log(bestfriend['age']) ;
+console.log(bestfriend.age) ;
 console.log(bestfriend.talk()) ;
 
 /*
@@ -74,7 +76,7 @@ for (const key in bestfriend) {
 
 
 /*
-Array og objects 
+Array of objects 
 */
 let arrObjects = [
     {

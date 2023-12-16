@@ -102,3 +102,157 @@ object.forEach( currentValue => {
     currentValue.val += 100;
 }) ;
 console.log(object) ;
+
+
+
+//  Revision for HOF : ForEach()
+let numbers = [1,2,3,4,5];
+
+// The callback functions : 
+let display = element => {console.log(element);}
+let double = (element, index, array) => array[index]=element*2;
+let triple = (element,idx,arr) => arr[idx]=element*3;
+let squared =  (element,idx,arr) => {
+    arr[idx] = Math.pow(element,2);
+}
+let uppercase = (element,idx,arr) => arr[idx]=element.toUpperCase();
+let lowercase = (element,idx,arr) => arr[idx]=element.toLowerCase();
+let capitalize = (element,idx,arr) => arr[idx]=element.charAt(0).toUpperCase()+element.slice(1);
+// Remember that function declarations are only hoisted and not function expressions and arrow functions
+
+// The forEach function calling the callbacks functions by passing them as it's input arguements
+numbers.forEach(display);
+console.log("Doubled");
+numbers.forEach(double)
+numbers.forEach(display);
+console.log("Times 3");
+numbers.forEach(triple);
+numbers.forEach(display);
+console.log("Squared")
+numbers.forEach(squared)
+numbers.forEach(display);
+
+
+
+let fruits = ["Apple","Orange","Banana","Coconut"];
+
+console.log("Fruits :");
+fruits.forEach(display);
+console.log("To uppercase : ");
+fruits.forEach(uppercase);
+fruits.forEach(display);
+console.log("To Lower case");
+fruits.forEach(lowercase);
+fruits.forEach(display);
+console.log("Capitalize the first character : ");
+fruits.forEach(capitalize);
+fruits.forEach(display);
+
+
+//  Revision for HOF : map()
+// very similar to the forEach() but it returns a brand new array 
+
+const number2 = [1,2,3,4,5];
+const squaredNumber2 = number2.map(square);
+console.log("Squared Number2");
+console.log(squaredNumber2);
+const cubedNumber2 = number2.map(cube);
+console.log("Cubed Number2");
+console.log(cubedNumber2);
+
+function square(element) {
+    return Math.pow(element,2);
+}
+function cube(element){
+    return Math.pow(element,3);
+}
+
+
+const students = ["bunnY","SoMa","PunEet","varUn"] ;
+const uppercased = students.map(upper);
+const lowercased = students.map(lower);
+console.log("All Upper : ");
+console.log(uppercased);
+console.log("All lower : ");
+console.log(lowercased);
+console.log("Original : ")
+console.log(students);
+
+function upper(element) {
+    return element.toUpperCase();
+}
+function lower(element) {
+    return element.toLowerCase();
+}
+
+
+const dates = ["2022-1-10","2023-12-31","2023-5-15","2001-1-6"];
+const corrected_dateformat = dates.map(format); 
+console.log(corrected_dateformat);
+
+function format(element) {
+    let parts = element.split("-");
+    return `${parts[2]}/${parts[1]}/${parts[0]}` ;
+}
+
+
+//  Revision for HOF : .filter()
+// creates a new array by filtering out elements
+const number3 = [1,2,3,4,5,6,7,8,9,10];
+console.log("Even Numbers : ");
+const evennums = number3.filter(isEven);
+console.log(evennums);
+console.log("Odd Numbers : ")
+const oddnums = number3.filter(isOdd);
+console.log(oddnums);
+
+function isEven(e) {
+    return e%2 === 0;
+}
+function isOdd(e) {
+    return e%2 !== 0;
+}
+
+const ages = [16,17,18,18,20,19,60];
+let isAdult = e => e>=18 ;
+let isChild = e => e<18 ;
+
+const adults = ages.filter(isAdult);
+console.log("Adults : ");
+console.log(adults);
+const children = ages.filter(isChild);
+console.log("Children : ");
+console.log(children);
+
+const fruits2 =["apple","banana","orange","kiwi","pomegranate","coconut"]
+console.log("pomegranate : "+fruits2[4].length);
+let shortword = str => str.length <= 6 ;
+let longword = str => str.length > 6 ;
+console.log("Short Words");
+const shortwords = fruits2.filter(shortword);
+console.log(shortwords);
+console.log("Long Words");
+const longwords = fruits2.filter(longword);
+console.log(longwords);
+
+
+//  Revision for HOF : .reduce()
+// reduced all the elements of a array into a single value 
+const prices = [5, 30, 25, 10, 15, 20] ;
+let billing = (accumulator, element) => {
+    return accumulator+element;
+}
+const total = prices.reduce(billing)
+console.log(`Total : ${total.toFixed(2)}`)      // .toFixed(n) fixes the decimal values of the numebr till n places
+
+const marks = [75, 50, 90, 80, 65, 95];
+const getMax = (acc, next) => Math.max(acc,next) ;
+const getMin = (acc,next) => Math.min(acc,next);
+
+const maxMark = marks.reduce(getMax);
+const minMark = marks.reduce(getMin);
+console.log("Maximum Marks : ")
+console.log(maxMark);
+console.log("Minimum Marks : ")
+console.log(minMark);
+

@@ -148,3 +148,16 @@ function makeDinner(...dinnerbox) {
     return `includes ${i1}, ${i2}, ${i3}, ${i4} and ${i5}` ;
 }
 console.log("Dinner "+makeDinner('🍜','🍲','🥣','🍑','🍤'));
+
+
+
+// Higher Order Functions : HOF or First Class Functions (Callback functions)
+// ----------------------------------------------------------------
+/**
+ * These functions take other functions as input arguements or are returning a function.
+ * An good example is the seTimeout(func,timeDelay) - executes a function after a certain time delay
+ */
+havefun=()=>console.log("3 seconds : Are you having fun ?!");
+setTimeout(havefun,3000);       // delay time in ms
+// if you want to make it an anonymous function :
+setTimeout(()=>console.log("5 seconds : Are you having fun ?!"),5000);
