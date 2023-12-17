@@ -95,3 +95,16 @@ let arrowFunc = (a,b) => {
 }
 // if you are making a arrow function with only one line which is returning something :
 let arrowFuncWithReturn = (a,b) => a+b ;
+
+/**
+ * NOTE : 
+ *  1. Arrow functions implicitally return values when we do not use curly braces (automatically returns 
+ *      a+b without mentioning the return keyword)
+ * 2. If curly braces {} are used then we need to explicitally return the result (use the keyword return to
+ *     return the results)
+ * 3. When returning an object from the arrow function, we have to use paranthesis () to wrap around the 
+ *      body of the arrow function (because the {} will be present for the object's syntax)
+ */
+
+let arrowFuncReturningObj = nam => ( {username:nam} ) ;
+console.log(arrowFuncReturningObj("senpai"));

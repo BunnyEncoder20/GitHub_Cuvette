@@ -18,7 +18,7 @@
 */
 
 // Template object we want to create multiple of 
-// let student = {
+// let Student = {
 //     fname:'Alpha',
 //     lname:'Beta',
 //     age:21,
@@ -76,7 +76,7 @@ demo();
     ----------
     > it is a mode in Js which won't allow some mistakes which we can get away with while
         using JS normally . (Eh : using a variable without decalring it first)
-    > To enable Strict mode in java we write the following line at the top of the script :
+    > To enable Strict mode in js we write the following line at the top of the script :
         "use strict"
     > Notice in the above eg, when strict mode is enabled, the 'this' keyword inside the 
         demo function becomes undefined (while the other 2 'this' keyword remain same)
@@ -90,9 +90,9 @@ demo();
     ---------------
     > We typically have used arrow functions where we do not want to write the function
         decalration 
-    > But, diff between arrow function and normal function is that noraml function will
+    > But, diff between arrow function and normal function is that a normal function will
         always have a binding of 'this' keyword
-    > eg : Take the obejct from before with the noraml function getInfo and convert it into
+    > eg : Take the obejct from before with the normal function getInfo and convert it into
         a arrow function. It will now not recognize the 'this' of the object instead show the 
         window as the refernce to the 'this' keyword
     
@@ -112,11 +112,11 @@ obj.getInfo();
     -----------------
     > In below scenario, when we have a function which is same in both objects, we want 
         to reduce the redundancy, so want to write it only once and have it bind with 
-        'this' of each of the obejct once 
+        'this' of each of the objects once 
 */
 
 let student0 = {
-    name:"abc",
+    name:"student",
     age:12,
     printInfo: function () {
         console.log(`${this.name} is ${this.age} years old`)
@@ -124,7 +124,7 @@ let student0 = {
 }
 
 let teacher0 =  {
-    name:"def" ,
+    name:"teacher" ,
     age:40,
     printInfo: function () {
         console.log(`${this.name} is ${this.age} years old`)
