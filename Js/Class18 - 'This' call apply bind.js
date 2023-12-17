@@ -49,8 +49,13 @@ console.log(S2.email);
     'This' keyword
     -------------
     > It is a keword which always points to the object/fucntion it is called from 
+    > in simple terms, this returns the current execution context 
     > in the constructor above , this.property will point to that object properties only 
         (here the object S1)
+    
+    > Remember that this keyword when printed in global scope of a BROWSER will return the window object
+        because that is the outer most context layer BUT
+    > WHen you print this keyword in node environment, it'll print a empty object {}
 */
 
 let obj = {
@@ -115,6 +120,7 @@ obj.getInfo();
         'this' of each of the objects once 
 */
 
+
 let student0 = {
     name:"student",
     age:12,
@@ -165,9 +171,65 @@ printInfo.apply(student, [89]);
     > but bind is little different
 
     > bind returns a binded fucntion which can be called later 
+    > bind returns the combined context of the both that function and it's outer context 
 */
 
 let studentBindedFunc = printInfo.bind(student, [89]);
 let teacherBindedFunc = printInfo.bind(teacher, [50]) ;
 studentBindedFunc();
 teacherBindedFunc();
+
+
+/**
+    Revision Notes     
+----------------
+    > .call : is used when we are passing the exe context of one function to another 
+    > Note that in the below given code, we cannot directly call the other function from inside a function
+        we need to use one of the following (.call(), .bind())
+    > .call(this , args) - the first 'this' is a optional arg which passes the contect of the current function to 
+        the function being called. 
+ */
+console.log("\n\nRevision Notes")
+
+console.log("\nWithout .call()");
+function setUsername1(username){
+    this.username = username;
+    console.log("setUsername1 called...");
+}
+function createUser1(username,email,password) {
+    setUsername1(username);
+    this.email = email;
+    this.password = password;
+}
+const user1 = new createUser1("soma","soma@gmail.com","123");
+console.log(user1);     // notice that the username is not set because the setUsername1 function is binding the username to it's exe context
+
+
+
+console.log("\nWith .call()");
+function setUsername2(username){
+    this.username = username;
+    console.log("setUsername2 called...");
+}
+function createUser2(username,email,password) {
+    setUsername2.call(username);
+    this.email = email;
+    this.password = password;
+}
+const user2 = new createUser2("soma","soma@gmail.com","123");
+console.log(user2); // this time there is way to send context but have not mentioned it in the .call(). this is a optional parameter in the .call() whichi will send the context of currernt function
+
+
+
+console.log("\nWith .call(this,args)");
+function setUsername3(username){
+    this.username = username;
+    console.log("setUsername3 called...");
+}
+function createUser3(username,email,password) {
+    setUsername3.call(this,username); // notice how the .call(this,args) is been used to send the current context to the called function
+    this.email = email;
+    this.password = password;
+}
+const user3 = new createUser3("soma","soma@gmail.com","123");
+console.log(user3); 
