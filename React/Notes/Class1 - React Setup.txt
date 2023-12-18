@@ -8,44 +8,81 @@
 /*
     Why React ? 
     -----------
-    > Using Vanilla HTML, CSS, JS we have no premade frameworks, libraries 
+    > Using Vanilla HTML, CSS, JS we have no pre-made frameworks, libraries 
     > There is a lot of manual work 
-    > There is not efficency (when we click on anything everthing on the page is reloaded) 
+    > There is not efficiency (when we click on anything everything on the page is reloaded) 
+    > No consistency 
     > lot of re-work  
 
     > Module < Library < framework
 
-    > Module : is a folder which provides some fucntionality 
+    > Module : is a folder which provides some functionality 
     > Library : is a collection of modules. Which provides some pre-defined (eg: React)
-    > Framework : is a colection of many pre-defined Libraries and fucntions (eg : Angular)
+    > Framework : is a collection of many pre-defined Libraries and functions (eg : Angular)
+    > React is a Library
+
+    > React has some attachments : 
+    > react-dom is used when we want to work more with website 
+    > react-native is used when we want to work more with mobile applications
 
 
-    Pre-requesites for React 
+    Pre-requisites for React 
     ----------------------
     1. node.js
-    2. npm
+    2. npm (node package manager)
 
 
     How to install packages using npm Syntax:
-    npm install creat-react-app
+    npm install create-react-app
     
     > Note this will install the necessary files onto your system. If you want to just 
         execute the package without installing it on your system, then use npx (node package executable)
     
-    Syntax : npx creat-react-app "appName"
+    Syntax : npx create-react-app "appName"
     > Note that we do not write the install here  
     > This is not recommended all the time 
-    > We can use it with the creat-react-app as we just need it's boilerplate template
+    > We can use it with the create-react-app as we just need it's boilerplate template
 
 
 
-    Alternative Syntax (Cleaner and lighter)
-    -----------------------------------
-    > npm create vite@latest app_Name -- -- template react
-    // cd to project directory 
+    Alternative Syntax (Cleaner and lighter) using Vite
+    --------------------------------------------
+    > npm create vite@latest
+    //select the project name , framework(react) and variant (JS)
+
+    //after cd to project directory install only the necessary dependencies (a lot less than create react app)
     > npm install 
-    //start the dev server 
+
+    //start the dev server (dev is one of the scripts in teh package.json file of vite project for running the project server)
     > npm run dev
+
+    Vite (or Parcel) are a bundler which will combine many files of JS and give one file, which we can use to 
+    do most of our React work. 
+    - used when we want to work with react without a framework
+
+    files to delete from the folder (extras when used create-react-app) :
+    - setupTests.js 
+    - reportWebVitals.js 
+    - logo.svg
+    - App.test.js
+    - App.css
+    - index.css
+
+    files to delete from the folder (extras when making with vite)
+    - assets (folder) 
+    - App.css
+    - index.css
+
+    > inside the main.jsx remove the lines :
+    > import './index.css'
+
+    > inside the App.jsx remove the lines : 
+    > import { useState } from 'react'
+    > import reactLogo from './assets/react.svg'
+    > import viteLogo from '/vite.svg'
+    > import './App.css'
+    > const [count, setCount] = useState(0)
+    > everything inside return
 
 */
 
@@ -61,3 +98,29 @@
         3. starts the test runner     
 */
 
+
+/*
+    Must Know These concepts clearly before trying to learn React : 
+    1. Under JS  : 
+        > Array
+        > Arrow Functions (implicit return)
+        > Objects
+        > .map() and .filter() (maybe even .reduce())
+        > Mutability and immutability
+        > Destructuring
+    
+    2. Under React : 
+        > Components & jsx
+        > Data Usage - data flow
+        > Props - used to send data/functions
+        > State - useState()
+        > Effect - useEffect()
+
+    3. Keypoints : 
+        > Everything Big is a component (also things which are being repeated, make it into a component)
+        > components can have data. This data is called State 
+        > When we change the state, the component will recalculate
+        > Data always flows from top component (parent) to lower components (children)
+        > State/data will only be changed in the parent. To send this data to the child, use Props 
+        > Effects runs after the DOM has loaded. Also can be configured to run when State changes
+*/

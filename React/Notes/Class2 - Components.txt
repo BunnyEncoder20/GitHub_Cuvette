@@ -4,7 +4,7 @@
 *   1.  Big picture about components    
 *   2. Components : 
 *       i) functional components 
-*       ii) class components 
+*       ii) class components (legacy codes only, mostly we use functional components only)
 *   
 *   3. Rendering Components 
 *   4. JSX
@@ -21,7 +21,7 @@
         class which can return a JSX (some form html) or a null at some point.
 
     > 2 major ways to creating components : 
-        i) using function based components  (preffered using now)
+        i) using function based components  (preferred using now)
         ii) using Class based components        (outdated. Used to have some exclusive functionality, but now all of it we can get in the functional based ones)
     > Checkout Header.js and Footer.js in the src folder of "my-first-react-project"
 
@@ -33,7 +33,7 @@
         }
         export default ComponentName
 
-    // We can also combine the export statement into the function defination like :
+    // We can also combine the export statement into the function definition like :
 
         export default function componentName(){
             return(
@@ -45,7 +45,7 @@
     > All the things in between the return(...) is JSX (something like html but not that) 
     > Note it is important to export the component 
     > There are multiple ways to import/export am function : 
-        i) default import/export : whereever you will import, it will be imported like a normal import statement 
+        i) default import/export : where ever you will import, it will be imported like a normal import statement 
         ii)  Named import/export : will have to add {} around the Component we're importing
     > Eg: Syntax 
         default : export default componentName | import componentName from './componentName'

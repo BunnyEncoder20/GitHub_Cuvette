@@ -47,14 +47,14 @@ Git Zones
 Step #3) Some Basic commands 
 --------------------------
 > git status
-tells us which branch we're on, the commtits made, changes to be commited and untracked changes and files 
+tells us which branch we're on, the commits made, changes to be committed and untracked changes and files 
 
 > git add file_name.html
 shifts the document from untracked to the staging area (for one file.)
 > git add .                 (adds all the files into the staging zone)
 
 > git rm --cached file_name.html 
-undos the above command (moves file from staging to untracked zone)
+undoes the above command (moves file from staging to untracked zone)
 
 
 
@@ -62,14 +62,14 @@ undos the above command (moves file from staging to untracked zone)
 commits all of the files in the staging area 
 Note : 
     -m is a message flag
-    Working tree clean = means all staging zone files and changes ahve been commited 
+    Working tree clean = means all staging zone files and changes have been committed 
 
 > git log 
 shows details about the commits made, their authors , date and time , msg given during the commit 
 
 
 *NOTE : 
-    In order to make some files not be staged or commited everytime, we can make a txt file named
+    In order to make some files not be staged or committed every time, we can make a txt file named
     ".gitignore" and write all the files names which we wish to be excluded in it 
 
 
@@ -81,7 +81,7 @@ Git advanced commands
  is a command in Git used to switch branches or restore files versions.
  commitID refers to the unique identifier of a commit in Git, typically a hash value associated with a specific commit.
  > git checkout master 
- This takes us back to the latest commited version 
+ This takes us back to the latest committed version 
 
 
 Git Branches 
@@ -93,7 +93,7 @@ shows all the branches available in the repo
 makes a new branch by the name of branchName
 
 > git checkout branchName
-takes us (head) to that branch. (current branch is highligted in green, preceded by a star)
+takes us (head) to that branch. (current branch is highlighted in green, preceded by a star)
 
 > git checkout -b new_branchName
 creates a new branch "branchName" and takes us onto it 
@@ -102,7 +102,7 @@ creates a new branch "branchName" and takes us onto it
 pushes all the commits to the main/master branch from local machine to the Online repo (GitHub)
 
 
-> GitHub recommeneded code to intialize a repository : 
+> GitHub recommended code to initialize a repository : 
 echo "# GitHub_Password-Generator" >> README.md
 git init
 git add README.md
@@ -124,7 +124,7 @@ Creating a new Branch and Merging it back into Main branch
 ----------------------------------------------------
 5. git checkout -b new_branch
 6. commit changes to this branch 
-7. git push origin new_branch - pushes the new branch made onto Github
+7. git push origin new_branch : pushes the new branch made onto Github
     (You can see the various branches in GitHub)
 8. Branch owner can create a pull request (Compare & Pull request button on GitHub -> create)
 9. Owner of the main branch can go over the files changes (in the "File Changed" Tab in GitHub)
@@ -132,4 +132,4 @@ Creating a new Branch and Merging it back into Main branch
 
 Pulling latest changes from the GitHub repo to your local computer
 -----------------------------------------------------------
-1. git pull origin master - pulling main branch latest changes to the local computer
+11. git pull origin master - pulling main branch latest changes to the local computer
