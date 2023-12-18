@@ -1,7 +1,9 @@
 public class Temp {
     public static void main(String[] args) {
-        String str = "not there";
-        String[] parts = str.split(" ");
-        System.out.println(parts.length);
+        int a =10, b=13;
+        if(13<=(a+b)&&(a+b)<=19)
+            System.out.println(19);
+        else
+            System.out.println(a+b);
     }
 }
