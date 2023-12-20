@@ -1,30 +1,26 @@
-Initalizing node / express folder 
-----------------------------
-> npm init -y 
--y = all the basic files to be included 
+NodeJs is a open-source, cross platform JS runtime environment (some env which
+lets you run JS)
 
+Initializing node application
+--------------------------
+> npm init -y 
+-y = all the basic files to be included (use the default values for all)
+
+
+> Express is responsible for http request response between server and client
 Installing express library 
 ----------------------
 > npm i express 
 
-> We multiple packages in the same command by seperating the package names 
+> We multiple packages in the same command by separating the package names 
     using a space :-
     > npm i express ejs body-parser
-Note body-parser is very usefull when dealing with put and post requests
+Note body-parser is very useful when dealing with put and post requests
 
-Installing nodemon (it is a dev dependancy for auto restarting server)
---------------------------------------
-This helps use by automatically restarting the server everytime we make a new 
-change 
 
-1. Install the dependancy :
-> npm i --save-dev nodemon
-
-2. Inside the package.json file add the following code inside the "scripts" block :
-> "devStart" : "nodemon serverFileName.js"
-
-3. Finally to get teh server up and running, in terminal enter the command : 
-> npm run devStart 
+Installing nodemon (it is a dev dependency for auto restarting server)
+-------------------------------------------------------------
+This helps use by automatically restarting the server every time we make a new change 
 
 *******************************************
 Better way to nodemon : 
@@ -32,11 +28,19 @@ Better way to nodemon :
 2. nodemon fileName.js 
 *******************************************
 
+1. Install the dependency :
+> npm i --save-dev nodemon
+
+2. Inside the package.json file add the following code inside the "scripts" block :
+> "devStart" : "nodemon serverFileName.js"
+
+3. Finally to get the server up and running, in terminal enter the command : 
+> npm run devStart 
 
 
 
-Boilplate code for express server 
------------------------------
+Boilerplate code for express server 
+-------------------------------
 const express = require('express') ;
 const app = express() ;
 const port = 3000 ;
@@ -55,7 +59,7 @@ app.listen(port , (err) => {
 
 Setting up routes in the express server 
 ----------------------------------
-> Main requests we'l be dealing with : 
+> Main requests we'll be dealing with : 
 1. get (read)
 2. post (creating)
 3. put / patch (updating)
@@ -125,10 +129,10 @@ app.get('/downloadlogo' , (req,res)=>{
 'name' attribute in the input field becomes the variable name for the backend which 
 will contain that input data.
 
-NOTE :  app.get() is not a safe way to send data to the backend. Make a seperate POST 
+NOTE :  app.get() is not a safe way to send data to the backend. Make a separate POST 
 api call to handle the form data by using the route : './api/formPageRoute
 Eg : 
-// To display the registeration form itself 
+// To display the registration form itself 
 app.get('/register' , (req,res) => {
   res.sendFile(__dirname+'/register.html')
 })
@@ -188,14 +192,45 @@ Agenda :
 
 1. Web Frameworks - Express 
 ******************************
-> Express is one of the most popular framework for js which is minimalistic and straight
+> Express is one of the most popular framework for js which is minimalist's and straight
     forward
 
 2. MVC (Models , Views , Controller)
 *************************************
 > View : displays all the results to the users (on the client site) 
-> Contorller : fetches the data from the model and processes the data before sending 
+> Controller : fetches the data from the model and processes the data before sending 
                         it to the View (When a request is sent, the controller gets it)
 > Model : On the server side , stores the data 
 
 > Routes are the url for the page of the website 
+
+
+Axios Package 
+-------------
+> It is package for handling web requests to a server
+> Primarily does the same thing as fetch , but comes with some additional functions and features
+> Preferred because it comes with many production level functionality
+> Installation : 
+    npm i axios ;
+
+
+
+
+CORS & PROXY
+------------
+> CORS = cross origin - when the browser/server does not allow request from unknown sources/origins
+> One solution could be whitelisting the request links
+> PROXY = one of the solutions to the CORS problem. Eg : in Vite apps, we enter the Proxy details in the 
+    "vit.config.js" file as : 
+                                        export default defineConfig({
+                                            server : {
+                                                proxy : {
+                                                    '/api' : 'https://localhost:3000' 
+                                                } ,
+                                            } ,
+                                            plugins : [react()];
+                                        })
+> Now where ever there is a app.get('/api/homepage') request, it'll be appended the 'https://localhost:3000'
+    and the server will think that all the requests are coming from the same origin 
+> Beware of this proxy when deploying the application, can cause  issues with the build file when deploying 
+    the project (watch 'Chai aur Code - Connect backend with frontend'@44:55 for more detailed explanation)

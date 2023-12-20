@@ -6,7 +6,7 @@ N : Node JS
 Database (DB) - Parament Storage 
 ************************************
 > Eg of temp storage : localStorage
-> localStorage is not peramanent and hence cannot be used to store data securely for 
+> localStorage is not permanent and hence cannot be used to store data securely for 
     longer periods of time 
 
 > There are 2 types of DB : (These are based on patterns in which the data is stored)
@@ -24,7 +24,14 @@ Database (DB) - Parament Storage
 > Driver 
     - Mongoose : ODM (Object Data Modelling) for MOngoDB
 
-
+/*
+    Remember when making a Project 
+    -------------------------------------
+    > Always better to thing in terms of what data we need to store and how they will be stored in the 
+        DB and how they are going to be related. (Because adding new things will change a lot of things)
+    
+        
+*/
 
 Setting up in Database online at MongoDB
 *********************************************
@@ -109,6 +116,7 @@ NOTE :
 
 Mongoose 
 ***********
+> Mongoose is a helper for MongoDB object modelling 
 > To integrate the mongodb with our node.js application, we'll need a man in the middle
     (Driver/ODM - object data modelling) so that both able to understand each other. 
 > This MongoDB driver is called Mongoose
@@ -127,15 +135,17 @@ Mongoose
     MongoDB website -> DataBase -> Connect -> Drivers -> Add your connection string into your application code 
 > Note that This is an asynchronous operation, hence we are using .then() .catch() methods 
     to handle it.
+
+
 > We should only give the success message of connection only after the connection to 
-    db has been successfuly made. So we place the connection code in the app.listen()
+    db has been successfully made. So we place the connection code in the app.listen()
     Eg : 
-    app.listen(3000 , ()=>{
-        mongoose
-            .connect('mongodb+srv://admin:admin123@cuvettecluster.dwfi9ds.mongodb.net/?retryWrites=true&w=majority')
-            .then(()=> console.log("[Sevrer] Server Started \n Connected to DB"))
-            .catch((error)=>console.log(error))
-    })
+                    app.listen(3000 , ()=>{
+                        mongoose
+                            .connect('mongodb+srv://admin:admin123@cuvettecluster.dwfi9ds.mongodb.net/?retryWrites=true&w=majority')
+                            .then(()=> console.log("[Sever] Server Started \n Connected to DB"))
+                            .catch((error)=>console.log(error))
+                    })
 
 
 > Note : See how we can exposing out password to our dbs when we are writing these 
@@ -145,15 +155,16 @@ Mongoose
 
 > Installation : npm i dotenv
 > Importing : 
-    const dotenv = require('dotenv');
-    dotenv.config()
+                    const dotenv = require('dotenv');
+                    dotenv.config()
+
 > Accessing the data in the .env file (process.env.variableName)
-    app.listen(process.env.port , ()=>{
-        mongoose
-            .connect(process.env.mongodb_url)
-            .then(()=> console.log("[Server] Sevre is now Running \n[Server] Connection to DB established"))
-            .catch((error)=>console.log(error))
-    })
+                    app.listen(process.env.port , ()=>{
+                        mongoose
+                            .connect(process.env.mongodb_url)
+                            .then(()=> console.log("[Server] Sever is now Running \n[Server] Connection to DB established"))
+                            .catch((error)=>console.log(error))
+                    })
 
 > Most of the deployment domains will ask for an .env file when we deploy out projects 
     there. Thus we don't need to worry about out codes not working there
@@ -164,4 +175,4 @@ Mongoose
     **/node_modules/
     **/.env
 > as this git repo structure is made so that it contains many sub directories and folders,
-    hence the '**/' is used to specify the reoccuring folders and files  
+    hence the '**/' is used to specify the reoccurring folders and files  

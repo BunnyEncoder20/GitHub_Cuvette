@@ -47,8 +47,12 @@
 
     Alternative Syntax (Cleaner and lighter) using Vite
     --------------------------------------------
-    > npm create vite@latest
+    > npm create vite@latest  
     //select the project name , framework(react) and variant (JS)
+    OR 
+    > npm create vite@latest .
+    // if you have already made a folder (example frontend) and want to use that as the Project Folder, then use the "." at the end.
+    // it'll not ask for a project name and will download all the files in that folder/dir itself 
 
     //after cd to project directory install only the necessary dependencies (a lot less than create react app)
     > npm install 
@@ -83,6 +87,37 @@
     > import './App.css'
     > const [count, setCount] = useState(0)
     > everything inside return
+
+*/
+
+/*
+    Installing Tailwind CSS (Only for a Vite project)
+    --------------------
+    > Link : https://tailwindcss.com/docs/guides/vite
+    > Code : 
+            > npm create vite@latest projectName
+            > cd projectName 
+            > npm install -D tailwindcss postcss autoprefixer
+            > nps tailwindcss init -p 
+    > In the tailwind.config.js replace the content array with : 
+            content: [
+              "./index.html",
+              "./src/**/*.{js,ts,jsx,tsx}",
+            ],
+    > Add the following to your index.css (main css file)
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+    > Start your project 
+            > npm run dev 
+    > In your  jsx file start using tailwind now 
+            export default function App() {
+              return (
+                <h1 className="text-3xl font-bold underline">
+                  Hello world!
+                </h1>
+              )
+            }
 
 */
 

@@ -2,6 +2,91 @@ Agenda
 ********
 Mongoose - Schemas , methods and REST API
 
+/*
+    Mongoose data Modelling 
+    ----------------------
+    > Create a data model file (preferably in 'models' folder)
+                - dataPoint.models.js 
+    
+    > Import mongoose into it 
+                import mongoose from "mongoose" 
+                const userSchema = new mongoose.Schema({})
+                export const ModelName = mongoose.model( "ModelName" , userSchema)         // Notice the ModelName starts with a capital
+
+    NOTE : when we make a model like this, the "ModelName" in the MongoDB, it'll become all lowercase and plural
+                Hence ModelName ==> modelnames (in the MongoDB side)
+                the .model() asks for 2 parameters : what to name the model ? && What to base the model on ? (Which schema)
+
+    > inside the schema({}) object we put our data : 
+                const userSchema = new mongoose.Schema({
+                    username : String ,
+                    email : String ,
+                    isActive : Boolean
+                })
+    
+    > A more professional approach would be taking advantage of MongoDB functionality and making a object : 
+                const userSchema = new mongoose.Schema({
+                    username : {
+                        type : String ,         // defining the data type of the field 
+                        required : true,       // making it required 
+                        unique : true,          // ensures the data entered is unique in the field 
+                        lowercase : true    // ensures that all string entered is all in lowercase
+                    } , 
+                    email : {
+                        type : String ,         // type is almost always the first thing you define for a data field 
+                        required : true ,
+                        unique : true ,
+                    } , 
+                    password : {
+                        type : String ,
+                        required : [true, "Password is required field"]  //custom validator message  
+                    }
+                })
+
+    >  The things we are defining inside the fields are validators. Mongoose also gives the option to define 
+        custom validators (Watch YT or look at Mongoose documentation for more information)
+
+    > Another thing which is common to do when working with backend and DB is the use of timestamps. 
+        Mongoose already has built-in  properties to get these values for a data entry : 
+                createdAt
+                updatedAt
+        These are passed as secondary object (together under one variable name 'timestamps') after passing 
+        the schema as the primary object : 
+                const userSchema = new mongoose.Schema(
+                    {...} ,
+                    {timestamps : true} 
+                )
+
+
+    > When creating the data types sometimes we want a data which is related to another field in our DB 
+        eg : createdBy data field will need the data from the userSchema model 
+        In this situation remember 2 things : 
+            1. It is a special type - mongoose.Schema.Types.ObjectId
+            2. ref - the string name which we pass as the first argument for mongoose.model() of that model
+        eg : 
+                const dataPoint2Schema = new mongoose.Schema(
+                    {
+                        content : {
+                            type : String ,         
+                            required : true ,
+                        } , 
+                        createdBy : {
+                            type : mongoose.Schema.Types.ObjectId ,     // the i in ObjectId is capital 
+                            ref : "ModelName"           // the ModelName PASSED as the first args of mongoose.model('this one' , schemaName)   
+                        } ,
+                        subContentsArray : [
+                            {
+                                type : mongoose.Schema.Types.ObjectId
+                                ref : "subContentModel"     // the modelName PASSED for that subContentModel
+                            }
+                        ] , // Array of sub content 
+                    } ,
+                    {timestamps : true} 
+                )
+
+
+
+*/
 
 Postman - API Tool 
 ********************
