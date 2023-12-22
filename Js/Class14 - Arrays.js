@@ -5,9 +5,19 @@
     > Iterating over Arrays 
 */
 
+/*
+    Note : That whenever there is a copy operation in Arrays in JS there , it makes a shallow Copy of the array
+    Shallow copy - of an object is a copy which shares the same reference as those of the source object (any changes made to shallow will eb reflected back to original array)
+    Deep Copy - of an object isa  copy which DO NOT share teh same reference as source object 
+*/
 
 let arr = [];
 console.log(typeof arr) ; // arrays are a object type
+
+//  Ways of declaring an array in JS 
+const myArr = [0,1,2,3,4] ; 
+const myHeros = new Array("Batman","Madara","Sukuna") ;
+
 
 // Rememeber in Js, array can have any data types within it self (items need not necesarily be of the same data type)
 arr = [1,2,3,"Bunny","Soma",8.5,9.2,true] ;
@@ -22,24 +32,94 @@ console.log(arr) ;
 arr.push("Puneet") ;
 arr.push(24) ;
 console.log(arr) ;
-console.log("Length : ",arr.length) ;
+console.log("Length : ",arr.length) ;       // remember that these append ops also return the new length of the array so instead of doing this we could just simply : 
+console.log("New Length directly : ",arr.push(25)) ;
+// unshift adds elements to the front of the array (it causes array to shift the positions of all the elements hence not used much)
+console.log(arr.unshift(69)) ;
 
 // removing elements from arrays 
 arr.pop() ;
 arr.pop() ;
 console.log(arr);
 console.log("Length : ",arr.length) ;
+// just like unshift() there is shift() also to remove elements from the front of the array 
+console.log("Element removed after shift : "+arr.shift()) ;
+
+
+// Asking questions from an Array  : 
+console.log("\n\nAsking questions to a array : ")
+console.log("is there Soma Senpai in the array ?\n"+arr.includes('Soma Senpai')) ;
+console.log("Nice. What is the index of Soma Senpai ?\n"+arr.indexOf('Soma Senpai')) ;  //note it'll only return the first occurrence of the element 
+
+// Converting an array into a string : .join()
+console.log("Converting a array into string : ")
+const arrString = arr.join('-')
+console.log(arrString)
+console.log(typeof arrString)
+
+
+// .slice() & .splice() methods of an array (for returning a section of the array)
+const array = new Array(1,2,3,4,5)
+const slicedArray = array.slice(1,3);
+console.log("B : "+slicedArray);   // Notice the effect each method has on teh original array 
+console.log("A : "+array);
+
+const splicedArray = array.splice(1,3) ;
+console.log("C : "+splicedArray);
+console.log("A : "+array);          // spliced alters the original array 
+
+
+// Merging arrays 
+const marvelHeros = ["Iron man","Captain America","Thor"] ;
+const dcHeros = ["Batman","Superman","Wonder Woman"] ;
+
+console.log("All Heros : \n"+marvelHeros.concat(dcHeros)) ;
+// NOTE : when we something into a array, it alters the original array , whereas .concat returns a new array 
+// So we need a new array to store the concatenated array 
+const allHeros = marvelHeros.concat(dcHeros) ;
+console.log("DC : "+dcHeros) ;
+console.log("Marvel : "+marvelHeros) ;
+console.log("Heros : "+allHeros) ;
+
+
+/* Spread Operator (...)
+-------------------
+> spreads all the elements of array into it's individual elements : 
+*/
+const allHeros2 = [...marvelHeros, ...dcHeros] ;
+console.log("Heros using spread : "+allHeros2);
+
+
+
+
+/* 
+    Converting any type of data into Arrays : 
+    > we use the Array.isArray() method to check if the received item is an array or not 
+    > if not, we can convert it into a array using Array.from() method
+    > Eg : 
+*/
+console.log("Is 'bunny' an array ?\n "+Array.isArray("bunny")) ;
+console.log("Making 'bunny' into a array : \n"+Array.from("bunny")) ;
+// interesting case of interview : when converting a object into a array : 
+// if the method is not able to make a array out of the keys or values, it'll return a empty array 
+console.log("Object into a array : "+Array.from({name:"varun",age:22,height:172})) ;
+
+
+
+
+
+
 
 // Iterating over Arrays 
 /*
-    Higher Order fucntions 
+    Higher Order functions 
     --------------------
     > are functions which can accept another function as parameter 
     or returning a function
 
     CallBack Functions
     -----------------
-    > an function which executes automatically when the main fucntion is called
+    > an function which executes automatically when the main function is called
     > In foreach(callBack(){}) , callback will run on each and every element of that array 
 */
 
