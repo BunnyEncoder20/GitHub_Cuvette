@@ -1,6 +1,6 @@
 /*
-    Agenda : Objects and Events
-    ------------------------
+    Agenda : Objects and Events (Mastering these 2 == Knowing almost all of JS)
+    -----------------------------------------------------------------
     Objects: 
     -> Object
     -> accessing properties of object
@@ -11,6 +11,9 @@
     Events 
     -> timing events 
 
+    Remember (interview prep) : 
+    singleton object - when we make a object using a CONSTRUCTOR the object is one of a kind 
+    when we create object using other methods (using literals), then there are multiple instances of teh object created 
 */
 
 /*
@@ -18,12 +21,15 @@ Objects
 -------
 > not like the objects in other programming languages 
 > objects are containers which have properties in form of key-value pairs and can also
-    have behaviours in the form of methods (functions)
+    have behaviors in the form of methods (functions)
 > In JS, objects are most important. If you understand objects, you understand JS
 > In JS almost everything is an object 
-
 */
 
+/*
+    Object literals (is a simple way of creating objects)
+    --------------------------------------------
+*/
 let bestfriend = {
     name: "Somya Kumari" ,
     nickname: "Soma" ,
@@ -35,18 +41,56 @@ let bestfriend = {
 }
 
 console.log(bestfriend) ;
-console.log(bestfriend.nickname) ;
+console.log(bestfriend.nickname) ;      // most of the time we access object properties like this only but there are a few exception cases discussed below 
 console.log(bestfriend['name']) ;
-// console.log(bestfriend[age]) ;  * Calling this will create an error 
 console.log(bestfriend['age']) ;
 console.log(bestfriend.age) ;
 console.log(bestfriend.talk()) ;
+// console.log(bestfriend[age]) ;  * Calling this will create an error because behind the scenes, the keys of the object are stored as strings
+// this way of accessing object should be know because if the key is of 2 words, we cannot access it using obj.key method
+// also this is the way to access symbols as object keys
+
+// Declaring and Accessing Symbols within an object : 
+const mySymbol = Symbol("key1") ;
+
+const user = {
+    username : "bunny" ,
+    "Full name" :  "Varun Verma",
+    age : 18 ,
+    location : "Chennai" ,
+    email : "varun.verma@microsoft.com" ,
+    isLoggedIn : true ,
+    lastLoginDays : ["Monday","Saturday"] ,
+    [mySymbol] : "myObjectKey1"
+}
+
+console.log("Full Name : "+user["Full name"])  // this is the only way to access teh Full name key
+console.log("Accessing the symbol : "+user[mySymbol])
+console.log("check the type of symbol : "+typeof mySymbol)
+
 
 /*
 Adding properties to an objects
 */
 bestfriend.height = "5'2" ;
 console.log(bestfriend) ;
+
+// adding functions into objects : 
+user.greetings1 = function() {
+    console.log("Hello user !")
+}
+user.greetings2 = function() {
+    console.log(`Hello user from : ${this.username}`)
+    // using `` (back ticks) is used for string interpolation
+}
+
+console.log("Greeting 1 \n"+user.greetings1);       
+console.log("Greeting 2 \n"+user.greetings2);       // these will only return a reference to the function 
+console.log("Greeting 1 \n"+user.greetings1());
+console.log("Greeting 2 \n"+user.greetings2());     // this will actually execute the function
+
+
+
 
 /*
 NOTE : when we declare an object as a const, it doesn't stop us from modifying the 
@@ -61,8 +105,18 @@ const dontChangeThisObject = {
     key3: "Value3",
 }
 
-dontChangeThisObject.AddedKey4 = "Value5" ;
-console.log(dontChangeThisObject) ;
+dontChangeThisObject.AddedKey4 = "Value4" ;
+console.log(dontChangeThisObject) ;                 //it doesn't get changed 
+
+/*
+    > If we want the object to not change then we can Freeze the object 
+    > this stops the propagation of changes made after it to the object (it'll not show up as an error)
+    > Object.Freeze( object2beFrozen ) 
+*/
+
+Object.freeze(dontChangeThisObject)              // freezing the object here
+dontChangeThisObject.AddedKey5 = "Value5" ; // trying to change it 
+console.log(dontChangeThisObject) ;              //it get's changed 
 
 
 /*
