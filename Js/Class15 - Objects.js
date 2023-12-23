@@ -70,24 +70,58 @@ console.log("check the type of symbol : "+typeof mySymbol)
 
 
 /*
+    Declaring an object using an constructor : 
+    -------------------------------------
+*/
+const tinderUser = new Object() // this will become a singleton object 
+// const tinderUser = {}   // this is a non singleton object 
+
+tinderUser.id = "123abc"
+tinderUser.name = "Sammy"
+tinderUser.isLoggedIn = false 
+console.log(tinderUser)
+
+// We can also declare another object inside another object 
+// notice how name key has value of an object which has 3 values one of which is again an object (fullName)
+const regularUser = {
+    email:"someone@gmail.com",
+    name:{
+        fullName:{
+            firstName:"Varun",
+            lastName:"Verma"
+        } ,
+        username:"BunnyEncoder1505",
+        nickname:"Bunny"
+    }
+}
+
+console.log("First name : "+regularUser.name.fullName.firstName);
+console.log("Last name : "+regularUser.name.fullName.lastName);
+console.log("username : "+regularUser.name.username);
+console.log("nickname : "+regularUser.name.nickname);
+
+
+
+
+/*
 Adding properties to an objects
 */
 bestfriend.height = "5'2" ;
 console.log(bestfriend) ;
 
 // adding functions into objects : 
-user.greetings1 = function() {
+regularUser.greetings1 = function() {
     console.log("Hello user !")
 }
-user.greetings2 = function() {
-    console.log(`Hello user from : ${this.username}`)
+regularUser.greetings2 = function() {
+    console.log(`Hello user from : ${this.name.username}`)
     // using `` (back ticks) is used for string interpolation
 }
 
-console.log("Greeting 1 \n"+user.greetings1);       
-console.log("Greeting 2 \n"+user.greetings2);       // these will only return a reference to the function 
-console.log("Greeting 1 \n"+user.greetings1());
-console.log("Greeting 2 \n"+user.greetings2());     // this will actually execute the function
+//console.log("Greeting 1 \n"+user.greetings1);       
+//console.log("Greeting 2 \n"+user.greetings2);       // these will only return a reference to the function 
+console.log("Greeting 1 \n"+regularUser.greetings1());
+console.log("Greeting 2 \n"+regularUser.greetings2());     // this will actually execute the function
 
 
 
@@ -106,7 +140,7 @@ const dontChangeThisObject = {
 }
 
 dontChangeThisObject.AddedKey4 = "Value4" ;
-console.log(dontChangeThisObject) ;                 //it doesn't get changed 
+console.log(dontChangeThisObject) ;                 //it get's changed 
 
 /*
     > If we want the object to not change then we can Freeze the object 
@@ -116,7 +150,7 @@ console.log(dontChangeThisObject) ;                 //it doesn't get changed
 
 Object.freeze(dontChangeThisObject)              // freezing the object here
 dontChangeThisObject.AddedKey5 = "Value5" ; // trying to change it 
-console.log(dontChangeThisObject) ;              //it get's changed 
+console.log(dontChangeThisObject) ;              //it doesn't get changed 
 
 
 /*

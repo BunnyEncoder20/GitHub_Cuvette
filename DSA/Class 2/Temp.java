@@ -1,10 +1,22 @@
 public class Temp {
     public static void main(String[] args) {
-        String str = "abcxx";
-        for (int i=0;i<str.length()-1;i++){
-            System.out.println(str.substring(i,i+2));
-              System.out.println("i="+i+"\ni+2="+(i+2));
-              System.out.println();
-          }
+        int goal = 10;
+        int small = 4 ;
+        int big = 1 ;
+
+        int maxBig = goal / 5 ; 
+        System.out.println(maxBig);
+            
+        if(maxBig<big)
+          goal -= maxBig*5 ;
+        else 
+          goal -= big*5 ;
+        
+        System.out.println("after big , goal = "+goal);
+        
+        if(small >= goal)
+          System.out.println(goal);
+        else 
+          System.out.println("-1");
     }
 }
