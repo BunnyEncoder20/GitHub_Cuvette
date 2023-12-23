@@ -53,7 +53,7 @@ const promise4 = new Promise(function (resolve,reject) {
     setTimeout(function(){
         let error = true ;
         if(!error){
-            resolve({username:"Bunny",email:"bunny@google.com",password:"abc123"}) ;
+            resolve({username:"Bunny",email:"bunny@gmail.com",password:"abc123"}) ;
         }
         else {
             reject("ERROR : something went wrong ...") ;
