@@ -95,8 +95,11 @@ const regularUser = {
     }
 }
 
+console.log("First name : "+regularUser.name.fullName);
 console.log("First name : "+regularUser.name.fullName.firstName);
-console.log("Last name : "+regularUser.name.fullName.lastName);
+
+// Optional chaining : when we want to fetch the values only if they exist then we use the '?' operator in the call : 
+console.log("Last name : "+regularUser.name.fullName?.lastName);
 console.log("username : "+regularUser.name.username);
 console.log("nickname : "+regularUser.name.nickname);
 
@@ -161,6 +164,40 @@ Iterating Over Object properties
 for (const key in bestfriend) {
     console.log(key) ;
 }
+
+
+
+// Combining Object (same way as we concat arrays)
+// -------------------------------------------
+const obj1 = {
+    1:"a" , 2: "b"
+}
+const obj2 = {
+    1:"c" , 2: "d"
+}
+const obj5 = {
+    1:"c" , 2: "d"
+}
+const obj6 = {
+    1:"c" , 2: "d"
+}
+const obj3 = {obj1,obj2}  // this will create the same problem as doing this action in arrays -> will make obj1 & obj2 objects inside obj3
+console.log(obj3)
+
+// instead we use Object.assign()
+// Object.assign(target , source)
+const obj4 = Object.assign({} , obj1, obj2, obj5, obj6)
+// NOTE : how there is a empty object provided in the start - this acts as the target object into which we copy all the other objects
+// tho it is optional 
+
+
+// The simplest way to combine objects is to use Spread operator : 
+const obj7 = { ...obj1, ...obj2, ...obj5, ...obj6}
+console.log(obj7) ;
+
+
+
+
 
 
 /*
