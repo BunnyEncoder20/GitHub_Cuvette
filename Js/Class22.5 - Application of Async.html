@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 
+    SetTimeout() & SetInterval() Async functions 
+    ---------------------------------
+    > SetTimeout() & SetInterval are browser environment functions and can be found only in that env
+    > These are not part of core JS functions 
+
+    > Timeout => does the task once after timer runs out .
+    > Interval => keeps doing the same task after set interval of time 
+
+    > clearInterval() & clearTimeout() are also part of the same function and need to be know 
+    > the clearInterval() & clearTimeout() basically remove the functions from the callback queue
+    > so even though the call goes but it never accept back into the call stack 
+ -->
+<body>
+    <h1>Chai aur Code</h1>
+
+
+    <button id="stop">Stop Timeout</button>
+
+    <br><br>
+
+    <h1>Chai aur  Javascript</h1>
+    <button id="starti">Start Interval event in console</button>
+    <button id="stopi">Stop Interval event in console</button>
+
+    <br><br>
+
+    <h1>Random BG color changer</h1>
+    <button id="startColor">Start Color Change</button>
+    <button id="stopColor">Stop Color Change</button>
+
+    <br><br>
+
+    <h1>Getting Keyboard Key inputs</h1>
+    <div id="insert">Press any keyboard keys and see the magic</div>
+</body>
+
+<script>
+    // setTimeout( handler/callback function() , time in ms)
+    // ---------------------------------------------
+
+    const sayBunny = () => {
+        console.log("I am Bunny ...") ;
+    }
+    setTimeout(sayBunny,2000) ;     // notice we pass only the reference of the function here
+
+    const changeTitle = () => {
+        document.querySelector('h1').innerHTML = "Best JS series on YT" ;
+    }
+    // setTimeout(changeTitle,3000) ;
+
+    // if we want to clear the setTimeout (or interval) of any operations we use the clearTimeout() (or clearInterval())
+    // clearTimeout(reference to that Timeout call)
+
+    const clearTimeoutRef = setTimeout(changeTitle,5000) ;      // note how we have to make a ref of the timeout if we want to stop it at any point 
+    document.querySelector('#stop').addEventListener('click' , ()=>{
+        clearTimeout(clearTimeoutRef) ;     //note how we use the clearTimeout(ref) here
+        alert("Stopped the Title change") ;
+    })
+
+
+
+
+    //  setIntervals( handler() , Interval , parameter2handler)  - 3rd param is optional
+    // -----------------------------------------------
+    const sayDate = (str) => {
+        console.log(str, Date.now()) ;
+    }
+    let intervalRef;
+    
+    document.querySelector('#starti').addEventListener('click' , ()=>{
+        intervalRef = setInterval(sayDate, 2000, "Bunny said : ") ;
+    })
+
+
+    document.querySelector('#stopi').addEventListener('click' , ()=>{
+        clearInterval(intervalRef) ;
+        alert('Stopped the interval event');
+    })
+
+
+
+
+    // Changing the background color randomly : 
+    const randomColor = () => {
+        const hex = "0123456789ABCDEF" ;
+        let color = '#' 
+        for(let i=0;i<6;i++){
+            color += hex[Math.floor(Math.random()*16)]        // generates random numbers between 0 and 16 (+1 in end if u want to  get between 1 and 16). Math.floor just to get the int part
+        }
+        return color
+    }   // function to generate random Hex code for colors
+
+
+    // declaring the interval id in the global scope that it can be accessed everywhere
+    let colorIntervalRef ;      // a more cleaner way of writing the code would be to want to also flush your global variables 
+
+    const startChangingColor = () => {
+        // alert("Started BG color interval")
+
+        // checking if the colorIntervalRef is null or not and then assigning it a value (might be null dude to flushing)
+        if(!colorIntervalRef){
+            colorIntervalRef =  setInterval(() => {
+                document.body.style.backgroundColor = randomColor() ;
+            }, 500);
+        }
+    }
+    document.querySelector('#startColor').addEventListener('click' , startChangingColor);
+
+    const stopChangingColor = () => {
+        clearInterval(colorIntervalRef);
+        // alert("Stopped the BG color changing interval") ;
+
+        // after the work of the global variable colorIntervalRef is done, we flush it's value by assigning it null
+        colorIntervalRef = null
+    }
+    document.querySelector('#stopColor').addEventListener('click' , stopChangingColor);
+
+
+
+
+
+    //  Keyboard key detection 
+    window.addEventListener('keydown' , (e) => {
+        insert.innerHTML = `
+            <div class='color'>
+                <table>
+                  <tr>
+                    <th>Key</th>
+                    <th>Keycode</th>
+                    <th>Code</th>
+                  </tr>
+                  <tr>
+                    <td>${e.key===" "?"SpaceBar":e.key}</td>
+                    <td>${e.keyCode}</td>
+                    <td>${e.code}</td>
+                  </tr>
+                </table>
+            </div>
+        `
+    })
+</script>
+</html>

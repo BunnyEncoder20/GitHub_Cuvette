@@ -1,25 +1,38 @@
 /**
  *      Agenda : API and Promises in JS
  * ---------------------------------
- *  1. Asynchronous Behaviour of JS
+ *  1. Asynchronous Behavior of JS
  *  2. API and How to fetch response from API
  */
 
 /*
+    Blocking Code VS Non Blocking code 
+    -------------------------------
+    > Blocking code stops the execution/flow of the program
+    > Non blocking code doesn't stops the flow of the program, lets the next steps get executed while it deals with that task
+    > blocking code ==> Sync ops            (NOTE that sync/blocking not always bad : eg: DB searches)
+    > non blocking code ==> Async ops
+*/
+
+/*
     Synchronous and Asynchronous
     ----------------------------
+    > JS most of the operations are synchronous & single threaded (default JS behavior)
     >  Synchronous = line by line execution
+    > each operation waits for the previous one to completed before executing itself 
+
     > when we are trying to fetch some response from an external server , there will 
         always be some sort of delay (API calls, network calls). These sort of lines actions are called asynchronous 
         lines 
-    > Asynchronous nature of JS : JS will skip all the ansynchronous lines and will execute 
+    > Asynchronous nature of JS : JS will skip all the asynchronous lines and will execute 
         all the synchronous lines first and then only focus the asynchronous lines
 
-    > Call Stack is where all the synchronous scopes and functions are stacked and 
-        operator upon
-    > For Asynchronous functions, there is a seperate thing called the "Call Back" Queue
-    > Once the call back stack is empty, then one by one, the remaining lines are sent
-        from the Call back queue to the call stack for execution
+    > Call Stack is where all the synchronous scope's and function's execution contexts are stacked and 
+        operated upon.  Topmost context execution is done and popped (unloaded) like ops of  stack
+
+    > For Asynchronous functions, there is a separate thing called the "Call Back" Queue
+    > Once the call stack is empty, then one by one, the remaining lines are sent
+        from the Call back QUEUE to the call STACK for execution
     > This process of taking things out of the call back queue and putting them in the 
         call stack for execution is called event loops 
     
@@ -29,8 +42,10 @@
         3. Call back queue
         4. Event loops 
     
-    > Note that whenever a function returns an promise , it is definatedly an asynchronous
+    > Note that whenever a function returns an promise , it is definitely an asynchronous
         operation
+    > Promises are async ops which get loaded into a separate queue called : Promise Queue (or sometimes called high priority queue)
+    > Generally seen with fetch() ops
 */
 
 console.log("First")
