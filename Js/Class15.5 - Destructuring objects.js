@@ -16,7 +16,7 @@ const {courseName : crs} = course ;
 const {price : p} = course ;
 const {courseInstructor : crsi} = course ;
 
-console.log("CourseName : "+crs)
+console.log("CourseName : "+crs) 
 console.log("Price : "+p)
 console.log("CourseInstructor : "+crsi) 
 

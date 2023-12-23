@@ -61,59 +61,75 @@ console.log("Second")
 /*
     API : Application Programming Interface 
     -----------------------------------
-    > it is a like a tunnel between 2 servers with authentication at both sends
+    > it is a like a tunnel between 2 parties with authentication at both sends
     > also maybe called an endpoint 
+    > API is simply a language between frontend and backend which can be used for 
+    > API are responses from a server and the responses need to be read and understood before we can work on them
+    > For this we can use websites like { JSON formatter }
 
     > Fetch is an method in Js which helps in getting responses from an API
     > It is a method which starts the process of fetching resources from an network / API
 */
 
 let result1 = fetch('https://catfact.ninja/fact') ;  //statement 1
-console.log(result1) ;                                              // statement 2
+console.log(result1) ;                                            // statement 2
 
 /*
+    Promise in JS   (also ref document "Class22.25 - Promise.js")
+    ------------
+    > Promise object represented the eventual completion (or failure) of an Async operation and it's resulting value
     > did you notice in the above example
     > the statement 1 is asynchronous 
     > statement 2 is synchronous 
     > then why is it working normally and not getting undefined in the log?
 
     > This is what promise does 
-    > Promise is a special JS obejct which returns an object when you make a asynchronous
+    > Promise is a special JS object which returns an object when you make a asynchronous
         call and which will return you an result in a future , in case it is successful
     
-    > Promise can have 2 states : 
-        1. Resolved / fullfilled 
-        2. Intermediate / rejected 
+    > Promise can have 3 states : 
+        1. pending : initial state 
+        2. fulfilled : completed execution
+        3. rejected : was not possible to complete or failed to complete
 
     > Instead of return back asynchronous functions results, we can use promises
     > We can use the following : 
         1) callback 
             (an function which is attached internally which will run only when the promise 
-            was successfuly compelted, else the function will not run only)
-            [not recomended method cause of nested functions and callbacks (callback hell / pyramind)]
+            was successfully completed, else the function will not run only)
+            [not recommended method cause of nested functions and callbacks (callback hell / pyramid)]
 
         2) .then .catch 
-                syntax : promise.then(()=>{
-                    # will execute this function if resolved
-                }).catch(()=>{
-                    # will execute this fucntion if rejected
-                })
+                syntax : 
+                                promise
+                                .then(()=>{
+                                    # will execute this function if resolved
+                                }).catch(()=>{
+                                    # will execute this function if rejected
+                                })
 
-        3) async await
+        3) Async await
+
 */
 
+
+
+
+
 let result2 = fetch('https://catfact.ninja/fact') ;
-result2.then((returnedByPromise)=>{
+result2
+.then((returnedByPromise)=>{
     console.log("Running only after promise resolved") ;
     console.log(returnedByPromise); 
     // this not in readable format. we use another promise for that called .json()
-    // and for that again we can use the .thn().catch()
+    // and for that again we can use the .then().catch()
 }).catch(()=>{
-    console.log("Running cause promise gor rejected");
+    console.log("Running cause promise got rejected");
 })
 
 let result3 = fetch('https://catfact.ninja/fact') ;
-result3.then((returnedFromFetch)=>returnedFromFetch.json()).then((returnFromJSON)=>{
+result3
+.then((returnedFromFetch)=>returnedFromFetch.json()).then((returnFromJSON)=>{
     console.log("Using .then().catch() await : \n",returnFromJSON) ;
 }).catch(()=>{
     console.log("Error in calling the JSON promise");
