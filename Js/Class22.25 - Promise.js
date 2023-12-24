@@ -5,6 +5,24 @@
     > new Promise( handler (resolve, reject) )
     > when consuming the promise, the resolve param is connected to  .then() and reject is connected to .catch()
     > note that resolve and reject are actually methods 
+
+
+    
+ *  fetch() global function
+ * ---------------------
+ * > the global fetch() method starts the process of fetching a resource from the network, returning a 
+ *      promise which is fulfilled once the response is available 
+ *  > mdn link : https://developer.mozilla.org/en-US/docs/Web/API/fetch
+ */
+
+// NOTE : if the fetch() returns a error code (eg:404) then we should know that it'll be available in the 
+//            response and will not go to the reject method
+
+/*
+    NOTE : 
+    > When we implement fetch() it has it's own special call back queue called "Micro Task Queue"
+    > This is a priority queue and is a fast queue which is always executed first compared to the normal    
+        callback queue  
 */
 
 const promise1 = new Promise(function(resolve, reject){
