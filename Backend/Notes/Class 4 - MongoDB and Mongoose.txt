@@ -96,14 +96,15 @@ const bodyParser = require('body-parser')
 const app = express()
 
 app.use(bodyParser.urlencoded({extended:false}))
+// app.use(bodyParser.json()) 
 
 NOTE : 
     > remember that app.use() is used to attach middleware (entity, which lies between 
         client and server) 
     > The above line is used to call a urlencoded middleware to decode the encoded url 
-        which is sent when using POST or PATCH methods to send request
+        which is sent when using POST or PATCH methods to send request (for form data)
     > The extended:false is used for simple straightforward data. It is set to true when 
-        we are receiving complex data like nested objects, nested arrays , etc 
+        we are receiving complex data like nested objects, nested arrays , etc (rarely used anyways)
 
 app.use(express.static('./public'))
 

@@ -96,7 +96,7 @@ app.get('/' , (req,res)=>{
 > For that we use the render method : 
 Eg : 
 app.get('/' , (req,res)=>{
-    console.log('Thois block renders an file...') ;
+    console.log('This block renders an file...') ;
     res.render(__dirname+'/path to file/fileName')
 })
 

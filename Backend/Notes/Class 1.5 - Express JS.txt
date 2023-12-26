@@ -1,0 +1,33 @@
+Agenda
+*********
+    > Web frameworks - Express JS 
+    > Understanding MVC architecture (Model View Controller)
+    > Express JS 
+
+
+Boilerplate code for an express server
+---------------------------------
+const express = require('express') ;            // requiring express 
+const app = express() ;                                // instantiating the express as app 
+const port = 3000 ;
+
+app.get('/' , (req,res) => {
+    res.send("Hello World !")                   // Seen at http://localhost:8000/ in browser
+})
+
+app.listen(port , (err) => {
+    if(!err) {
+        console.log(`Server is up and running at port ${port}`)
+    }
+})
+
+
+Look at the app.get() can be broken down as : 
+app.httpVerb ( '/route' , controller(){} ) 
+
+1. httpVerb - get, post, put/patch, delete
+2. /route - route to go to 
+3. controller - function 
+
+controller function and it parameters objects : 
+res and req in the controller function are objects

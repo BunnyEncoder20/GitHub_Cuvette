@@ -115,32 +115,32 @@ app.get('/senpai' , (req,res) => {
   )
 })  
 app.get('/George' , (req,res)=>{
-  let details = dummyUsersDB.find(user=>user.first_name === "George");
+  let details = dummyUsersDB.find(user => user.first_name === "George");
   console.log(details);
   res.render('profileTemplate', details)
 })
 app.get('/Janet' , (req,res)=>{
-  let details = dummyUsersDB.find(user=>user.first_name === "Janet");
+  let details = dummyUsersDB.find(user => user.first_name === "Janet");
   console.log(details);
   res.render('profileTemplate', details)
 })
 app.get('/Emma' , (req,res)=>{
-  let details = dummyUsersDB.find(user=>user.first_name === "Emma");
+  let details = dummyUsersDB.find(user => user.first_name === "Emma");
   console.log(details);
   res.render('profileTemplate', details)
 })
 app.get('/Eve' , (req,res)=>{
-  let details = dummyUsersDB.find(user=>user.first_name === "Eve");
+  let details = dummyUsersDB.find(user => user.first_name === "Eve");
   console.log(details);
   res.render('profileTemplate', details)
 })
 app.get('/Charles' , (req,res)=>{
-  let details = dummyUsersDB.find(user=>user.first_name === "Charles");
+  let details = dummyUsersDB.find(user => user.first_name === "Charles");
   console.log(details);
   res.render('profileTemplate', details)
 })
 app.get('/Tracey' , (req,res)=>{
-  let details = dummyUsersDB.find(user=>user.first_name === "Tracey");
+  let details = dummyUsersDB.find(user => user.first_name === "Tracey");
   console.log(details);
   res.render('profileTemplate', details)
 })
@@ -155,10 +155,10 @@ app.get('/example/:parameter' , (req,res) => {
 })
 
 // Making all the user fucntions into a single function : 
-app.get('/profiles/:username',(req,res)=>{
+app.get('/profiles/:username',(req,res) => {
   let username = req.params.username ;
   // console.log(username)
-  let userdetails = dummyUsersDB.find(user=>user.first_name === username);
+  let userdetails = dummyUsersDB.find(user => user.first_name === username);
   
   if (userdetails) {
     console.log(userdetails);

@@ -9,7 +9,7 @@ Building Dynamic Pages
          https://www.linkedin.com/in/saptajit-banerjee
          https://www.linkedin.com/in/gnana-bharathi
 
-> The pages routes are custom made for each users. The template of each page is the 
+> The pages routes are not custom made for each users. The template of each page is the 
     same, just the data passed into these pages from the backend is different. 
 
 
@@ -43,7 +43,7 @@ Eg :
 
 7. Create the route for the file : 
 > Basic route : 
-    app.get('/temp' , (req,res) => {
+    app.get('/ejsFile_under_view_folder' , (req,res) => {
       res.render('temp')    
     })
 
@@ -64,7 +64,7 @@ Eg :
       res.render('profileTemplate', details)
     })
 
-> Using id else statements in dynamic renders : 
+> Using if else statements in dynamic renders : 
 Eg : 
     <% if (likescake) { %>          // note that likecake is a boolean ejs variable 
         <h5>Yeh ! You like cake !</h5>
@@ -77,16 +77,17 @@ Eg :
 
 2. Request Parameters
 *********************** 
-> a good way to get information from the url. They are nothing but variables in the URl
-> how to access the variables from the URL : 
-    app.get('/example/:parameter' , (req,res) => {      // do not forget the first / in route
+> a good way to get information from the url. using string PARAMS (ref notes Class 2 - middlewares)
+> how to access the variables from the URL : http://localhost:3000/example?product=shirts
+
+    app.get('/example/:parameter' , (req,res) => {      // do not forget the first '/' && ':' before the variable name in route
       console.log(req.params.parameter)
       res.json({value:req.params.parameter})
     })
 
 > This way we can reduce all the user functions to a single function like : 
 Eg : 
-// Making all the user fucntions into a single function : 
+// Making all the user functions into a single function : 
     app.get('/profiles/:username',(req,res)=>{
       let username = req.params.username ;
       // console.log(username)
