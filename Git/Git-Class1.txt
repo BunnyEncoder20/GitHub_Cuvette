@@ -133,3 +133,17 @@ Creating a new Branch and Merging it back into Main branch
 Pulling latest changes from the GitHub repo to your local computer
 -----------------------------------------------------------
 11. git pull origin master - pulling main branch latest changes to the local computer
+12. git pull origin <branchName>    
+
+
+
+Tips : 
+-----
+1. When we create empty folder structure for our professional projects, empty folders alone will not be pushed 
+    to github. So we add an empty file inside them called .gitkeep (similar to .gitignore)
+
+2. use "git restore --staged <file>..." to un-stage changes (reverse of git add .)
+
+3. to checkout the current remote URL : git remote -v
+    to simply remove the remote origin : git remote remove origin
+    to change the remote URL : git remote set-url origin <github repo link>

@@ -18,11 +18,11 @@ const middleware = (req,res,next) => {
 }
 
 > It can be added into the middle of any app call as follows : 
-app.get('/htmlpage' , middleware, (req,res) =>{
+app.get('/route' , middleware, (req,res) =>{
     res.sendFile(__dirname+'/index.html') 
 })
 
-NOTE : That this middleware is specific to only this route, and will only be caled for it 
+NOTE : That this middleware is specific to only this route, and will only be called for it 
 
 > In this way, the request will pass through the middleware and will not land on index.html
     until it encounters next() in the middleware function  
@@ -30,6 +30,8 @@ NOTE : That this middleware is specific to only this route, and will only be cal
 > Using this logic we can create restrictions on incoming traffic to our website
 > We can also restrict pages which are not allowed to be viewed unless you are logged 
     in or do not have proper authorization 
+> We can also add information into the req.object 
+    eg : req.customInfo = 100 ;
 
 
 > To make a general Middleware function (which will be called for all the app calls)
@@ -42,7 +44,7 @@ const middlewareFunctionName = (req,res,next) => {
 
 app.use(middlewareFunctionName) ;       // app.use helps create a general middleware for all the routes
 
-app.get('/htmlpage' , (req,res) =>{
+app.get('/htmlpage' , (req,res) =>{                 // this get call will now use the middleware - middlewareFunctionName()
     res.sendFile(__dirname+'/index.html') 
 })
 
@@ -53,17 +55,20 @@ app.get('/htmlpage' , middlewareFunc1, middlewareFunc2, (req,res) =>{
 })
 
 
-2. Query and String Parameters (Params)
+2. Query and  Params (Parameters)
 ******************************************
 > We can get string queries from the url for the backend to process 
 > Eg : 
-    http://localhost:3000/shop?product=shirts  (NOTE we added the "?product=shirts" part)
-    http://localhost:3000/shop?product=shirts&price=1000&brand=UCD  (chaining the queries using '&')
+    L1 - http://localhost:3000/shop?product=shirts  (NOTE we added the "?product=shirts" part)
+    L2 - http://localhost:3000/shop?product=shirts&price=1000&brand=UCB  (chaining the queries using '&')
 
 app.get('/shop' , (req,res)=>{
-    console.log(req.query)
+    console.log(req.query)                  // this will print { product : 'shirts' } in console for L1 || { product: 'shirts', price: 1000, brand: 'UCB' }
     res.send("Welcome to the shop !")
 })
+
+------
+
 
 
 > Imagine a Social median app : The urls are something like : 
@@ -77,7 +82,7 @@ Eg :
     This can be handle by the res.get() as : 
 
     app.get('/users/:username' , (req,res)=>{       // NOTE : the "/:username" . : is put in front of the variable name for that parameter (here : Soma)
-        console.log(req.params)                            // req.params is the object which stores the parameters passed
+        console.log(req.params)                            // req.params is the object which stores the parameters passed || prints { username : 'Soma'} 
         res.send(`Welcome to the users page , ${req.params.username}`)  //accessing req.params object data
     })
 
@@ -90,6 +95,8 @@ Eg :
     express.static('folderName_holding_static-Files'). This helps to server the static 
     pages in our express server
 Eg :
+    // the below call is for the public folder (generally where all static files are kept)
+    express.static('public')
     app.use(express.static('public')) ; //we use app.use() so that all the routes have access to the static files
 
 NOTE : That the public folder is default relative folder, so no need to change the path

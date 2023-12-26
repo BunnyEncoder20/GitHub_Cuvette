@@ -78,7 +78,7 @@ Making a Database
 > Name the Collection 
 > Click on 'Create' 
 > Selecting the collection , we can add documents using the 'INSERT DOCUMENT' button
-> Enter the info in key:Value pairs (I preffer the JSON object view)
+> Enter the info in key:Value pairs (I prefer the JSON object view)
 > Can add more collection by clicking on '+' on Database Name in the left Database 
     Panel 
 
@@ -89,27 +89,27 @@ Making a Database
 
 Creating the Node application to connect with the online mongodb database
 ********************************************************************************
-const epxress = require('express')
+const express = require('express')
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
 
-const app = epxress()
+const app = express()
 
 app.use(bodyParser.urlencoded({extended:false}))
 
 NOTE : 
-    > remember that app.use() is used to attach middlewares (entity, which lies between 
+    > remember that app.use() is used to attach middleware (entity, which lies between 
         client and server) 
     > The above line is used to call a urlencoded middleware to decode the encoded url 
         which is sent when using POST or PATCH methods to send request
     > The extended:false is used for simple straightforward data. It is set to true when 
-        we are recieving complex data like nested objects, nested arrays , etc 
+        we are receiving complex data like nested objects, nested arrays , etc 
 
 app.use(express.static('./public'))
 
 NOTE : 
     > express.static is another middleware which is used (here) to make the contents of
-        the public folder accessible throughtout the node application  
+        the public folder accessible throughout the node application  
 
 
 
@@ -133,8 +133,10 @@ Mongoose
 
 > To get connection url : 
     MongoDB website -> DataBase -> Connect -> Drivers -> Add your connection string into your application code 
-> Note that This is an asynchronous operation, hence we are using .then() .catch() methods 
-    to handle it.
+> NOTE : that This is an asynchronous operation, hence we are using .then() .catch() methods 
+    to handle it. Because there is always the chance of the failure 
+> NOTE : also the communication with db will always take time hence we need to always put
+    async await on these 
 
 
 > We should only give the success message of connection only after the connection to 

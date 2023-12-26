@@ -26,6 +26,7 @@ This helps use by automatically restarting the server every time we make a new c
 Better way to nodemon : 
 1. Installing it globally : npm i nodemon -g
 2. nodemon fileName.js 
+3. installing nodemon only as development dependency : npm i -D nodemon
 *******************************************
 
 1. Install the dependency :
