@@ -153,20 +153,25 @@ Getting the records from collections
 > It is used to return all of the documents in that collection
 Eg : 
     await myModel.find({})
+Eg : you want to find user john who's age >= 18 : 
+    await myModel.find( { name:'John' , age:{ $gte : 18 } } )
+
+Documentation : https://www.geeksforgeeks.org/mongoose-find-function/
 
 > NOTE : 'await' is used as the operation is a asychronous operation, thus we would 
     need to add the keyword 'async' in the app.get() call as well. Eg : 
 
 > Proper way to fetch the data :-
 app.get('/customers' , async (req,res) => {
-    try{
-        const cust = await  Customer.find()
+    
+    try{    // if success 
+        const customers = await  Customer.find()     //will find all the documents in the collect 
         res.json({
             status : 'SUCCESS' ,
-            data: cust
+            data: customers
         })
     }
-    catch(error) {
+    catch(error) {  // if failed 
         res.json({
             status : 'FAILURE' ,
             msg: `Something went wrong\n${error}`
@@ -174,7 +179,7 @@ app.get('/customers' , async (req,res) => {
     }
 })
 
-> Remember that we always handle an asynchronos operation in 2 ways : 
+> Remember that we always handle an asynchronous operation in 2 ways : 
     - if it was successful or 
     - if it failed
 
@@ -200,7 +205,9 @@ app.get('/customers' , async (req,res) => {
 Few Status codes which we should know : 
 200 - all ok
 400 - Bad request (mistake of client)
+404 - not found
 500 - internal server error (mistake of server)
+
 
 > We can return status using res.status(value) methods. Eg : 
     catch(error) {
@@ -211,13 +218,13 @@ Few Status codes which we should know :
     }
 
 
-Creating a POST request to Create records 
-*********************************************
+POST request to Create Documents
+************************************
 app.post('/customers' , async (req,res) => {
     try{
-        // throw new Error('Duimmy Error')   // this will cause the catch block to activate
+        // throw new Error('Dummy Error')   // this will cause the catch block to activate
         
-        const {name, email, phoneNumber, avatarURL} = req.body // destructuring the data from req.body
+        const {name, email, phoneNumber, avatarURL} = req.body // destructuring the data from req.body which is sent from the client (Here sent by postman)
         
         await Customers.create({name, email, phoneNumber, avatarURL})   //sending data to create a record/document
         
@@ -233,6 +240,23 @@ app.post('/customers' , async (req,res) => {
         })
     }
 })
+
+
+mongoose.create() method : Documentation - https://masteringjs.io/tutorials/mongoose/create
+----------------------
+> function is used to insert one or more documents into a MongoDB collection. It's a convenient method 
+    that combines the creation and insertion of documents into a single operation. The basic syntax for 
+    the .create() function is as follows:
+                                                                Model.create(doc(s), [options], [callback]);
+
+> You can also use .create() to insert multiple documents by providing an array of documents as the first 
+    argument:
+                        UserModel.create(
+                          [
+                            { username: 'alice', email: 'alice@example.com' },
+                            { username: 'bob', email: 'bob@example.com' },
+                          ]
+                        );
 
 
 Simulating a html form in Postman : 
@@ -255,17 +279,21 @@ Updating a document using PATCH :
 > PUT is used to completed override the previous record (deletes the previous record 
     and fills in all the values again)
 > PATCH just updates the selected records details only 
-> We use the mymodel.findByIdAndUpdate(id_of_record)
+> We use the myModel.findByIdAndUpdate(id_of_record) - Documentation : https://www.geeksforgeeks.org/mongoose-findbyidandupdate-function/
 > Eg : 
-    app.patch('/customer/:id' , async (req,res)=>{
+    app.patch('/customers/:id' , async (req,res)=>{
         try{
-            // throw new Error('Dummy Error')   
-            let {id} = req.params.id ;
-            await CustomerModel.findByIdAndUpdate(id, {name, email, phoneNumber, avatarURL})
-
+            const {id} = req.params ;                                                                   // getting the id to update using params 
+            const {uname, email, phoneNumber, avatarURL} = req.body ;        // getting the form details from teh body object using destructuring
+            
+            console.log("Patching Request for : ",id)
+            await CustomerModel.findByIdAndUpdate(id, {uname, email, phoneNumber, avatarURL})
+                                                                                // Notice how the id is a separate parameter
+    
             res.json({
                 status: 'Success',
-                msg : "Customer updated"
+                uid_updated : id,
+                msg : "Customer Updated"
             })
         }
         catch(error) {
@@ -273,6 +301,7 @@ Updating a document using PATCH :
                 status : 'Failure' ,
                 msg: `${error}`
             })
+            console.log(error)
         }
     })
 
@@ -290,3 +319,33 @@ Go to :
 DO : 
     key = Add the fields names which needs to be updated
     Values = add the new value here 
+
+
+
+
+Delete a document using PATCH : 
+*************************************
+To delete a document from the Collection we use the findByIdAndDelete(document_id)
+Documentation - https://www.geeksforgeeks.org/mongoose-findbyidandremove-function/
+
+app.delete('/customers/remove/:id' , async (req,res)=>{
+    try{
+        // throw new Error('Dummy Error')   // this will cause the catch block to activate
+        let id = req.params.id ;
+        console.log("Delete Request for : ",id)
+        await CustomerModel.findByIdAndDelete(id)
+
+        res.json({
+            status: 'Success',
+            uid_removed : id ,
+            msg : "Customer Deleted"
+        })
+    }
+    catch(error) {
+        res.status(500).json({
+            status : 'Failure' ,
+            msg: `${error}`
+        })
+    }
+    
+})

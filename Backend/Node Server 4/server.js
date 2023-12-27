@@ -18,7 +18,7 @@ const mongoose = require('mongoose')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static('./public'))
 
-// Setting up to listen to requests 
+// Setting up Server to listen to requests 
 app.listen(process.env.PORT , ()=>{
     mongoose
         .connect(process.env.MONGODB_URL)
@@ -27,8 +27,15 @@ app.listen(process.env.PORT , ()=>{
 })
 
 
-// Code to create a collection cutomers with basic structure 
-//note that the actual collection name would be all small letters with a 's' (to make it pural)
+app.get('/' , (req,res)=>{
+    res.json({
+        status : "SUCCESS",
+        message : "Server running now"
+    })
+})
+
+// Code to create a collection customers with basic structure 
+//note that the actual collection name would be all small letters with a 's' (to make it plural)
 const CustomerModel = mongoose.model('Customer' , {  
     uname : String ,
     email: String ,
@@ -36,12 +43,6 @@ const CustomerModel = mongoose.model('Customer' , {
     avatarURL:String
 })
 
-app.get('/' , (req,res)=>{
-    res.json({
-        status : "SUCCESS",
-        message : "Server running now"
-    })
-})
 
 app.get('/users' , (req,res)=>{
     users = [
@@ -102,7 +103,7 @@ app.get('/users' , (req,res)=>{
 })
 
 
-// READ : GET /cutomers 
+// READ : GET /customers 
 app.get('/customers' , async (req,res) => {
     try{
         // throw new Error('Dummy Error')   // this will cause the catch block to activate
@@ -121,15 +122,15 @@ app.get('/customers' , async (req,res) => {
 })
 
 
-// CREATE : POST /cutomers
-app.post('/customers' , async (req,res) => {
+// CREATE : POST /customers
+app.post('/customers/create' , async (req,res) => {
     try{
         // throw new Error('Dummy Error')   // this will cause the catch block to activate
         console.log(req.body)
         
         const {uname, email, phoneNumber, avatarURL} = req.body // destructuring the data from req.body
 
-        await CustomerModel.create({uname, email, phoneNumber, avatarURL})   //sending data to create a record/document
+        await CustomerModel.create({uname, email, phoneNumber, avatarURL})   //sending data to create a document. Notice the callback function to handle the errors
 
         res.json({
             status: 'Success',
@@ -145,16 +146,20 @@ app.post('/customers' , async (req,res) => {
 })
 
 
-// Update : PATCH /customers/:id
-app.patch('/customers/:id' , async (req,res)=>{
+// Update : PATCH /customers/update/:id
+app.patch('/customers/update/:id' , async (req,res)=>{
     try{
         // throw new Error('Dummy Error')   // this will cause the catch block to activate
-        let id = req.params.id ;
+    
+        const {id} = req.params ;        // getting the id to update using params 
+        const {uname, email, phoneNumber, avatarURL} = req.body ;       // getting the form details from teh body object using destructuring
+        
         console.log("Patching Request for : ",id)
         await CustomerModel.findByIdAndUpdate(id, {uname, email, phoneNumber, avatarURL})
 
         res.json({
             status: 'Success',
+            uid_updated : id,
             msg : "Customer Updated"
         })
     }
@@ -167,16 +172,20 @@ app.patch('/customers/:id' , async (req,res)=>{
     }
 })
 
-// DELETE : DELETE /cutomers/:id
-app.delete('/customers/:id' , async (req,res)=>{
+
+// DELETE : DELETE /customers/delete/:id
+app.delete('/customers/remove/:id' , async (req,res)=>{
     try{
         // throw new Error('Dummy Error')   // this will cause the catch block to activate
+        // temp user made in the collection - { id : "658bcaa84baf63736886550a" , "name" : "ram" } 
+        
         let id = req.params.id ;
         console.log("Delete Request for : ",id)
         await CustomerModel.findByIdAndDelete(id)
 
         res.json({
             status: 'Success',
+            uid_removed : id ,
             msg : "Customer Deleted"
         })
     }
@@ -186,4 +195,5 @@ app.delete('/customers/:id' , async (req,res)=>{
             msg: `${error}`
         })
     }
+    
 })

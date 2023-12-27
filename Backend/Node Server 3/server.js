@@ -18,7 +18,7 @@ app.use(express.static('./public'))
 app.listen(process.env.port , ()=>{
     mongoose
         .connect(process.env.mongodb_url)
-        .then(()=> console.log("[Server] Sevre is now Running \n[Server] Connection to DB established"))
+        .then(()=> console.log("[Server] Sever is now Running \n[Server] Connection to DB established"))
         .catch((error)=>console.log(error))
 })
 
