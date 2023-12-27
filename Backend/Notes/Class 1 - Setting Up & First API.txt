@@ -17,6 +17,9 @@ Installing express library
     > npm i express ejs body-parser
 Note body-parser is very useful when dealing with put and post requests
 
+> To uninstall a package : 
+    npm uninstall <package_name>
+
 
 Installing nodemon (it is a dev dependency for auto restarting server)
 -------------------------------------------------------------
@@ -37,6 +40,9 @@ Better way to nodemon :
 
 3. Finally to get the server up and running, in terminal enter the command : 
 > npm run devStart 
+
+4. To checkout the installed npm packages : 
+npm ls --depth=0
 
 
 

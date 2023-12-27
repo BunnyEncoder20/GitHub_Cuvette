@@ -3,3 +3,78 @@ Agenda
 > Connecting Client and server ie: connecting React App with a Node App
 > Bootstrap
 > related file in Folder : ./SocialMediaApp
+
+
+# Steps for making a Complete MERN Stack Project 
+--------------------------------------------
+1. Making a Project Folder (generally your git repo title)
+2. Create 2 folders : Client and Server 
+3. client side installations : 
+    > npm create vite@latest .         // initializing the project inside the client folder
+    > npm i 
+    > npm install react-bootstrap bootstrap     // installing react-bootstrap (optional)
+    > New-Item -ItTemType Directory -Path "controller"s", "db", "middlewares", "models",e "routes", "utils"     //creating the folders required from the powershell cmd
+4. server side installations : 
+    > npm init
+    > npm i express ejs body-parser dotenv mongoose
+    > npm i -D nodemon                                                  // installing nodemon as a dev dependancy, We already have it globally installed in our BAT COMPUTER
+
+
+# React BootStrap 
+----------------
+Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introduction
+> When we want to create basic components fast, we can import them from bootstrap 
+> So there is a specific version made for react which will export the components instead of just html-css-NodeJs
+> Installations : 
+                        npm install react-bootstrap bootstrap
+                        {
+                            // copy the following lines in App.jsx : 
+                            import 'bootstrap/dist/css/bootstrap.min.css';
+                        }
+
+> Usage : 
+    1. Import the component 
+    2. use the component in the return part
+    3. Eg : importing a button component:
+                                                import Button from 'react-bootstrap/Button';
+                                                function myComponent() {
+                                                    return (
+                                                        <>
+                                                        <Button variant="primary">Primary</Button>
+                                                        <Button variant="secondary">Secondary</Button>
+                                                        </>
+                                                    );
+                                                }
+
+                                                export default myComponent; 
+    4. Eg importing multiple components :
+                                                import Button from 'react-bootstrap/Button';    // importing 
+                                                import Figure from 'react-bootstrap/Figure';        
+                                                <OR>
+                                                import {Button, Figure} from 'react-bootstrap'   // destructure importing
+                                                import tempImg from './assets/react.svg'
+                                                
+                                                function myComponent() {
+                                                  return (
+                                                    <>
+                                                      <Button variant="primary">Primary</Button>        // using the bootstrap component 
+                                                      <Button variant="secondary">Secondary</Button>
+                                                      <Button variant="primary">Primary</Button>{' '}
+                                                      <Button variant="secondary">Secondary</Button>{' '} <br /><br />
+                                                        <Figure>
+                                                            <Figure.Image
+                                                                width={171}
+                                                                height={180}
+                                                                alt="171x180"
+                                                                src={tempImg}
+                                                            />
+                                                            <Figure.Caption>
+                                                                Nulla vitae elit libero, a pharetra augue mollis interdum.
+                                                            </Figure.Caption>
+                                                        </Figure>
+                                                    </>
+                                                  );
+                                                }
+
+                                                export default myComponent;
+

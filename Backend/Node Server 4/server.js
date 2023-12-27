@@ -17,7 +17,7 @@ const mongoose = require('mongoose')
 // Setting up the middleware
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static('./public'))
-
+    
 // Setting up Server to listen to requests 
 app.listen(process.env.PORT , ()=>{
     mongoose

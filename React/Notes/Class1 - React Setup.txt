@@ -62,31 +62,31 @@
 
     Vite (or Parcel) are a bundler which will combine many files of JS and give one file, which we can use to 
     do most of our React work. 
-    - used when we want to work with react without a framework
+      - used when we want to work with react without a framework
 
     files to delete from the folder (extras when used create-react-app) :
-    - setupTests.js 
-    - reportWebVitals.js 
-    - logo.svg
-    - App.test.js
-    - App.css
-    - index.css
+      - setupTests.js 
+      - reportWebVitals.js 
+      - logo.svg
+      - App.test.js
+      - App.css
+      - index.css
 
     files to delete from the folder (extras when making with vite)
-    - assets (folder) 
-    - App.css
-    - index.css
+      - assets (folder) 
+      - App.css
+      - index.css
 
     > inside the main.jsx remove the lines :
-    > import './index.css'
+      > import './index.css'
 
-    > inside the App.jsx remove the lines : 
-    > import { useState } from 'react'
-    > import reactLogo from './assets/react.svg'
-    > import viteLogo from '/vite.svg'
-    > import './App.css'
-    > const [count, setCount] = useState(0)
-    > everything inside return
+    inside the App.jsx remove the lines : 
+      > import { useState } from 'react'
+      > import reactLogo from './assets/react.svg'
+      > import viteLogo from '/vite.svg'
+      > import './App.css'
+      > const [count, setCount] = useState(0)
+      > everything inside return
 
 */
 
