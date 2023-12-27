@@ -1,7 +1,7 @@
 Agenda
 ********
 > Connecting Client and server ie: connecting React App with a Node App
-> Bootstrap
+> React Bootstrap
 > related file in Folder : ./SocialMediaApp
 
 
@@ -13,7 +13,7 @@ Agenda
     > npm create vite@latest .         // initializing the project inside the client folder
     > npm i 
     > npm install react-bootstrap bootstrap     // installing react-bootstrap (optional)
-    > New-Item -ItTemType Directory -Path "controller"s", "db", "middlewares", "models",e "routes", "utils"     //creating the folders required from the powershell cmd
+    > New-Item -ItTemType Directory -Path "components", "controller"s", "db", "middlewares", "models",e "routes", "utils"     //creating the folders required from the powershell cmd
 4. server side installations : 
     > npm init
     > npm i express ejs body-parser dotenv mongoose
@@ -30,6 +30,9 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
                         {
                             // copy the following lines in App.jsx : 
                             import 'bootstrap/dist/css/bootstrap.min.css';
+
+                            // paste the following in index.html : (src = https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
                         }
 
 > Usage : 
@@ -53,7 +56,7 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
                                                 <OR>
                                                 import {Button, Figure} from 'react-bootstrap'   // destructure importing
                                                 import tempImg from './assets/react.svg'
-                                                
+
                                                 function myComponent() {
                                                   return (
                                                     <>
@@ -77,4 +80,23 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
                                                 }
 
                                                 export default myComponent;
+    5. Custom CSS for the bootstrap components : 
+        > Make a myComponent.css file and add your custom css there 
+            /* Navbar.css - get the accurate classes from the inspecting the elements*/
+                .navbar-light .navbar-brand {
+                    color: white;
+                }
+
+                .navbar-light .navbar-nav .nav-link {
+                    color: white;
+                }
+
+
+> Points to remember when using bootstrap : 
+    1. don't use both bootstrap and tailwindcss in the same project, will cause issues 
+    2. remove all the things in index.css, App.css file when using bootstrap components otherwise there are conflicting styles (margins, paddings, borders, etc)
+    3. If you to add more styling/modify, create a component.css in that components's folder and add teh css there
+    4. There are some modifications (like color) also available in the bootstrap website only 
+    
+                
 
