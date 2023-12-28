@@ -2,6 +2,7 @@ Agenda
 ********
 > Connecting Client and server ie: connecting React App with a Node App
 > React Bootstrap
+> Axios
 > related file in Folder : ./SocialMediaApp
 
 
@@ -18,6 +19,13 @@ Agenda
     > npm init
     > npm i express ejs body-parser dotenv mongoose
     > npm i -D nodemon                                                  // installing nodemon as a dev dependancy, We already have it globally installed in our BAT COMPUTER
+
+
+
+! IMPORTANT !
+**********************
+React-bootstrap doesn't work well with Vite, so when you planning to use React-Bootstrap use cra for project creation
+**********************
 
 
 # React BootStrap 
@@ -98,5 +106,72 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
     3. If you to add more styling/modify, create a component.css in that components's folder and add teh css there
     4. There are some modifications (like color) also available in the bootstrap website only 
     
-                
 
+# Components used in class : 
+------------------------
+1. Button Component : for making quick buttons - https://react-bootstrap.netlify.app/docs/components/buttons/
+2. Card Component : for making a card displaying image, description, button init - https://react-bootstrap.netlify.app/docs/components/cards/
+3. Layout Components - Row&Cols - https://react-bootstrap.netlify.app/docs/layout/grid
+
+
+# Example of Card component used using .map() : 
+------------------------------------------
+ <Container>
+    <h1>Users</h1>
+    <Row>
+        {/* Notice how we are using the Object.map method to iterate over each of the users */}
+        {/* Don't forget teh index and key for optimizing the iteration */
+
+        {   Users.map((user, index) => (
+                <Col md={3} key={index} >           // index and key is recommended to use when dealing with list items (iterables)
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={user.avatar} />
+                        <Card.Body>
+                            <Card.Title>{user.first_name} {user.first_name}</Card.Title>
+                            <Card.Text>
+                                {user.email}
+                            </Card.Text>
+                            <Button variant="dark">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            )) 
+        } 
+    </Row>
+</Container>
+
+
+
+
+# Axios package 
+--------------
+> Basically a better way to make request from frontend/client side 
+> Instead of using .fetch() which has a lot of overhead, we use .get() from axios instead 
+> Eg : 
+        useEffect(() => {
+            axios 
+                .get('https://reqres.in/api/users')
+                .then((res) => console.log("[res] : ",res.data.data))        // NOTE : res.data will return the Object return from the call
+                .catch((err) => console.log("[ERROR] : ",err))
+        })
+> NOTE for the given link, the response sent back has a field called data. Hence to access that , we use res.data.data
+
+> Hence when we want the frontend to access teh data from our Server : 
+    useEffect(() => {
+        axios
+            .get('http://localhost:4000/users')         // just insert our server link here
+            .then((res) => setUsers(res.data.data))
+            .catch((err) => console.log("[ERROR] : ", err))
+    })
+
+> NOTE : without the CORS npm package this will cause a CORS error - 
+> Installation : 
+                npm install cors
+> Usage : 
+            1. Allowing all CORS requests
+                var cors =  require('cors')
+                app.use(cors())
+            
+            2. Allowing only a single route
+
+            3. Allowing a whitelisted array of links : 
