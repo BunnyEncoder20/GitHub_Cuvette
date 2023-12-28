@@ -42,7 +42,7 @@ app.listen(process.env.PORT , () => {
 // initial get request 
 app.get('/' , (req,res) => {
     res.json({
-        Title : "Server of GitHub FET Project" ,
+        Title : "Server of Social Media App" ,
         Author : "Varun Verma" ,
         msg : "Server has started successfully"
     })

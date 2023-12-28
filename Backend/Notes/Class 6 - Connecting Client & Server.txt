@@ -175,6 +175,7 @@ app.use(bodyParser.json()) ;
 
 *- PS -*
 It is better idea to make a function to fetch the latest user data and call whenever there is addition of new record
+The user data has been exported and kept in the GitHub_Cuvette/backend/SocialMediaApp Folder  (if collection has been deleted and need to run and see the project again)
 
 
 
