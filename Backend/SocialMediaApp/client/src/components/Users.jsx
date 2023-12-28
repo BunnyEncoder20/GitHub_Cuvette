@@ -4,6 +4,12 @@ import { Container, Button, Card, Row, Col } from 'react-bootstrap'
 
 export const Users = () => {
     const [Users, setUsers] = useState([]);
+    const [newUser, setNewUser] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        avatar: ''
+    })
 
     useEffect(() => {
         axios
@@ -12,6 +18,24 @@ export const Users = () => {
             .catch((err) => console.log("[ERROR] : ", err))
     })
 
+    const handleSubmit = () => {
+        axios
+            .post('http://localhost:4000/users' , newUser)          // notice that we are using a post call here and sending the data in the 2nd param
+            .then(() => {
+                    console.log("User added Successfully !")
+
+                    // clearing the form : 
+                    setNewUser({
+                        first_name: '',
+                        last_name: '',
+                        email: '',
+                        avatar: ''
+                    })
+                }
+            )
+            .catch((err) => console.log("[ERROR] : ", err))
+            
+    }
 
 
     return (
@@ -36,6 +60,17 @@ export const Users = () => {
                     </Col>
                 ))}
 
+            </Row>
+            <Row>
+                <Col>
+                    <h3>Add a new User</h3>
+                    <input type="text" placeholder='First Name' value={newUser.first_name} onInput={(e) => { setNewUser({ ...newUser, first_name: e.target.value }) }} /> <br /><br />
+                    <input type="text" placeholder='Last Name' value={newUser.last_name} onInput={(e) => { setNewUser({ ...newUser, last_name: e.target.value }) }} /> <br /><br />
+                    <input type="text" placeholder='Email' value={newUser.email} onInput={(e) => { setNewUser({ ...newUser, email: e.target.value }) }} /> <br /><br />
+                    <input type="text" placeholder='Avatar URL' value={newUser.avatar} onInput={(e) => { setNewUser({ ...newUser, avatar: e.target.value }) }} /> <br /><br />
+                    
+                    <Button variant="dark" onClick={handleSubmit}>Submit</Button>
+                </Col>
             </Row>
         </Container>
     )

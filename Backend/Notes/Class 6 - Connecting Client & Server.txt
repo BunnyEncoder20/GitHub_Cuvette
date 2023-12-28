@@ -119,7 +119,7 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
  <Container>
     <h1>Users</h1>
     <Row>
-        {/* Notice how we are using the Object.map method to iterate over each of the users */}
+        {/* Notice how we are using the .map() method to iterate over each of the users */}
         {/* Don't forget teh index and key for optimizing the iteration */
 
         {   Users.map((user, index) => (
@@ -139,6 +139,44 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
         } 
     </Row>
 </Container>
+
+
+# Creating a new User (or sending new records to the database)
+-------------------------------------------------------
+// a state to store the information of the new record : 
+const [newUser, setNewUser] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    avatar: ''
+})
+
+
+// a function to handle the submit click using a post request
+const handleSubmit = () => {
+    axios
+        .post('http://localhost:4000/users' , newUser)          // notice that we are using a post call here and sending the data in the 2nd param
+        .then(() => console.log("User added Successfully !"))
+        .catch((err) => console.log("[ERROR] : ", err))
+}
+
+// A simple form to collect the data, adds the info to the record object when there is an input and finally calls the handler function
+<h3>Add a new User</h3>
+<input type="text" placeholder='First Name' value={newUser.first_name} onInput={(e) => { setNewUser({ ...newUser, first_name: e.target.value }) }} /> <br />
+<input type="text" placeholder='Last Name' value={newUser.last_name} onInput={(e) => { setNewUser({ ...newUser, last_name: e.target.value }) }} /> <br />
+<input type="text" placeholder='Email' value={newUser.email} onInput={(e) => { setNewUser({ ...newUser, email: e.target.value }) }} /> <br />
+<input type="text" placeholder='Avatar URL' value={newUser.avatar} onInput={(e) => { setNewUser({ ...newUser, avatar: e.target.value }) }} /> <br />
+
+<Button variant="dark" onClick={handleSubmit}>Submit</Button>
+
+> NOTE :  Because we are sending an json object this time , we should also have a middleware to deal with it : 
+app.use(bodyParser.json()) ;
+
+
+*- PS -*
+It is better idea to make a function to fetch the latest user data and call whenever there is addition of new record
+
+
 
 
 
@@ -164,7 +202,8 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
             .catch((err) => console.log("[ERROR] : ", err))
     })
 
-> NOTE : without the CORS npm package this will cause a CORS error - 
+
+> NOTE : without the CORS npm package this will cause a CORS error - https://www.npmjs.com/package/cors
 > Installation : 
                 npm install cors
 > Usage : 

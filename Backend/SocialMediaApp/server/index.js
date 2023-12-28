@@ -26,6 +26,8 @@ app.use(express.static('./public'))                                 // making pu
 // importing CORS 
 var cors =  require('cors')
 app.use(cors())
+// Importing json body-parser because we are handling object data when sending newUser 
+app.use(body_parser.json()) ;
 
 
 // Starting the Server 
