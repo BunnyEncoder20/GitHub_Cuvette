@@ -3,10 +3,16 @@ Agenda :
 1. Handling Login 
 2. Registering new users 
 3. How to encrypt data 
-4. More on middlewares
+4. Creating simple middlewares
+5. JWT (JSON web token)
 
 Related code files in : Node Server 5
 installations :  npm i ejs express body-parser mongoose dotenv cors 
+
+Authentication - asking client Q) Who are you ? Identify yourself mofo
+Authorization - once the client is identified (LoggedIn) , asking client Q) What all access you have ? What all can you do?
+
+
 
 #1 Login 
 --------
@@ -123,4 +129,114 @@ app.post('/server5/signup' , async (req,res) => {
                     })
                 }
 
-> 
+
+# Creating simple middlewares
+--------------------------
+1. Making the middleware function : 
+                    const isLoggedIn = (req,res,next) => {
+                        let loggedIn = true ;       // only for the sake of example
+
+                        if(!loggedIn){
+                            return res.json({           // if the user is not loggedIn then return the request from here only (from teh middle)
+                                status : 'FAIL' ,
+                                msg : '[middleware] Please login first'
+                            })
+                        }
+
+                        // else if LoggedIn : 
+                        next() ;        // basically lets the request proceed to the server 
+                    }
+
+2. Using the middleware in a route : 
+                    app.get('/server5',  isLoggedIn, (req, res) => {
+                        res.json({
+                            Title: "Node Server 5",
+                            Author: "Varun Verma",
+                            SERVER: "Server has started successfully",
+                            MONGO: "Mongoose Model made"
+                        })
+                    })
+
+3. To attach middleware to all the routes : 
+                    app.use(isLoggedIn)     // now all the routes will call the custom middleware
+
+
+
+
+#5 JWT (JSON Web Token)
+-----------------------
+> Generally most of the routes are public i.e; they are not checked much by middlewares or require login 
+> Eg : 
+    Dashboard page needs users to login 
+    Admin Pages needs the users to be loggedIn and a admin member
+
+> We use npm jsonwebtoken package for creating private routes - https://www.npmjs.com/package/jsonwebtoken
+> It basically creates a encrypted token (like a irl token number) which will be sent to the client 
+> Whenever the client wants to access / valid all his Auth right can be gotten from that token 
+> Installation : 
+            npm i jsonwebtoken
+> Usage 
+        1. Importing 
+            const jwt = require('jsonwebtoken')         // import the package
+
+        2. Creating the Token
+            jwt.sign(complete_client_info.toJSON() , JWT_private_password, { expiresIn: time_in_seconds })
+                    // complete_client_info = all the data on the client whi has loggedIn
+                    // .toJSON() = it's a method to covert the object returned from mongoDB into a simple json (the returned object from mongoDB is not considered a simple/plain object by default)
+                    // JWT_private_password = secret key which is private. stored in the .env file 
+                    // 3rd param in Options - {expiresIn: n} is a option which sets the token to expire in n seconds
+            
+            Eg : 
+            const JWTToken = jwt.sign(user.toJSON(), process.env.JWT_PASSWORD, { expiresIn:20 })   // making the token
+            res.json({
+                Status: "SUCCESS",
+                msg: `${user.mName} login successful` ,
+                token: JWTToken                                     // JWT token 
+            })
+        
+        3. Verifying the token : 
+                // JWT Middlewares 
+                const privateLoggedIn = (req,res,next) => {
+                    try {
+                        const jwtToken = req.headers.jwtToken ;         // get the jwtToken from teh headers 
+                        const user = jwt.verify(jwtToken, process.env.JWT_PASSWORD)     // we use jwt.verify() to check if the token is valid 
+                        req.user = user ;                                                   // getting the rest of the user info and attaching it to the req.user field so that the route can access the info of this perticular user
+                        next();
+                    } catch (err) {
+                        console.log(err) ;
+                        res.json({
+                            status : 'FAIL' ,
+                            msg : '[middleware] Please login first'
+                        })
+                    }
+                }
+
+                const privateAdmin = (req,res,next) => {
+                    if(!req.user.isAdmin) {
+                        return res.json({
+                            status : 'FAIL' ,
+                            msg : '[middleware] You do not have admin permissions'
+                        })
+                    }
+                    next() ;
+                }
+
+        4. Private routes using jwtToken : 
+                    // uses only one middleware 
+                    app.get('/server5/dashboard' , privateLoggedIn,  (req,res) => {
+                        let validUser = req.user ;
+                        res.json({
+                            status: 'SUCCESS' ,
+                            msg: `Welcome ${validUser.mName} of account ${validUser.mEmail} to the Dashboard`
+                        }) ;
+                    })
+
+                    // uses multiple middlewares 
+                    app.get('/server5/admin' , privateLoggedIn, privateAdmin , (req,res) => {
+                        let validUser = req.user ;
+                        res.json({
+                            status: 'SUCCESS' ,
+                            msg: `Welcome ${validUser.mName} of account ${validUser.mEmail} to the Admin Page`
+                        }) ;
+                    })
+    

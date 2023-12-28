@@ -4,7 +4,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -15,11 +16,94 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 
+// Creating a simple middleware 
+const isLoggedIn = (req,res,next) => {
+    let loggedIn = true ;
+
+    if(!loggedIn){
+        return res.json({           // if the suer is nnot loggedIn then return the request from here only (from teh middle)
+            status : 'FAIL' ,
+            msg : '[middleware] Please login first'
+        })
+    }
+
+    // else if LoggedIn : 
+    next() ;        // basically lets the request proceed to the server 
+}
+// Making the middleware attached to all the routes : 
+app.use(isLoggedIn)             // note to not call the function only pass the ref
+
+app.get('/server5/example1' , isLoggedIn , (req,res) => {
+    res.json({
+        status: "SUCCESS",
+        msg: "passed the middleware" 
+    })
+})
+
+app.get('/server5/example2' , (req,res) => {
+    res.json({
+        status: "SUCCESS",
+        msg: "passed the middleware" 
+    })
+})
+
+
+// JWT codes - Private routes 
+// headers - are nothing but meta data
+// JWT Middlewares 
+const privateLoggedIn = (req,res,next) => {
+    try {
+        const jwtToken = req.headers.token ;
+        const user = jwt.verify(jwtToken, process.env.JWT_PASSWORD)
+        req.user = user ;
+        next();
+    } catch (err) {
+        console.log(err) ;
+        res.json({
+            status : 'FAIL' ,
+            msg : '[middleware] Please login first'
+        })
+    }
+}
+
+const privateAdmin = (req,res,next) => {
+    if(!req.user.isAdmin) {
+        return res.json({
+            status : 'FAIL' ,
+            msg : '[middleware] You do not have admin permissions'
+        })
+    }
+    next() ;
+}
+
+//  Need to check if user is loggedIn
+app.get('/server5/dashboard' , privateLoggedIn,  (req,res) => {
+    let validUser = req.user ;
+    res.json({
+        status: 'SUCCESS' ,
+        msg: `Welcome ${validUser.mName} of account ${validUser.mEmail} to the Dashboard`
+    }) ;
+})
+
+// Need to check LoggedIn + isAdmin 
+app.get('/server5/admin' , privateLoggedIn, privateAdmin , (req,res) => {
+    let validUser = req.user ;
+    res.json({
+        status: 'SUCCESS' ,
+        msg: `Welcome ${validUser.mName} of account ${validUser.mEmail} to the Admin Page`
+    }) ;
+})
+
+
+
+
+
 // making mongoose schema 
 const memberModelref = mongoose.model('Member', {
     mName: String,
     mEmail: String,
-    mPassword: String
+    mPassword: String,
+    isAdmin : Boolean
 })
 
 // Starting the server 
@@ -31,7 +115,7 @@ app.listen(process.env.PORT, () => {
 })
 
 // initial get request 
-app.get('/server5', (req, res) => {
+app.get('/server5',  isLoggedIn, (req, res) => {
     res.json({
         Title: "Node Server 5",
         Author: "Varun Verma",
@@ -65,6 +149,7 @@ app.post('/server5/signup', async (req, res) => {
         })
     }
     catch (err) {
+        
         res.status(500).json({
             status: 'FAIL',
             msg: 'Something went wrong while adding user',
@@ -104,14 +189,19 @@ app.post('/server5/login', async (req, res) => {
                 msg: '[Mongo] Incorrect Password',
             })
         }
+
+        const JWTToken = jwt.sign(user.toJSON(), process.env.JWT_PASSWORD, { expiresIn:60 })
+
         // else return the user info : 
         res.json({
             Status: "SUCCESS",
-            msg: `${user.mName} login successful`
+            msg: `${user.mName} login successful` ,
+            token: JWTToken         // look at the JWT token 
         })
 
     }
     catch (err) {
+        console.log(err)
         res.status(500).json({
             status: 'FAIL',
             msg: '[Server] Something went wrong ... ',
