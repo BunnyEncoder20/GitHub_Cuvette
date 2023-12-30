@@ -91,7 +91,7 @@
       > everything inside return
 
     Folders to add for a good modular project : 
-    New-Item -ItTemType Directory -Path "components", "controller"s", "db", "middlewares", "models",e "routes", "utils"     //creating the folders required from the powershell cmd
+    New-Item -ItemType Directory -Path "components", "controllers", "db", "middlewares", "models", "routes", "utils"     //creating the folders required from the powershell cmd
 
 */
 

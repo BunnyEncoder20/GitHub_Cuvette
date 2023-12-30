@@ -23,9 +23,9 @@ Agenda
 
 
 ! IMPORTANT !
-**********************
+************************************************************************************************************************************
 React-bootstrap doesn't work well with Vite, so when you planning to use React-Bootstrap use cra for project creation
-**********************
+************************************************************************************************************************************
 
 
 # React BootStrap 
@@ -101,6 +101,7 @@ Documentation : https://react-bootstrap.netlify.app/docs/getting-started/introdu
 
 
 > Points to remember when using bootstrap : 
+    0. DO NOT use vite@latest only use CRA 
     1. don't use both bootstrap and tailwindcss in the same project, will cause issues 
     2. remove all the things in index.css, App.css file when using bootstrap components otherwise there are conflicting styles (margins, paddings, borders, etc)
     3. If you to add more styling/modify, create a component.css in that components's folder and add teh css there

@@ -147,3 +147,5 @@ Tips :
 3. to checkout the current remote URL : git remote -v
     to simply remove the remote origin : git remote remove origin
     to change the remote URL : git remote set-url origin <github repo link>
+
+4. If you accidentally leak secret files (like .env) : https://varunx.hashnode.dev/pushed-env-file-to-github#heading-how-to-fix-this
