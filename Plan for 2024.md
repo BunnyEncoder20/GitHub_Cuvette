@@ -66,4 +66,5 @@
 - You'll might not get what you ```want``` 
 - You'll definitely get what ```Deserve```
 - So outwork yourself everyday. What day/time of year it is shouldn't matter. be obsessed with getting to your goal
-- This CTC better be more than ```12 LPA```
+- This CTC ***MUST*** be more than ```12 LPA```
+- We aiming for ```20-30 LPA```
