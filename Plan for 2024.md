@@ -9,6 +9,7 @@
     - [Coursera](https://www.coursera.org/learn/algorithms-part1/home/week/1)
     - [Cuvette](https://learn.cuvette.tech/courses/take/placement-guarantee-course-may-batch/lessons/47126944-live-class-npm-packages-hoc-react-routing)
     - [Chai aur Code](https://youtube.com/playlist?list=PLu71SKxNbfoCZ7Q7wyHnqlWDE-epaFBLx&si=NnYi_OYw8gCeDiTF)
+    - [Visual Learning DSA](https://youtube.com/playlist?list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&si=MaHGFq5Nmd_6OuKW)
 
 ---
 
